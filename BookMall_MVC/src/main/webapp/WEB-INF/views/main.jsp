@@ -43,32 +43,40 @@
 				</ul>			
 			</div>
 			<div class="top_area">
-					<div class="logo_area">
-						<a href="/main"><img src="resources/img/mLogo.png"></a>
+				<!-- 로고영역 -->
+				<div class="logo_area">
+					<a href="/main"><img src="resources/img/mLogo.png"></a>
+				</div>
+				<div class="search_area">
+					<div class="search_wrap">
+						<form id="searchForm" action="/search" method="get">
+							<div class="search_input">
+								<input type="text" name="keyword"/>
+								<button class="btn search_btn">검색</button>
+							</div>					
+						</form>
 					</div>
-					<div class="search_area">
-							<h1>Search area</h1>
-					</div>
-					<div class="login_area">
+				</div>
+				<div class="login_area">
 					
-						<!-- 로그인 하지 않은 상태 -->
-						<c:if test = "${member == null}">
-								<div class="login_button"><a href="/member/login">로그인</a></div>
-									<span><a href="/member/join">회원가입</a></span>
-						</c:if>
+					<!-- 로그인 하지 않은 상태 -->
+					<c:if test = "${member == null}">
+							<div class="login_button"><a href="/member/login">로그인</a></div>
+								<span><a href="/member/join">회원가입</a></span>
+					</c:if>
 						
-						<!-- 로그인 상태 -->
-						<c:if test="${member != null}">
-							<div class="login_success_area">
-								<span>회원 : ${member.memberName}</span>
-								<span>충전금액 : <fmt:formatNumber value="${member.money}" pattern="\#,###"/></span>
-								<span>포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###"/></span>
-								<a href="/member/logout.do">로그아웃</a>
-							</div>
-						</c:if>
+					<!-- 로그인 상태 -->
+					<c:if test="${member != null}">
+						<div class="login_success_area">
+							<span>회원 : ${member.memberName}</span>
+							<span>충전금액 : <fmt:formatNumber value="${member.money}" pattern="\#,###"/></span>
+							<span>포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###"/></span>
+							<a href="/member/logout.do">로그아웃</a>
+						</div>
+					</c:if>
 					
-					</div>
-					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
 			</div>
 			<div class="navi_bar_area">
 					<h1>navi area</h1>
