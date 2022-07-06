@@ -148,16 +148,16 @@ public class AdminMapperTests {
 //		
 //	}
 	
-	@Test
-	public void getAttachInfoTest() {
-		
-		int bookId = 18;
-		
-		List<AttachImageVO> list = mapper.getAttachInfo(bookId);
-		
-		System.out.println("list : " + list);
-	
-	}
+//	@Test
+//	public void getAttachInfoTest() {
+//		
+//		int bookId = 18;
+//		
+//		List<AttachImageVO> list = mapper.getAttachInfo(bookId);
+//		
+//		System.out.println("list : " + list);
+//	
+//	}
 	
 	
 	

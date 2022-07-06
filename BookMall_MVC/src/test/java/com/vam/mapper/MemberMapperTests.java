@@ -42,15 +42,15 @@ public class MemberMapperTests {
 //		membermapper.idCheck(id2);
 //	}
 	
-	@Test
-	public void memberLogin() throws Exception{
-		
-		MemberVO member = new MemberVO();
-		
-		member.setMemberId("test3");
-		member.setMemberPw("test3");
-		
-		membermapper.memberLogin(member);
-		System.out.println("결과 값 : " + membermapper.memberLogin(member));
-	}
+//	@Test
+//	public void memberLogin() throws Exception{
+//		
+//		MemberVO member = new MemberVO();
+//		
+//		member.setMemberId("test3");
+//		member.setMemberPw("test3");
+//		
+//		membermapper.memberLogin(member);
+//		System.out.println("결과 값 : " + membermapper.memberLogin(member));
+//	}
 }
