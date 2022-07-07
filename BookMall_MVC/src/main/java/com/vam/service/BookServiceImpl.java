@@ -6,8 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.vam.mapper.AttachMapper;
 import com.vam.mapper.BookMapper;
+import com.vam.model.AttachImageVO;
 import com.vam.model.BookVO;
+import com.vam.model.CateVO;
 import com.vam.model.Criteria;
 
 import lombok.extern.log4j.Log4j;
@@ -18,6 +21,9 @@ public class BookServiceImpl implements BookService{
 
 	@Autowired
 	private BookMapper bookMapper;
+	
+	@Autowired
+	private AttachMapper attachMapper;
 	
 	// 상품검색
 	@Override
@@ -42,7 +48,19 @@ public class BookServiceImpl implements BookService{
 			}
 		}
 		
-		return bookMapper.getGoodsList(cri);
+		List<BookVO> list = bookMapper.getGoodsList(cri);
+		
+		list.forEach(book -> {
+			
+			int bookId = bookMapper.goodsGetTotal(cri);
+			
+			List<AttachImageVO> imageList = attachMapper.getAttachList(bookId);
+			
+			book.setImageList(imageList);
+			
+		});
+		
+		return list;
 	}
 
 	// 상품 총 갯수
@@ -52,6 +70,22 @@ public class BookServiceImpl implements BookService{
 		log.info("goodsGetTotal()......");
 		
 		return bookMapper.goodsGetTotal(cri);
+	}
+
+	@Override
+	public List<CateVO> getCateCode1() {
+
+		log.info("getCateCode1()......");
+		
+		return bookMapper.getCateCode1();
+	}
+
+	@Override
+	public List<CateVO> getCateCode2() {
+
+		log.info("gotCateCode2()......");
+		
+		return bookMapper.getCateCode2();
 	}
 
 }

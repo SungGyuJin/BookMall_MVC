@@ -38,9 +38,13 @@ public class BookController {
 	
 	// 메인페이지 이동
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public void mainPageGET() {
+	public void mainPageGET(Model model) {
 		
-		log.info("테스트 컨트롤러");
+		log.info("main.jsp 진입");
+		
+		model.addAttribute("cate1", bookService.getCateCode1());
+		model.addAttribute("cate2", bookService.getCateCode2());
+		
 	}
 	
 	// 이미지 출력
@@ -78,11 +82,10 @@ public class BookController {
 		return new ResponseEntity<List<AttachImageVO>>(attachMapper.getAttachList(bookId), HttpStatus.OK);
 		
 		
-		
 	}
 	
 	// 상품 검색
-	@GetMapping("search")
+	@GetMapping("/search")
 	public String searchGoodsGET(Criteria cri, Model model) {
 		
 		log.info("cri : " + cri);
@@ -99,7 +102,6 @@ public class BookController {
 		}
 		
 		model.addAttribute("pageMaker", new PageDTO(cri, bookService.goodsGetTotal(cri)));
-		
 		
 		return "search";
 		
