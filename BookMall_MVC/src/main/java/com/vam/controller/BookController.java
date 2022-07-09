@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -81,7 +82,6 @@ public class BookController {
 		
 		return new ResponseEntity<List<AttachImageVO>>(attachMapper.getAttachList(bookId), HttpStatus.OK);
 		
-		
 	}
 	
 	// 상품 검색
@@ -115,7 +115,17 @@ public class BookController {
 		
 	}
 	
-	
+	// 상품상세
+	@GetMapping("/goodsDetail/{bookId}")
+	public String goodsDetailGet(@PathVariable("bookId")int bookId, Model model) {
+		
+		log.info("goodsDetailGET()......");
+		
+		model.addAttribute("goodsInfo", bookService.getGoodsInfo(bookId));
+		
+		return "/goodsDetail";
+		
+	}
 	
 	
 	

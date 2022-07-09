@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.vam.mapper.AdminMapper;
 import com.vam.mapper.AttachMapper;
 import com.vam.mapper.BookMapper;
 import com.vam.model.AttachImageVO;
@@ -25,6 +26,9 @@ public class BookServiceImpl implements BookService{
 	
 	@Autowired
 	private AttachMapper attachMapper;
+	
+	@Autowired
+	private AdminMapper adminMapper;
 	
 	// 상품검색
 	@Override
@@ -97,7 +101,7 @@ public class BookServiceImpl implements BookService{
 			List<CateFilterDTO> filterInfoList = new ArrayList<CateFilterDTO>();
 			
 			String[] typeArr = cri.getType().split("");
-			String []  authorArr;
+			String [] authorArr;
 			
 			for(String type : typeArr) {
 				if(type.equals("A")) {
@@ -122,13 +126,19 @@ public class BookServiceImpl implements BookService{
 			}
 			
 			cri.setCateCode(tempCateCode);
-			
 		
-		return null;
+			return filterInfoList;
 	}
 	
-	
-	
+	@Override
+	public BookVO getGoodsInfo(int bookId) {
+		
+		BookVO goodsInfo = bookMapper.getGoodsInfo(bookId);
+		goodsInfo.setImageList(adminMapper.getAttachInfo(bookId));
+
+		
+		return goodsInfo;
+	}	
 	
 	
 	

@@ -189,23 +189,34 @@ public class BookMapperTests {
 //	}
 	
 	// 카테고리 정보 얻기
+//	@Test
+//	public void getCateInfoTest1() {
+//		
+//		Criteria cri = new Criteria();
+//		
+//		String type = "TC";
+//		String keyword = "test";
+//		String cateCode = "104001";
+//		
+//		cri.setType(type);
+//		cri.setKeyword(keyword);
+//		cri.setCateCode(cateCode);
+//		
+//		mapper.getCateInfo(cri);
+//		
+//	}
+	
+	// 상품정보
 	@Test
-	public void getCateInfoTest1() {
+	public void getGoodsInfo() {
 		
-		Criteria cri = new Criteria();
-		
-		String type = "TC";
-		String keyword = "test";
-		String cateCode = "104001";
-		
-		cri.setType(type);
-		cri.setKeyword(keyword);
-		cri.setCateCode(cateCode);
-		
-		mapper.getCateInfo(cri);
+		int bookId = 31;
+		BookVO goodsInfo = mapper.getGoodsInfo(bookId);
+		System.out.println("===================");
+		System.out.println(goodsInfo);
+		System.out.println("===================");
 		
 	}
-	
 	
 	
 	

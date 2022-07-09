@@ -28,6 +28,7 @@ public class CateFilterDTO {
 
 	public void setCateCode(String cateCode) {
 		this.cateCode = cateCode;
+		this.cateGroup = cateCode.split("")[0];
 	}
 
 	public int getCateCount() {

@@ -40,6 +40,7 @@ public class MemberController {
 	public void joinGET() {
 		
 		log.info("회원가입페이지 진입");
+		
 	}
 	
 	// 회원가입
