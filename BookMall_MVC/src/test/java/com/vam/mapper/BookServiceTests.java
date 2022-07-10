@@ -82,7 +82,7 @@ public class BookServiceTests {
 //		
 //	}
 	
-	/*상품 상세 정보*/
+	// 상품 상세 정보
 	@Test
 	public void getGoodsInfoTest() {
 		

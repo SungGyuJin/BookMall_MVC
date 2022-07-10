@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/goodsDetail.css">
 </head>
 <body>
 <div class="wrapper">
@@ -55,7 +55,7 @@
 									<option value="T">책 제목</option>
 									<option value="A">작가</option>
 								</select>
-								<input type="text" name="keyword"/>
+								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">
 								<button class="btn search_btn">검색</button>
 							</div>					
 						</form>
@@ -82,30 +82,79 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-			<div class="navi_bar_area">
-				<div class="dropdown">
-					<button class="dropbtn">국내
-						<i class="fa fa-caret-down"></i>
-					</button>
-					<div class="dropdown-content">
-						<c:forEach items="${cate1}" var="cate">
-							<a href="search?type=C&cateCode=${cate.cateCode}">${cate.cateName}</a>
-						</c:forEach>
-					</div>
+			<div class="content_area">
+				<div class="line">
+				</div>			
+			<div class="content_top">
+				<div class="ct_left_area">
+					<div class="image_wrap" data-bookid="${goodsInfo.imageList[0].bookId}" data-path="${goodsInfo.imageList[0].uploadPath}" data-uuid="${goodsInfo.imageList[0].uuid}" data-filename="${goodsInfo.imageList[0].fileName}">
+						<img>
+					</div>				
 				</div>
-				<div class="dropdown">
-					<button class="dropbtn">국외
-						<i class="fa fa-caret-down"></i>
-					</button>
-					<div class="dropdown-content">
-						<c:forEach items="${cate2}" var="cate">
-							<a href="search?type=C&cateCode=${cate.cateCode}">${cate.cateName}</a>
-						</c:forEach>
+				<div class="ct_right_area">
+					<div class="title">
+						<h1>
+							${goodsInfo.bookName}
+						</h1>
+					</div>
+					<div class="line">
+					</div>
+					<div class="author">
+						 <span>
+						 	${goodsInfo.authorName} 지음
+						 </span>
+						 <span>|</span>
+						 <span>
+						 	${goodsInfo.publisher}
+						 </span>
+						 <span>|</span>
+						 <span class="publeyear">
+						 	${goodsInfo.publeYear}
+						 </span>
+					</div>
+					<div class="line">
+					</div>	
+					<div class="price">
+						<div class="sale_price">정가 : <fmt:formatNumber value="${goodsInfo.bookPrice}" pattern="#,### 원" /></div>
+						<div class="discount_price">
+							판매가 : <span class="discount_price_number"><fmt:formatNumber value="${goodsInfo.bookPrice - (goodsInfo.bookPrice*goodsInfo.bookDiscount)}" pattern="#,### 원" /></span> 
+							[<fmt:formatNumber value="${goodsInfo.bookDiscount*100}" pattern="###" />% 
+							<fmt:formatNumber value="${goodsInfo.bookPrice*goodsInfo.bookDiscount}" pattern="#,### 원" /> 할인]</div>							
+					</div>			
+					<div class="line">
+					</div>	
+					<div class="button">						
+						<div class="button_quantity">
+							주문수량
+							<input type="text" value="1">
+							<span>
+								<button>+</button>
+								<button>-</button>
+							</span>
+						</div>
+						<div class="button_set">
+							<a class="btn_cart">장바구니 담기</a>
+							<a class="btn_buy">바로구매</a>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="content_area">
-					<h1>content area</h1>
+			<div class="line">
+			</div>				
+			<div class="content_middle">
+				<div class="book_intro">
+					${goodsInfo.bookIntro}
+				</div>
+				<div class="book_content">
+					${goodsInfo.bookContents }
+				</div>
+			</div>
+			<div class="line">
+			</div>				
+			<div class="content_bottom">
+				리뷰
+			</div>
+				
 			</div>
 			
 			<!-- Footer 영역 -->
@@ -149,29 +198,51 @@
 	</div>	<!-- .wrap end -->
 </div>	<!-- .wrapper end -->
 
-			
-
-
 <script>
+
+$(document).ready(function(){
 	
-	// gnb-area 로그아웃 버튼작동
-	$("#gnb_logout_button").click(function(){
-		
-		// alert("버튼 작동");
-		
-		$.ajax({
-			
-			type: "POST",
-			url: "/member/logout.do",
-			success: function(data){
-				alert("로그아웃 성공");
-				document.location.reload();
-			}
-			
-		}); // ajax
-		
-	});
+	// 이미지 삽입
+	const bobj = $(".image_wrap");
 	
+	if(bobj.data("bookid")){
+		
+		const uploadPath = bobj.data("path");
+		const uuid = bobj.data("uuid");
+		const fileName = bobj.data("filename");
+		
+		const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
+		
+		bobj.find("img").attr("src", "/display?fileName=" + fileCallPath);
+	
+	}else{
+		bobj.find("img").attr("src", "/resources/img/goodsNoImage.png");
+	}
+	
+	// publeyear
+	const year = "${goodsInfo.publeYear}";
+	
+	let tempYear = year.substr(0, 10);
+	
+	let yearArray = tempYear.split("-");
+	let publeYear = yearArray[0] + "년 " + yearArray[1] + "월" + yearArray[2] + "일";
+	
+	$(".publeyear").html(publeYear);
+	
+	
+});
+
+
+
+
+
+
+
+
+
+
+
 </script>
+	
 </body>
-</html>
+</html>f
