@@ -53,4 +53,6 @@ public class MemberMapperTests {
 //		membermapper.memberLogin(member);
 //		System.out.println("결과 값 : " + membermapper.memberLogin(member));
 //	}
+	
+	
 }
