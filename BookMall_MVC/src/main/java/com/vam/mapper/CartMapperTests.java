@@ -18,10 +18,10 @@ public class CartMapperTests {
 	private CartMapper mapper;
 	
 	@Test
-	public void addCart() {
-		String memberId = "admin";
-		int bookId = 2;
-		int count = 2;
+	public void addCart() throws Exception {
+		String memberId = "test3";
+		int bookId = 1;
+		int count = 5;
 		
 		CartDTO cart = new CartDTO();
 		cart.setMemberId(memberId);
