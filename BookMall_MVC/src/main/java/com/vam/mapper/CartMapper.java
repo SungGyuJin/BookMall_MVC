@@ -22,5 +22,4 @@ public interface CartMapper {
 	public CartDTO checkCart(CartDTO cart);
 	
 	
-	
 }
