@@ -87,7 +87,7 @@
 			<div class="content_area">
 				<div class="content_subject"><span>장바구니</span></div>
 				<!-- 장바구니 리스트 -->
-				<div calss="content_middle_section"></div>
+				<div class="content_middle_section"></div>
 				<!-- 장바구니 가격 합계 -->
 				<!-- cartInfo -->
 				<div class="content_totalCount_section">
@@ -144,12 +144,14 @@
 													<button class="quantity_btn plus_btn">+</button>
 													<button class="quantity_btn minus_btn">-</button>
 												</div>
-												<a class="quantity_modify_btn">변경</a>
+												<a class="quantity_modify_btn" data-cartId="${ci.cartId}">변경</a>
 											</td>
 											<td class="td_width_4 table_text_align_center">
 												<fmt:formatNumber value="${ci.salePrice * ci.bookCount}" pattern="#,### 원" />
 											</td>
-											<td class="td_width_4 table_text_align_center delete_btn"><button>삭제</button></td>
+											<td class="td_width_4 table_text_align_center">
+												<button class="delete_btn" data-cartid="${ci.cartId}">삭제</button>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -232,7 +234,20 @@
 					<div class="content_btn_section">
 						<a>주문하기</a>
 					</div>
-						
+					
+					<!-- 수량 조정 form -->
+					<form action="/cart/update" method="post" class="quantity_update_form">
+						<input type="hidden" name="cartId" class="update_cartId">
+						<input type="hidden" name="bookCount" class="update_bookCount">
+						<input type="hidden" name="memberId" value="${member.memberId}">
+					</form>			
+					
+					<!-- 삭제 form -->
+					<form action="/cart/delete" method="post" class="quantity_delete_form">
+						<input type="hidden" name="cartId" class="delete_cartId">
+						<input type="hidden" name="memberId" value="${member.memberId}">
+					</form>
+					
 			</div>
 			
 			<!-- Footer 영역 -->
@@ -388,8 +403,42 @@ function setTotalInfo(){
 		
 }
 
+$(".plus_btn").on("click", function(){
+	
+	let quantity = $(this).parent("div").find("input").val();
+	$(this).parent("div").find("input").val(++quantity);
+	
+});
 
+$(".minus_btn").on("click", function(){
+	
+	let quantity = $(this).parent("div").find("input").val();
+	if(quantity > 1){
+		$(this).parent("div").find("input").val(--quantity);
+	}
+	
+});
 
+// 수량 수정 버튼
+$(".quantity_modify_btn").on("click", function(){
+	
+	let cartId = $(this).data("cartid");
+	let bookCount = $(this).parent("td").find("input").val();
+	$(".update_cartId").val(cartId);
+	$(".update_bookCount").val(bookCount);
+	$(".quantity_update_form").submit();
+	
+});
+
+// 장바구니 삭제
+$(".delete_btn").on("click", function(e){
+	
+	e.preventDefault();
+	const cartId = $(this).data("cartid");
+	$(".delete_cartId").val(cartId);
+	$(".quantity_delete_form").submit();
+	
+});
 
 
 
