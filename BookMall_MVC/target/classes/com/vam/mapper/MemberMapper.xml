@@ -26,6 +26,7 @@
 		Select count(*) From book_member where memberId = #{memberId}
 	</select>
 	
+	<!-- 로그인 -->
 	<select id="memberLogin" resultType="com.vam.model.MemberVO">
 	
 		Select memberId, memberPw, memberName, adminck, money, point
@@ -36,6 +37,15 @@
 		Select memberId, memberName, adminck, money, point From book_member
 		Where memberId = #{memberId} and memberPw = #{memberPw}
 	-->
+	</select>
+	
+	<!-- 주문자 정보 -->
+	<select id="getMemberInfo" resultType="com.vam.model.MemberVO">
+	
+		Select memberId, memberName, memberMail, memberAddr1, memberAddr2, memberAddr3, money, point
+		From book_member
+		Where memberId = #{memberId}
+		
 	</select>
 	
 	
