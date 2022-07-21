@@ -60,6 +60,7 @@ public class AdminController {
 
 	}
 
+	
 	// 상품관리 페이지 접속
 	@RequestMapping(value = "goodsManage", method = RequestMethod.GET)
 	public void goodsManageGET(Criteria cri, Model model) throws Exception {
