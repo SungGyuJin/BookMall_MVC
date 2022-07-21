@@ -462,6 +462,7 @@ function setTotalInfo(){
 		totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());
 	});	
 
+	
 	/* 배송비 결정 */
 	if(totalPrice >= 30000){
 		deliveryPrice = 0;
