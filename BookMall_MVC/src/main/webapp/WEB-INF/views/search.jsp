@@ -125,7 +125,8 @@
 							<c:forEach items="${list}" var="list">
 								<tr>
 									<td class="image">
-										<div class="image_wrap" data-bookId="${list.imageList[0].bookId}" 
+										<div class="image_wrap" 
+											data-bookId="${list.imageList[0].bookId}" 
 											data-path="${list.imageList[0].uploadPath}" 
 											data-uuid="${list.imageList[0].uuid}" 
 											data-filename="${list.imageList[0].fileName}">
