@@ -44,7 +44,7 @@
 			<div class="top_area">
 				<!-- 로고영역 -->
 				<div class="logo_area">
-					<a href="/main"><img src="resources/img/mLogo.png"></a>
+					<a href="/main"><img src="/resources/img/mLogo.png"></a>
 				</div>
 				<div class="search_area">
 					<div class="search_wrap">

@@ -12,7 +12,7 @@ import com.vam.model.AttachImageVO;
 import com.vam.model.OrderPageItemDTO;
 
 @Service
-public class OrdeServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService{
 
 	@Autowired
 	private OrderMapper orderMapper;

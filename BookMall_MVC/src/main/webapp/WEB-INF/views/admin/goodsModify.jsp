@@ -196,6 +196,18 @@
 			$("input[name='publeYear']").datepicker("setDate", publeYear);
 		});
 		
+		// 작가 선택 버튼
+		$('.authorId_btn').on("click", function(e){
+			
+			e.preventDefault();
+			
+			let popUrl = "/admin/authorPop";
+			let popOption = "width = 650px, height=550px, top=300px, left=300px, scrollbars=yes";
+			
+			window.open(popUrl, "작가 찾기", popOption);
+			
+		});
+		
 		// 카테고리
 		let cateList = JSON.parse('${cateList}');
 
@@ -377,11 +389,6 @@
 	});	//document end
 	
 	
-	
-	
-	
-	
-	
 </script>
 	
 <script>
@@ -413,7 +420,8 @@
 				
 			}
 		}
-	}	
+	}
+	
 	
 	// 배열 초기화
 	makeCateArray(cate1Obj,cate1Array,cateList,1);
