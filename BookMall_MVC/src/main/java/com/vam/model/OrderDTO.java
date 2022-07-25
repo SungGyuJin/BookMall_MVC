@@ -24,7 +24,7 @@ public class OrderDTO {
 	private String memberAddr3;
 	
 	// 주문 상태
-	private String roderState;
+	private String orderState;
 	
 	// 주문 상품
 	private List<OrderItemDTO> orders;
@@ -97,12 +97,12 @@ public class OrderDTO {
 		this.memberAddr3 = memberAddr3;
 	}
 
-	public String getRoderState() {
-		return roderState;
+	public String getOrderState() {
+		return orderState;
 	}
 
-	public void setRoderState(String roderState) {
-		this.roderState = roderState;
+	public void setOrderState(String roderState) {
+		this.orderState = roderState;
 	}
 
 	public List<OrderItemDTO> getOrders() {
@@ -160,12 +160,13 @@ public class OrderDTO {
 	public void setOrderFinalSalePrice(int orderFinalSalePrice) {
 		this.orderFinalSalePrice = orderFinalSalePrice;
 	}
+	
 
 	@Override
 	public String toString() {
 		return "OrderDTO [orderId=" + orderId + ", addressee=" + addressee + ", memberId=" + memberId + ", memberAddr1="
 				+ memberAddr1 + ", memberAddr2=" + memberAddr2 + ", memberAddr3=" + memberAddr3 + ", roderState="
-				+ roderState + ", orders=" + orders + ", deliveryCost=" + deliveryCost + ", usePoint=" + usePoint
+				+ orderState + ", orders=" + orders + ", deliveryCost=" + deliveryCost + ", usePoint=" + usePoint
 				+ ", orderDate=" + orderDate + ", orderSalePrice=" + orderSalePrice + ", orderSavePoint="
 				+ orderSavePoint + ", orderFinalPrice=" + orderFinalSalePrice + "]";
 	}

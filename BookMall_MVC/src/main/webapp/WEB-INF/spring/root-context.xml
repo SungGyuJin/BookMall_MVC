@@ -34,7 +34,7 @@
 		<!-- Before value="jdbc:mysql://localhost:3306/mysql?serverTimezone=Asia/Seoul"  -->
 		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://localhost:3306/mysql?serverTimezone=Asia/Seoul"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="1234"></property>
+		<property name="password" value="7007"></property>
 	
 	</bean>
 	

@@ -548,12 +548,12 @@ function setTotalInfo(){
 	// 최종 가격(총 가격 + 배송비)
 	$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());		
 	// 할인가(사용 포인트)
-	$(".usePoint_span").text(usePoint.toLocaleString());	
-	
+	$(".usePoint_span").text(usePoint.toLocaleString()
 }
 
 /* 주문 요청 */
-$(".order_btn").on("click", function(){
+$(".order_btn").on("click", function(){);	
+	
 	/* 주소 정보 & 받는이*/
 	$(".addressInfo_input_div").each(function(i, obj){
 		if($(obj).find(".selectAddress").val() === 'T'){
