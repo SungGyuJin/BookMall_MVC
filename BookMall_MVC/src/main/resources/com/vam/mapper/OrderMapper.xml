@@ -11,7 +11,7 @@
 						
 		</select>
 
-		<select id="getOrderInfo" resultType="com.vam.model.OrderRequestDTO">
+		<select id="getOrderInfo" resultType="com.vam.model.OrderItemDTO">
 		
 			Select bookId, bookPrice, bookDiscount
 			from vam_book where bookId = #{bookId}
