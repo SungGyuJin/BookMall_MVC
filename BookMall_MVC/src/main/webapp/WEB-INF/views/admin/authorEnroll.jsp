@@ -57,8 +57,10 @@
 					</div>
 					
 				</div>
+				
 	
 				<%@include file="../includes/admin/footer.jsp" %>		
+
 <script>
 	
 	// 등록버튼
