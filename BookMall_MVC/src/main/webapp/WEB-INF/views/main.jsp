@@ -44,7 +44,7 @@
 			<div class="top_area">
 				<!-- 로고영역 -->
 				<div class="logo_area">
-					<a href="/main"><img src="/resources/img/mLogo.png"></a>
+					<a href="/main"><img src="/resources/img/BookImage.png"></a>
 				</div>
 				<div class="search_area">
 					<div class="search_wrap">
@@ -132,14 +132,14 @@
 						<!-- 이미지파일 -->
 					</div>
 					<div class="footer_right">
-						(주) VamBook		대표이사 : OOO
+						(주) The BooK 대표 : 성OO
 						<br>
 						사업자등록번호 : OOO-OO-OOOOO
 						<br>
-						대표전화 : OOOO-OOOO (발신자 부담전화)
+						대표전화 : OOO-OOOO (발신자 부담전화)
 						<br>
 						<br>
-						COPYRIGHT(C) <strong>kimvampa.tistory.com</strong>		ALL RIGHTS RESERVED.
+						COPYRIGHT(C) <strong>The BooK.com</strong>	ALL RIGHTS RESERVED.
 					</div>
 					<div class="clearfix"></div>
 				</div>

@@ -26,11 +26,11 @@
 						<!-- 이미지파일 -->
 					</div>
 					<div class="footer_right">
-						(주) BookMall 대표 : 성OO
+						(주) The BooK 대표 : 성OO
 						<br>
 						사업자등록번호 : OOO-OO-OOOOO
 						<br>
-						대표전화 : OOOO-OOOO (발신자 부담전화)
+						대표전화 : OOO-OOOO (발신자 부담전화)
 						<br>
 						<br>
 						COPYRIGHT(C) <strong>BookMall.com</strong>	ALL RIGHTS RESERVED.
