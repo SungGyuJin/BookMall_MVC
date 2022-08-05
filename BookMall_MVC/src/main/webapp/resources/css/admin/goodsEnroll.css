@@ -88,7 +88,28 @@ ul{
  
 .admin_list_01{
     background-color: #c8c8c8;
+	border-radius: 12px;
 } 
+.admin_list_01:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_02:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_03:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_04:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_05:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
  
  
 /* 관리자페이지 컨텐츠 영역 */
@@ -202,19 +223,30 @@ input[name='publeYear'] {
 	text-align: center;
 	margin: 80px 0;
 }
+#cancelBtn{
+	border-radius: 12px;
+}
+#cancelBtn:hover{
+	background-color: #D3D3D3;
+}
+#enrollBtn{
+	background-color: #87CEFA;
+	border-radius: 12px;
+}
+#enrollBtn:hover{
+	background-color: #00BFFF;
+}
 .btn{
     min-width: 180px;
     padding: 4px 30px;
     font-size: 25px;
     font-weight: 600;
     line-height: 40px;
+	cursor: pointer;
+	background-color: #DCDCDC;
 }
-.enroll_btn{
-	background-color: #dbdde2;
-	margin-left:15px;
-}
-#enrollBtn:hover {
-    background-color: #c9cbd0;
+.btn:hover{
+	background-color: #A9A9A9;
 }
 
 .admin_content_subject{            /* 관리자 컨텐츠 제목 영역 */
@@ -225,67 +257,7 @@ input[name='publeYear'] {
     height: 80px;
     line-height: 80px;
     color: white;    
-}
- 
-/* footer navai 영역 */
-.footer_nav{
-    width:100%;
-    height:50px;
-}
-.footer_nav_container{
-    width: 100%;
-    height: 100%;
-    background-color:#8EC0E4;
-}
-.footer_nav_container>ul{
-    font-weight : bold;
-    float:left;
-    list-style:none;
-    position:relative;
-    padding-top:10px;
-    line-height: 27px;
-    font-family: dotum;
-    margin-left: 10px;
-}
-.footer_nav_container>ul>li{
-    display:inline;
-    width: 45px;
-    height: 19px;
-    padding: 10px 9px 0 10px;
-}
-.footer_nav_container>ul>span{
-    margin: 0 4px;
-}
-/* footer 영역 */
-.footer{
-    width:100%;
-    height:130px;
-    background-color:#D4DFE6;
-    padding-bottom : 50px;
-}
-.footer_container{
-    width: 100%;
-    height: 100%;
-    margin: auto;
-}
-.footer_left>img {
-    width: 150%;
-    height: 130px;
-    margin-left: -20px;
-    margin-top: -12px;
-}
-.footer_left{
-    float :left;
-    width: 170px;
-    margin-left: 20px;
-    margin-top : 30px;
-    
-}
-.footer_right{
-    float :left;
-    width: 680px;
-    margin-left: 70px;
-    margin-top : 30px;
+    border-radius: 12px;
 }
 
 /* 입력란 공란 경고 태그 */

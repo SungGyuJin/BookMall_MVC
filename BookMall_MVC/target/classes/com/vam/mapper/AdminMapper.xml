@@ -12,8 +12,30 @@
 					
   		</selectKey>
   	 
-  		insert into vam_book(bookName, authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents)
-		values(#{bookName},#{authorId}, #{publeYear},#{publisher},#{cateCode},#{bookPrice},#{bookStock},#{bookDiscount},#{bookIntro},#{bookContents})
+  		insert into vam_book(
+  			bookName
+  			, authorId
+  			, publeYear
+  			, publisher
+  			, cateCode
+  			, bookPrice
+  			, bookStock
+  			, bookDiscount
+  			, bookIntro
+  			, bookContents
+  		)
+		values (
+			#{bookName}
+			, #{authorId}
+			, #{publeYear}
+			, #{publisher}
+			, #{cateCode}
+			, #{bookPrice}
+			, #{bookStock}
+			, #{bookDiscount}
+			, #{bookIntro}
+			, #{bookContents}
+		)
 
   	</insert>
 
@@ -89,7 +111,7 @@
 	<!-- 이미지 등록 -->
 	<insert id="imageEnroll">
 	
-		Insert into vam_image(bookId, fileName, uploadPath, uuid) Values (#{bookId}, #{fileName}, #{uploadPath}, #{uuid})
+		insert into vam_image(bookId, fileName, uploadPath, uuid) values (#{bookId}, #{fileName}, #{uploadPath}, #{uuid})
 	
 	</insert>
 	

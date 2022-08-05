@@ -19,6 +19,7 @@
 .logo_wrap{
 	text-align: center;	
 	margin: 150px 0;	
+	font-style: italic;
 }
 .logo_wrap>span{
 	font-size : 50px;
@@ -33,7 +34,8 @@
 	padding: 10px 14px;	
 	display: block;
 	width : 80%;
-	margin : auto;	
+	margin : auto;
+	border-radius: 12px;	
 }
 .id_input{
 	width:100%;
@@ -52,7 +54,8 @@
 	padding: 10px 14px;	
 	display: block;
 	width : 80%;
-	margin : auto;	
+	margin : auto;
+	border-radius: 12px;
 }
 .pw_iput{
 	width:100%;
@@ -73,6 +76,11 @@
     font-weight: 900;
     color: white;
     margin : auto;
+    cursor: pointer;
+	border-radius: 50px;
+}
+.login_button:hover{
+	background: #1E90FF;
 }
 
 /* 로그인 실패*/

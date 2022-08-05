@@ -75,8 +75,8 @@
 													</div>
 											</div>
 											<div class="btn_section">
-													<button id="cancelBtn" class="btn">취소</button>
 													<button id="modifyBtn" class="btn modify_btn">수정</button>
+													<button id="cancelBtn" class="btn">취소</button>
 													<button id="deleteBtn" class="btn delete_btn">삭제</button>
 											</div>
 							</form>

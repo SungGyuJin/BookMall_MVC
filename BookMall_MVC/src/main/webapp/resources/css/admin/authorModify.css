@@ -171,17 +171,28 @@ ul{
     font-size: 25px;
     font-weight: 600;
     line-height: 40px;
+    cursor: pointer;
+    border-radius: 12px;
+    background-color: #DCDCDC;
+}
+.btn:hover{
+    background-color: #A9A9A9;
+	
 }
 .modify_btn{
-	background-color: #b8d3e8;
+	background-color: #87CEFA;
 	margin-left:15px;
+}
+.modify_btn:hover{
+    background-color: #00BFFF;
 }
 
 .delete_btn{
-	background-color: #efcdcd;
+	background-color: #FFA07A;
+	border-radius: 12px;
 }
 .delete_btn:hover{
-	background-color : #e4a7a7;
+	background-color : #FF6347;
 }
 
 #result_card img{

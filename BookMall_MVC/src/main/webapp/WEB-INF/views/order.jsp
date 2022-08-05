@@ -27,14 +27,11 @@
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/main">관리자 페이지</a></li>
+							<li><a href="/admin/goodsEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
 								<a id="gnb_logout_button">로그아웃</a>
 							</li>
-						<li>
-							마이룸
-						</li>
 						<li>
 							<a href="/cart/${member.memberId}">
 								장바구니
@@ -49,7 +46,7 @@
 			<div class="top_area">
 				<!-- 로고영역 -->
 				<div class="logo_area">
-					<a href="/main"><img src="/resources/img/mLogo.png"></a>
+					<a href="/main"><img src="/resources/img/BookImage.png"></a>
 				</div>
 				<div class="search_area">
 					<div class="search_wrap">
@@ -548,11 +545,11 @@ function setTotalInfo(){
 	// 최종 가격(총 가격 + 배송비)
 	$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());		
 	// 할인가(사용 포인트)
-	$(".usePoint_span").text(usePoint.toLocaleString()
+	$(".usePoint_span").text(usePoint.toLocaleString());
 }
 
 /* 주문 요청 */
-$(".order_btn").on("click", function(){);	
+$(".order_btn").on("click", function(){;	
 	
 	/* 주소 정보 & 받는이*/
 	$(".addressInfo_input_div").each(function(i, obj){

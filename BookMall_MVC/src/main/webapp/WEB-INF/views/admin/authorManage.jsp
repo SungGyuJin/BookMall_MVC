@@ -109,7 +109,7 @@
 					
 				</div>
 				<!-- Modal 추가 -->
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+				<!-- <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 				 aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -123,9 +123,9 @@
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								<button type="button" class="btn btn-primary">Save Changes</button>
 							</div>
-						</div> <!-- .modal-content -->
-					</div><!-- .modal-dialog -->
-				</div><!-- .modal -->
+						</div> .modal-content
+					</div>.modal-dialog
+				</div>.modal -->
 				<%@include file="../includes/admin/footer.jsp" %>
 
 <script type="text/javascript">

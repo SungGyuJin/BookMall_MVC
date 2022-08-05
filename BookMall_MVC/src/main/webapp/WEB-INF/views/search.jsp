@@ -25,7 +25,7 @@
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/main">관리자 페이지</a></li>
+							<li><a href="/admin/goodsEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
 								<a id="gnb_logout_button">로그아웃</a>
@@ -125,11 +125,7 @@
 							<c:forEach items="${list}" var="list">
 								<tr>
 									<td class="image">
-										<div class="image_wrap" 
-											data-bookId="${list.imageList[0].bookId}" 
-											data-path="${list.imageList[0].uploadPath}" 
-											data-uuid="${list.imageList[0].uuid}" 
-											data-filename="${list.imageList[0].fileName}">
+										<div class="image_wrap" data-bookid="${list.imageList[0].bookId}" data-path="${list.imageList[0].uploadPath}" data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
 											<img>	
 										</div>
 									</td>
@@ -262,7 +258,38 @@
 
 <script>
 	
+$(document).ready(function(){
 	
+	// 검색 타입 selected
+	const selectedType = '<c:out value="${pageMaker.cri.type}"/>';
+	if(selectedType != ""){
+		$("select[name='type']").val(selectedType).attr("selected", "selected");
+	}
+	
+	// 이미지 삽입
+	$(".image_wrap").each(function(i, obj){
+		
+		const bobj = $(obj);
+		
+		if(bobj.data("bookid")){
+			
+			const uploadPath = bobj.data("path");
+			const uuid = bobj.data("uuid");
+			const fileName = bobj.data("filename");
+			
+			const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
+			
+			$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
+		}else{
+			$(this).find("img").attr('src', '/resources/img/goodsNoImage.png');
+		}
+		
+		
+	});
+	
+	
+	
+});
 	
 	// gnb-area 로그아웃 버튼작동
 	$("#gnb_logout_button").click(function(){
@@ -310,8 +337,8 @@
 	
 	buttonB.on("click", function(){
 			
-		$(".filter_b").css("display", "none");
-		$(".filter_a").css("display", "block");
+		$(".filter_a").css("display", "none");
+		$(".filter_b").css("display", "block");
 		buttonB.attr("class", "filter_button filter_active");
 		buttonA.attr("class", "filter_button");
 	});
@@ -333,46 +360,6 @@
 		$("#filter_form input[name='type']").val(type);
 		$("#filter_form").submit();
 	});
-	
-	
-	$(document).ready(function(){
-		
-		// 검색 타입 selected
-		const selectedType = '<c:out value="${pageMaker.cri.type}"/>';
-		if(selectedType != ""){
-			$("select[name='type']").val(selectedType).attr("selected", "selected");
-		}
-		
-		// 이미지 삽입
-		$(".image_wrap").each(function(i, obj){
-			
-			const bobj = $(obj);
-			
-			if(bobj.data("bookid")){
-				
-				const uploadPath = bobj.data("path");
-				const uuid = bobj.data("uuid");
-				const fileName = bobj.data("filename");
-				
-				const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
-				
-				$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
-			}else{
-				$(this).find("img").attr('src', '/resources/img/goodsNoImage.png');
-			}
-			
-			
-		});
-		
-		
-		
-	});
-	
-	
-	
-	
-	
-	
 	
 </script>
 </body>

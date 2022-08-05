@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<head>
+<link rel="stylesheet" href="/resources/css/includes/footer.css">
+</head>
 <div class="clearfix"></div>
-				
+
 			<!-- Footer 영역 -->
 			<div class="footer_nav">
 				<div class="footer_nav_container">
@@ -33,7 +36,7 @@
 						대표전화 : OOO-OOOO (발신자 부담전화)
 						<br>
 						<br>
-						COPYRIGHT(C) <strong>BookMall.com</strong>	ALL RIGHTS RESERVED.
+						COPYRIGHT(C) <strong>The BooK.com</strong>	ALL RIGHTS RESERVED.
 					</div>
 					<div class="clearfix"></div>
 				</div>

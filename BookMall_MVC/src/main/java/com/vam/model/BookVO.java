@@ -57,10 +57,6 @@ public class BookVO {
 		return imageList;
 	}
 
-	public void setImageList(List<AttachImageVO> imageList) {
-		this.imageList = imageList;
-	}
-
 	public int getBookId() {
 		return bookId;
 	}
@@ -179,6 +175,10 @@ public class BookVO {
 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	public void setImageList(List<AttachImageVO> imageList) {
+		this.imageList = imageList;
 	}
 
 	@Override

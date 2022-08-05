@@ -179,6 +179,23 @@ input[name='publeYear'] {
     font-weight: 600;
     line-height: 40px;
 }
+.btn:hover{
+	cursor: pointer;
+}
+.modify_btn{
+	border-radius: 12px;
+    background-color: #87CEFA;
+}
+.modify_btn:hover{
+    background-color: #00BFFF;
+}
+#cancelBtn{
+	background-color: #DCDCDC;
+	border-radius: 12px;
+}
+#cancelBtn:hover{
+	background-color: #A9A9A9;
+}
 .enroll_btn{
 	background-color: #dbdde2;
 	margin-left:15px;
@@ -188,10 +205,11 @@ input[name='publeYear'] {
 }
 
 .delete_btn{
-	background-color: #efcdcd;
+	background-color: #FFA07A;
+	border-radius: 12px;
 }
 .delete_btn:hover{
-	background-color : #e4a7a7;
+	background-color : #FF6347;
 }
 
 .form_section_content select {		/* 카테고리 css 설정 */

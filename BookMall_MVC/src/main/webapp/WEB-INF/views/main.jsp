@@ -25,7 +25,7 @@
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/main">관리자 페이지</a></li>
+							<li><a href="/admin/goodsEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
 								<a id="gnb_logout_button">로그아웃</a>
@@ -54,7 +54,7 @@
 									<option value="T">책 제목</option>
 									<option value="A">작가</option>
 								</select>
-								<input type="text" name="keyword"/>
+								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">
 								<button class="btn search_btn">검색</button>
 							</div>					
 						</form>
@@ -77,7 +77,6 @@
 							<a href="/member/logout.do">로그아웃</a>
 						</div>
 					</c:if>
-					
 				</div>
 				<div class="clearfix"></div>
 			</div>

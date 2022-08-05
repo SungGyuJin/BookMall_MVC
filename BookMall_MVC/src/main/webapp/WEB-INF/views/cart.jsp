@@ -25,14 +25,11 @@
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/main">관리자 페이지</a></li>
+							<li><a href="/admin/goodsEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
 								<a id="gnb_logout_button">로그아웃</a>
 							</li>
-						<li>
-							마이룸
-						</li>
 						<li>
 							<a href="/cart/${member.memberId}">
 								장바구니
@@ -47,7 +44,7 @@
 			<div class="top_area">
 				<!-- 로고영역 -->
 				<div class="logo_area">
-					<a href="/main"><img src="/resources/img/mLogo.png"></a>
+					<a href="/main"><img src="/resources/img/BookImage.png"></a>
 				</div>
 				<div class="search_area">
 					<div class="search_wrap">
@@ -141,9 +138,9 @@
 											</td>
 											<td class="td_width_4 table_text_align_center">
 												<div class="table_text_align_center quantity_div">
-													<input type="text" value="${ci.bookCount}" class="quantity_input">	
-													<button class="quantity_btn plus_btn">+</button>
-													<button class="quantity_btn minus_btn">-</button>
+													<input type="text" value="${ci.bookCount}" class="quantity_input">
+													<button class="quantity_btn plus_btn">➕</button>
+													<button class="quantity_btn minus_btn">➖</button>
 												</div>
 												<a class="quantity_modify_btn" data-cartId="${ci.cartId}">변경</a>
 											</td>

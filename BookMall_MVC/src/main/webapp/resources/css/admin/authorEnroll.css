@@ -88,7 +88,28 @@ ul{
  
 .admin_list_03{
     background-color: #c8c8c8;
-} 
+    border-radius: 12px;
+}  
+.admin_list_01:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_02:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_03:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_04:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_05:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
 
 
 /* 관리자페이지 컨텐츠 영역 */
@@ -107,6 +128,7 @@ ul{
     height: 80px;
     line-height: 80px;
     color: white;	
+    border-radius: 12px;
 }
 /* 관리자 컨텐츠 메인 영역 */
 .form_section{
@@ -162,10 +184,23 @@ ul{
     font-size: 25px;
     font-weight: 600;
     line-height: 40px;
+    border-radius: 12px;
+    background-color: #DCDCDC;
+}
+.btn:hover{
+	cursor: pointer;
+    background-color: #A9A9A9;
 }
 .enroll_btn{
 	background-color: #dbdde2;
 	margin-left:15px;
+}
+#enrollBtn{
+	background-color: #87CEFA;
+	border-radius: 12px;
+}
+#enrollBtn:hover{
+	background-color: #00BFFF;
 }
 
 /* footer navai 영역 */

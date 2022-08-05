@@ -51,8 +51,8 @@
 								</div>
 						</form>
 								<div class="btn_section">
-										<button id="cancelBtn" class="btn">취 소</button>
 										<button id="enrollBtn" class="btn enroll_btn">등 록</button>
+										<button id="cancelBtn" class="btn">취 소</button>
 								</div>
 					</div>
 					

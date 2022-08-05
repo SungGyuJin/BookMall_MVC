@@ -87,6 +87,8 @@ public class BookController {
 	// 상품 검색
 	@GetMapping("/search")
 	public String searchGoodsGET(Criteria cri, Model model) {
+		model.addAttribute("cate1", bookService.getCateCode1());
+		model.addAttribute("cate2", bookService.getCateCode2());
 		log.info("cri : " + cri);
 		
 		List<BookVO> list = bookService.getGoodsList(cri);

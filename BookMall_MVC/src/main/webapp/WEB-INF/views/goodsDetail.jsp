@@ -47,7 +47,7 @@
 			<div class="top_area">
 				<!-- 로고영역 -->
 				<div class="logo_area">
-					<a href="/main"><img src="/resources/img/mLogo.png"></a>
+					<a href="/main"><img src="/resources/img/BookImage.png"></a>
 				</div>
 				<div class="search_area">
 					<div class="search_wrap">
@@ -133,8 +133,8 @@
 							주문수량
 							<input type="text" class="quantity_input" value="1">
 							<span>
-								<button class="plus_btn">+</button>
-								<button class="minus_btn">-</button>
+								<button class="plus_btn">➕</button>
+								<button class="minus_btn">➖</button>
 							</span>
 						</div>
 						<div class="button_set">

@@ -148,8 +148,8 @@
                     		<input type="hidden" name='bookId' value="${goodsInfo.bookId}">
                    		</form>
                    			<div class="btn_section">
-                   				<button id="cancelBtn" class="btn">취 소</button>
 	                    		<button id="modifyBtn" class="btn modify_btn">수 정</button>
+                   				<button id="cancelBtn" class="btn">취 소</button>
 								<button id="deleteBtn" class="btn delete_btn">삭제</button>
 	                    	</div> 
                     </div>  

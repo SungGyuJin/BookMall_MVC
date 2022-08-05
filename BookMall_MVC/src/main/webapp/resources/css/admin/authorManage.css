@@ -88,7 +88,28 @@ ul{
  
 .admin_list_04{
     background-color: #c8c8c8;
-} 
+    border-radius: 12px;
+}  
+.admin_list_01:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_02:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_03:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_04:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+.admin_list_05:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
  
  
 /* 관리자페이지 컨텐츠 영역 */
@@ -106,6 +127,7 @@ ul{
     height: 80px;
     line-height: 80px;
     color: white;    
+    border-radius: 12px;
 }
 
  /* 작가 목록 영역 */
@@ -158,6 +180,7 @@ ul{
     height: 40px;
     line-height: 40px;
     margin-left: 20px;
+    border-radius: 12px;
 }
 .next, .prev {
     border: 1px solid #ccc;
@@ -244,7 +267,7 @@ ul{
 }
 .search_input{
     position: relative;
-    text-align:center;	
+    text-align:center;
 }
 .search_input input[name='keyword']{
 	padding: 4px 10px;
@@ -261,8 +284,12 @@ ul{
     position: absolute;
     margin-left: 15px;
     background-color: #c3daf7;
+	border-radius: 12px;
+	cursor: pointer;
 }
-
+.search_btn:hover{
+    background-color: #87CEFA;
+}
 .table_empty{
 	height: 50px;
     text-align: center;

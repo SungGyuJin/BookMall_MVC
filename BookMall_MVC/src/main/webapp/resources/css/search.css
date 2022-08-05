@@ -69,6 +69,7 @@ a{
 	border-radius: 15px;
 	margin: 5% auto;
 	padding-top: 5%;
+	background-color: white;
 }
 .login_success_area>span{
 	display: block;
@@ -128,6 +129,7 @@ a{
     background-color: #7696fd;
 }
 
+
 /* 홈페이지 메인 제품 목록  */
 .content_area{
 	width: 100%;
@@ -141,63 +143,66 @@ a{
 
 /* footer navai 영역 */
 .footer_nav{
-    width:100%;
-    height:50px;
+	width:100%;
+	height:50px;
 }
 .footer_nav_container{
-    width: 100%;
-    height: 100%;
-    background-color:#8EC0E4;
+	width: 100%;
+	height: 100%;
+	background-color:#8EC0E4;
+	border-radius: 12px;
 }
 .footer_nav_container>ul{
-    font-weight : bold;
-    float:left;
-    list-style:none;
-    position:relative;
-    padding-top:10px;
-    line-height: 27px;
-    font-family: dotum;
-    margin-left: 10px;
+	font-weight : bold;
+	float:left;
+	list-style:none;
+	position:relative;
+	padding-top:10px;
+	line-height: 27px;
+	font-family: dotum;
+	margin-left: 10px;
 }
 .footer_nav_container>ul>li{
-    display:inline;
-    width: 45px;
-    height: 19px;
-    padding: 10px 9px 0 10px;
+	display:inline;
+	width: 45px;
+	height: 19px;
+	padding: 10px 9px 0 10px;
 }
 .footer_nav_container>ul>span{
-    margin: 0 4px;
+	margin: 0 4px;
 }
 /* footer 영역 */
 .footer{
-    width:100%;
-    height:130px;
-    background-color:#D4DFE6;
-    padding-bottom : 50px;
+	width:100%;
+	height:100px;
+	background-color:#D4DFE6;
+	padding-bottom : 50px;
+	border-radius: 12px;
+	margin-bottom: 7px;
 }
 .footer_container{
-    width: 100%;
-    height: 100%;
-    margin: auto;
+	width: 100%;
+	height: 100%;
+	margin: auto;
 }
 .footer_left>img {
-    width: 150%;
+	width: 150%;
     height: 130px;
     margin-left: -20px;
     margin-top: -12px;
 }
 .footer_left{
-    float :left;
-    width: 170px;
-    margin-left: 20px;
-    margin-top : 30px;
-    
+	float :left;
+	width: 170px;
+	margin-left: 20px;
+	margin-top : 30px;
+	
 }
 .footer_right{
-    float :left;
-    width: 680px;
-    margin-left: 70px;
-    margin-top : 30px;
+	float :left;
+	width: 680px;
+	margin-left: 70px;
+	margin-top : 30px;
 }
 .search_wrap{
 	width: 100%;
@@ -237,6 +242,10 @@ a{
     border-radius: 14px;
     font-size: 17px;
     font-weight: 600;	
+    cursor: pointer;
+}
+.search_btn:hover{
+	background-color: #D3D3D3;	
 }
 
 /* 검색결과 없음 */
@@ -329,13 +338,13 @@ a{
 }
 
 .image_wrap img{
-	max-width: 85%;
+	max-width: 90%;
 	height: auto;
 	display: block;
 }
 /* 필터정보 */
 .search_filter {
-    width: 85%;
+    width: 90%;
     margin: auto;
 	margin-top: 30px;
     margin-bottom: 50px;    
@@ -346,6 +355,7 @@ a{
 
 .filter_button_wrap button {
     width: 50%;
+    border-radius: 12px;
 }
 .filter_button{
 	background-color: #04AA6D;
@@ -378,10 +388,12 @@ a{
 }
 .filter_a{
 	display: block;
+    border-radius: 12px;
 }
 
 .filter_b{
 	display: none;
+    border-radius: 12px;
 }
 
 

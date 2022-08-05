@@ -179,8 +179,8 @@
 								</div>
 						</form>
 								<div class="btn_section">
-										<button id="cancelBtn" class="btn">취소</button>
 										<button id="enrollBtn" class="btn enroll_btn">등록</button>
+										<button id="cancelBtn" class="btn">취소</button>
 								</div>
 					</div>
 				</div>
@@ -478,10 +478,11 @@
 		let sendDiscountRate = discountRate / 100;			// 서버에 전송할 할인값
 		let goodsPrice = $("input[name='bookPrice']").val();			// 원가
 		let discountPrice = goodsPrice * (1 - sendDiscountRate);		// 할인가격
-		
+
 		if(!isNaN(discountRate)){
+			
 			$(".span_discount").html(discountPrice);
-			discount.val(sendDiscountRate);
+			discountInput.val(sendDiscountRate);
 		}
 		
 	});	
@@ -495,12 +496,11 @@
 		let sendDiscountRate = discountRate / 100;			// 서버에 전송할 할인값
 		let goodsPrice = $("input[name='bookPrice']").val();			// 원가
 		let discountPrice = goodsPrice * (1 - sendDiscountRate);		// 할인가격
-
+		
 		if(!isNaN(discountRate)){
 			
 			$(".span_discount").html(discountPrice);
 		}
-		
 	});
 	
 	// 이미지 업로드

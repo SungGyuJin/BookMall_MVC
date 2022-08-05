@@ -134,7 +134,6 @@ ul{
     font-size: 20px;
     padding: 5px 1%;
 }
-
 							
 .ui-datepicker-trigger {			/* 캘린더 css 설정 */
     margin-left: 25px;
@@ -171,13 +170,18 @@ ul{
     font-size: 25px;
     font-weight: 600;
     line-height: 40px;
+    cursor: pointer;
+    border-radius: 12px;
+    background-color: #DCDCDC;
 }
-.enroll_btn{
-	background-color: #dbdde2;
-	margin-left:15px;
+.btn:hover {
+    background-color: #A9A9A9;
 }
-#enrollBtn:hover {
-    background-color: #c9cbd0;
+#modifyBtn{
+    background-color: #87CEFA;
+}
+#modifyBtn:hover{
+    background-color: #00BFFF;
 }
 
 .form_section_content select {		/* 카테고리 css 설정 */
@@ -193,11 +197,6 @@ ul{
 .cate_wrap:not(:first-child) {
     margin-top: 20px;
 }
-
-
-
-
-
 
 /* footer navai 영역 */
 .footer_nav{

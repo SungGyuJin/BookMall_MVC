@@ -61,6 +61,7 @@ a {
 	width: 50%;
 	height: 100%;
 	float: left;
+	background-color: #F5F5F5;
 }
 
 .search_wrap {
@@ -83,9 +84,10 @@ a {
 }
 
 .search_input select {
-	width: 20%;
+	width: 25%;
 	text-align: center;
 	font-size: 15px;
+    border-radius: 12px;
 }
 
 .search_input input {
@@ -93,6 +95,7 @@ a {
 	width: 57%;
 	font-size: 18px;
 	padding-left: 2%;
+    border-radius: 12px;
 }
 
 .search_btn {
@@ -101,6 +104,11 @@ a {
 	border-radius: 14px;
 	font-size: 17px;
 	font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.search_btn:hover{
+	background-color: #D3D3D3;	
 }
 
 /* 로그인 버튼 영역 */
@@ -109,6 +117,7 @@ a {
 	height: 100%;
 	display: inline-block;
 	text-align: center;
+	background-color: #F5F5F5;
 }
 
 .login_button {
@@ -168,8 +177,9 @@ caption {
 .content_subject {
 	height: 110px;
 	line-height: 110px;
-	background-color: #5080bd;
+    background-color: #87CEFA;
 	margin-bottom: 60px;
+	border-radius: 12px;
 }
 
 .content_subject span {
@@ -187,6 +197,14 @@ caption {
 .content_btn_section {
 	margin-top: 20px;
 	text-align: right;
+}
+.order_btn{
+	border-radius: 12px;
+	cursor: pointer;
+	background-color: #4169E1;
+}
+.order_btn:hover{
+	background-color: #0000FF;
 }
 
 .content_btn_section a {
@@ -270,13 +288,13 @@ th {
 
 .quantity_input {
 	position: absolute;
-	width: 27px;
-	height: 23px;
-	text-align: center;
+	width: 30px;
+	height:28px;
+	text-align: left;
 	border: 1px solid #c6c6c6;
 	border-right: 0px;
 	line-height: 19px;
-	font-size: 12px;
+	font-size: 20px;
 	color: #4c4848;
 	left: 0;
 }
@@ -297,12 +315,19 @@ th {
 
 .plus_btn {
 	top: 0;
-	right: 0
+	right: 0;
+	cursor: pointer;
 }
-
+.plus_btn:hover{
+	background-color: #C0C0C0;
+}
 .minus_btn {
 	bottom: 0;
-	right: 0
+	right: 0;
+	cursor: pointer;
+}
+.minus_btn:hover{
+	background-color: #C0C0C0;
 }
 
 .quantity_modify_btn {
@@ -311,10 +336,16 @@ th {
 	line-height: 13px;
 	background-color: #fff;
 	text-align: center;
-	width: 28px;
+	width: 40px;
 	display: inline-block;
 	padding: 3px 6px 2px;
 	margin-top: 3px;
+	cursor: pointer;
+	border-radius: 12px;
+	font-size: 16px;
+}
+.quantity_modify_btn:hover{
+	background-color: #C0C0C0;
 }
 
 .table_text_align_center {
@@ -323,10 +354,17 @@ th {
 
 .delete_btn {
 	width: 40px;
+	font-size: 16px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.delete_btn:hover{
+	background-color: #C0C0C0; 
 }
 
 .content_total_section {
 	background-color: rgb(227, 237, 247);
+	border-radius: 12px;
 }
 
 .total_wrap {
@@ -391,6 +429,7 @@ th {
 	border-radius: 15px;
 	margin: 5% auto;
 	padding-top: 5%;
+	background-color: white;
 }
 
 .login_success_area>a {
@@ -403,7 +442,7 @@ th {
 	height: 22px;
 	line-height: 22px;
 	border-radius: 25px;
-	color: #606267;
+    color: #606267;    
 }
 
 .login_success_area>span {
@@ -481,71 +520,67 @@ th {
 }
 
 /* footer navai 영역 */
-.footer_nav {
-	width: 100%;
-	height: 50px;
+.footer_nav{
+	width:100%;
+	height:50px;
 }
-
-.footer_nav_container {
+.footer_nav_container{
 	width: 100%;
 	height: 100%;
-	background-color: #8EC0E4;
+	background-color:#8EC0E4;
+	border-radius: 12px;
 }
-
-.footer_nav_container>ul {
-	font-weight: bold;
-	float: left;
-	list-style: none;
-	position: relative;
-	padding-top: 10px;
+.footer_nav_container>ul{
+	font-weight : bold;
+	float:left;
+	list-style:none;
+	position:relative;
+	padding-top:10px;
 	line-height: 27px;
 	font-family: dotum;
 	margin-left: 10px;
 }
-
-.footer_nav_container>ul>li {
-	display: inline;
+.footer_nav_container>ul>li{
+	display:inline;
 	width: 45px;
 	height: 19px;
 	padding: 10px 9px 0 10px;
 }
-
-.footer_nav_container>ul>span {
+.footer_nav_container>ul>span{
 	margin: 0 4px;
 }
 /* footer 영역 */
-.footer {
-	width: 100%;
-	height: 130px;
-	background-color: #D4DFE6;
-	padding-bottom: 50px;
+.footer{
+	width:100%;
+	height:100px;
+	background-color:#D4DFE6;
+	padding-bottom : 50px;
+	border-radius: 12px;
+	margin-bottom: 7px;
 }
-
-.footer_container {
+.footer_container{
 	width: 100%;
 	height: 100%;
 	margin: auto;
 }
-
 .footer_left>img {
 	width: 150%;
-	height: 130px;
-	margin-left: -20px;
-	margin-top: -12px;
+    height: 130px;
+    margin-left: -20px;
+    margin-top: -12px;
 }
-
-.footer_left {
-	float: left;
+.footer_left{
+	float :left;
 	width: 170px;
 	margin-left: 20px;
-	margin-top: 30px;
+	margin-top : 30px;
+	
 }
-
-.footer_right {
-	float: left;
+.footer_right{
+	float :left;
 	width: 680px;
 	margin-left: 70px;
-	margin-top: 30px;
+	margin-top : 30px;
 }
 
 /* float 속성 해제 */

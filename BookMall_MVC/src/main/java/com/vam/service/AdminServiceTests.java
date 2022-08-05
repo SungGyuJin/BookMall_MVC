@@ -26,7 +26,7 @@ public class AdminServiceTests {
 		BookVO book = new BookVO();
 		// 상품 정보
 		book.setBookName("service 아하");
-		book.setAuthorId(65);
+		book.setAuthorId(2);
 		book.setPubleYear("2021-03-18");
 		book.setPublisher("출판사");
 		book.setCateCode("202001");

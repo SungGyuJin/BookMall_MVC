@@ -57,7 +57,7 @@ public class BookServiceImpl implements BookService{
 		
 		list.forEach(book -> {
 			
-			int bookId = bookMapper.goodsGetTotal(cri);
+			int bookId = book.getBookId();
 			
 			List<AttachImageVO> imageList = attachMapper.getAttachList(bookId);
 			
