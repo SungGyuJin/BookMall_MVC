@@ -19,7 +19,7 @@
 					<div class="admin_content_subject"><span>도서관리</span></div>
 					
 					<div class="goods_table_wrap">
-						<!-- 상품 리스트 0 -->
+						<!-- 상품 리스트 -->
 						<c:if test="${listcheck != 'empty'}">
 							<table class="goods_table"> <!-- class="goods_table" -->
 									<thead>
@@ -53,11 +53,10 @@
 						<!-- 상품리스트 X -->
 						<c:if test="${listCheck == 'empty'}">
 								<div class="table_empty">
-										등록된 작가가 없습니다.
+									등록된 도서가 없습니다.
 								</div>
-						<</c:if>
+						</c:if>
 					</div>
-					
 					<!-- 검색 영역 -->
                 	<div class="search_wrap">
                 		<form id="searchForm" action="/admin/goodsManage" method="get">
@@ -83,8 +82,8 @@
                 			</c:if>
                 			
                 			<!-- 페이지 번호 -->
-                			<c:forEach begin="${pageMaker.pageStart }" end="${pageMaker.pageEnd }" var="num">
-                				<li class="pageMaker_btn ${pageMaker.cri.pageNum == num ? 'active':''}">
+                			<c:forEach begin="${pageMaker.pageStart}" end="${pageMaker.pageEnd}" var="num">
+                				<li class="pageMaker_btn ${pageMaker.cri.pageNum == num ? "active":""}">
                 					<a href="${num}">${num}</a>
                 				</li>	
                 			</c:forEach>
@@ -98,12 +97,11 @@
 	                    </ul>
                 	</div>
                 	
-                	<form id="moveForm" action="/admin/goodsManage" method="get" >
+                	<form id="moveForm" action="/admin/goodsManage" method="get">
  						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
                 	</form>
-					
 				</div>
 				
 				<%@include file="../includes/admin/footer.jsp" %>

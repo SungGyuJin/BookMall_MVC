@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="includes/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -9,6 +8,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> 
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -103,23 +110,65 @@
 				</div>
 			</div>
 			<div class="content_area">
-					<h1>content area</h1>
-			</div>
+				<div class="slide_div_wrap">
+					<div class="slide_div">
+						<div>
+							<a>
+								<img src="../resources/img/mainImage_1.png">
+							</a>
+						</div>
+						<div>
+							<a>
+								<img src="../resources/img/mainImage_2.png">
+							</a>
+						</div>
+						<div>
+							<a>
+								<img src="../resources/img/mainImage_3.png">
+							</a>
+						</div>		
+						<div>
+							<a>
+								<img src="../resources/img/mainImage_4.png">
+							</a>
+						</div>					
+					</div>	
+				</div>
+				
+				<div class="ls_wrap">
+					<div class="ls_div_subject">
+						이 달의 인기도서
+					</div>
+					<div class="ls_div">
+						<c:forEach items="${mainList}" var="mList">
+							<a href="/goodsDetail/${mList.bookId}">
+								<div class="ls_div_content_wrap">
+									<div class="ls_div_content">
+										<div class="image_wrap" data-bookid="${mList.imageList[0].bookId}" data-path="${mList.imageList[0].uploadPath}" data-uuid="${mList.imageList[0].uuid}" data-filename="${mList.imageList[0].fileName}">
+											<img>
+										</div>				
+										<div class="ls_category">
+											${mList.cateName}
+										</div>
+										<div class="ls_bookName">
+											${mList.bookName}
+										</div>							
+									</div>
+								</div>
+							</a>					
+						</c:forEach>					
+					</div>
+				</div>
+			</div> <!-- .content_area -->
 			
 			<!-- Footer 영역 -->
 			<div class="footer_nav">
 				<div class="footer_nav_container">
 					<ul>
 						<li>회사소개</li>
-						<span class="line">|</span>
 						<li>이용약관</li>
-						<span class="line">|</span>
 						<li>고객센터</li>
-						<span class="line">|</span>
 						<li>광고문의</li>
-						<span class="line">|</span>
-						<li>채용정보</li>
-						<span class="line">|</span>
 					</ul>
 				</div>
 			</div>	<!-- class="footer_nav" -->
@@ -147,10 +196,45 @@
 	</div>	<!-- .wrap end -->
 </div>	<!-- .wrapper end -->
 
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		$(".slide_div").slick(
+			{
+				dots : true,
+				autoplay : true,
+				autoplaySpeed : 3000
+			}
+		);
+		
+		/* 이미지 삽입 */
+		$(".image_wrap").each(function(i, obj){
 			
-
-
-<script>
+			const bobj = $(obj);
+			
+			if(bobj.data("bookid")){
+				const uploadPath = bobj.data("path");
+				const uuid = bobj.data("uuid");
+				const fileName = bobj.data("filename");
+				
+				const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
+				
+				$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
+			} else {
+				$(this).find("img").attr('src', '/resources/img/goodsNoImage.png');
+			}
+			
+		});
+		
+		$(".ls_div").slick({
+			slidesToShow : 4,
+			slidesToScroll : 4,
+			prevArrow : "<button type='button' class='ls_div_content_prev'>◀</button>",
+			nextArrow : "<button type='button' class='ls_div_content_next'>▶</button>",
+		});
+		
+	});
 	
 	// gnb-area 로그아웃 버튼작동
 	$("#gnb_logout_button").click(function(){

@@ -154,7 +154,10 @@
 		
 	</select>
 	
-	
+	<!-- 메인페이지 정렬 -->
+	<select id="likeSelect" resultType="com.vam.model.SelectDTO">
+		select bookId, bookName from vam_book
+	</select>
 	
 	
 	

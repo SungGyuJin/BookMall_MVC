@@ -28,7 +28,6 @@
 						<c:if test="${listCheck != 'empty'}">
 							<table class="author_table">
 								<thead>
-								
 									<tr>
 										<td class="th_column_1">작가번호</td>
 										<td class="th_column_2">작가이름</td>
@@ -55,9 +54,9 @@
 						
 						<!-- 게시물 X -->
 						<c:if test="${listCheck == 'empty'}">
-							<div class="table_empty">
-								등록된 작가가 없습니다.
-							</div>
+								<div class="table_empty">
+									등록된 작가가 없습니다.
+								</div>
 						</c:if>
 					</div>
 					
