@@ -24,10 +24,10 @@
 				<ul class="list">
 					<c:if test="${member == null}"> <!-- 로그인 안했을때 -->
 						<li>
-							<a href="/member/login">로그인</a>
+							<a href="/member/login">LOGIN</a>
 						</li>
 						<li>
-							<a href="/member/join">회원가입</a>
+							<a href="/member/join">JOIN</a>
 						</li>
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
@@ -35,7 +35,7 @@
 							<li><a href="/admin/goodsEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
-								<a id="gnb_logout_button">로그아웃</a>
+								<a id="gnb_logout_button">LOGOUT</a>
 							</li>
 						<li>
 							<a href="/cart/${member.memberId}">
@@ -51,7 +51,7 @@
 			<div class="top_area">
 				<!-- 로고영역 -->
 				<div class="logo_area">
-					<a href="/main"><img src="/resources/img/BookImage.png"></a>
+					<a href="/main"><img src="/resources/img/theBook.png"></a>
 				</div>
 				<div class="search_area">
 					<div class="search_wrap">
@@ -71,8 +71,8 @@
 					
 					<!-- 로그인 하지 않은 상태 -->
 					<c:if test = "${member == null}">
-							<div class="login_button"><a href="/member/login">로그인</a></div>
-								<span><a href="/member/join">회원가입</a></span>
+							<div class="login_button"><a href="/member/login">LOGIN</a></div>
+								<span><a href="/member/join">JOIN</a></span>
 					</c:if>
 						
 					<!-- 로그인 상태 -->
@@ -81,7 +81,7 @@
 							<span>회원 : ${member.memberName}</span>
 							<span>충전금액 : <fmt:formatNumber value="${member.money}" pattern="\#,###"/></span>
 							<span>포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###"/></span>
-							<a href="/member/logout.do">로그아웃</a>
+							<a href="/member/logout.do">LOGOUT</a>
 						</div>
 					</c:if>
 				</div>
@@ -99,7 +99,7 @@
 					</div>
 				</div>
 				<div class="dropdown">
-					<button class="dropbtn">국외
+					<button class="dropbtn">해외
 						<i class="fa fa-caret-down"></i>
 					</button>
 					<div class="dropdown-content">
@@ -146,7 +146,7 @@
 									<div class="ls_div_content">
 										<div class="image_wrap" data-bookid="${mList.imageList[0].bookId}" data-path="${mList.imageList[0].uploadPath}" data-uuid="${mList.imageList[0].uuid}" data-filename="${mList.imageList[0].fileName}">
 											<img>
-										</div>				
+										</div><br><br>		
 										<div class="ls_category">
 											${mList.cateName}
 										</div>
@@ -167,15 +167,14 @@
 					<ul>
 						<li>회사소개</li>
 						<li>이용약관</li>
-						<li>고객센터</li>
 						<li>광고문의</li>
+						<li>고객센터</li>
 					</ul>
 				</div>
 			</div>	<!-- class="footer_nav" -->
 			
 			<div class="footer">
 				<div class="footer_container">
-					
 					<div class="footer_left">
 						<!-- 이미지파일 -->
 					</div>

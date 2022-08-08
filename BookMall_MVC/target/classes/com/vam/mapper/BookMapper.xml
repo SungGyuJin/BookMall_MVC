@@ -39,7 +39,6 @@
 			Select  bookId, bookName, b.authorName, a.authorId, c.cateName, a.cateCode, publisher, publeYear, bookPrice, bookDiscount
 			from vam_book a left outer join vam_author b on a.authorId = b.authorId
 			left outer join vam_bcate c on a.cateCode = c.cateCode
-			
 			<include refid="criteria"></include>
 			order by bookId desc 
 			limit #{skip}, #{amount}
@@ -156,7 +155,7 @@
 	
 	<!-- 메인페이지 정렬 -->
 	<select id="likeSelect" resultType="com.vam.model.SelectDTO">
-		select bookId, bookName from vam_book
+		Select * From vam_book
 	</select>
 	
 	

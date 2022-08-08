@@ -7,52 +7,62 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/member/join.css">
+<style type="text/css">
+a{text-decoration: none;}
+	a:link{text-decoration: none;}
+	a:visited{text-decoration: none;}
+	a:active{text-decoration: none;}
+	a:hover{text-decoration: none;}
+a{
+	font-size: 50px;
+	color: #1E90FF;
+}
+</style>
 </head>
 <body>
-
-
+<br><br><br>
 <div class="wrapper">
 		<form id="join_form" method="post">
 		<div class="wrap">
-						<div class="subjecet">
-								<span>회원가입</span>
+						<div class="logo_wrap">
+									<a href="/main"><h1>The BooK</h1></a>
 						</div>
 						<div class="id_wrap">
-								<div class="id_name">아이디</div>
+								<div class="id_name">ID</div>
 								<div class="id_input_box">
-										<input class="id_input" name="memberId" />
+										<input class="id_input" name="memberId"/>
 								</div>
 								<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
 								<span class="id_input_re_2">아이디가 이미 존재합니다</span>
 								<span class="final_id_ck">아이디를 입력해주세요.</span>
 						</div>
 						<div class="pw_wrap">
-								<div class="pw_name">비밀번호</div>
+								<div class="pw_name">Password</div>
 								<div class="pw_input_box">
-										<input type="password" class="pw_input" name="memberPw" />
+										<input type="password" class="pw_input" name="memberPw"/>
 								</div>
 								<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
 						</div>
 						<div class="pwck_wrap">
-								<div class="pwck_name">비밀번호 확인</div>
+								<div class="pwck_name">Confirmation Password</div>
 								<div class="pwck_input_box">
-										<input type="password" class="pwck_input" />
+										<input type="password" class="pwck_input"/>
 								</div>
 								<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
 								<span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
 								<span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
 						</div>
 						<div class="user_wrap">
-								<div class="user_name">이름</div>
+								<div class="user_name">Name</div>
 								<div class="user_input_box">
-										<input class="user_input" name="memberName" />
+										<input class="user_input" name="memberName"/>
 								</div>
 								<span class="final_name_ck">이름을 입력해주세요.</span>
 						</div>
 						<div class="mail_wrap">
-								<div class="mail_name">이메일</div>
+								<div class="mail_name">E-mail</div>
 								<div class="mail_input_box">
-										<input class="mail_input" name="memberMail" />
+										<input class="mail_input" name="memberMail"/>
 								</div>
 								<span class="final_mail_ck">이메일을 입력해주세요.</span>
 								<span class="mail_input_box_warn"></span>
@@ -68,7 +78,7 @@
 								</div>
 						</div>
 						<div class="address_wrap">
-								<div class="address_name">주소</div>
+								<div class="address_name">Address</div>
 								<div class="address_input_1_wrap">
 										<div class="address_input_1_box">
 												<input class="address_input_1" name="memberAddr1" readonly="readonly" />

@@ -168,12 +168,6 @@
 										<div class="form_section_content">
 											<input type="file" id ="fileItem" name='uploadFile' style="height: 30px;">
 											<div id="uploadResult">
-											<!-- 
-												<div id="result_card">
-													<div class="imgDeleteBtn">X</div>
-													<img src="/display?fileName=test.png">
-												</div>
-											 -->
 											</div>
 										</div>
 								</div>

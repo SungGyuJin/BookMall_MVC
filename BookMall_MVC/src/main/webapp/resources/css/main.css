@@ -60,7 +60,7 @@ a{
 	width: 50%;
 	height: 100%;
 	float:left;
-	background-color: #F5F5F5;
+	background-color: white;
 }
 
 .login_success_area{
@@ -97,7 +97,7 @@ a{
 	height: 100%;
 	display: inline-block;	
 	text-align: center;
-	background-color: #F5F5F5;
+	background-color: white;
 }
 .login_button{
 	height: 50%;
@@ -150,7 +150,7 @@ a{
 .footer_nav_container{
 	width: 100%;
 	height: 100%;
-	background-color:#8EC0E4;
+	background-color: #66CDAA;
 	border-radius: 12px;
 }
 .footer_nav_container>ul{
@@ -176,7 +176,7 @@ a{
 .footer{
 	width:100%;
 	height:100px;
-	background-color:#D4DFE6;
+	background-color: #DCDCDC;
 	padding-bottom : 50px;
 	border-radius: 12px;
 	margin-bottom: 7px;
@@ -323,7 +323,7 @@ a{
 	padding: 15px 0 15px 0;
 }
 .image_wrap img{
-	width: 70%;
+	width: 85%;
     height: auto;
     display: block;
 	margin: auto;    
@@ -372,32 +372,32 @@ a{
 .ls_div_content_prev{
     position: absolute;
     top: 40%;
-    width: 40px;
     height: 30px;
-    left: 27px;
+    left: 24px;
     font-weight: bold;
+    font-size: 30px;
     z-index: 1;
-    opacity: 35%;
-    border-radius: 12px;
+    opacity:30%;
+    border: none;
     cursor: pointer;
+    background-color: transparent;
 }
 .ls_div_content_prev:hover{
-   opacity: 80%;
+   	opacity: 80%;
 }
 .ls_div_content_next{
     position: absolute;
     top: 40%;
-    width: 40px;
     height: 30px;
-    right: 27px;
-    font-weight: bold;
-    z-index: 1;
-    opacity: 35%;
-    border-radius: 12px;
+    right: 24px;
+    font-size: 30px;
+    opacity:20%;
+    border: none;
     cursor: pointer;
+    background-color: transparent;
 }
 .ls_div_content_next:hover{
-   opacity: 80%;
+   	opacity: 80%;
 }
 
 

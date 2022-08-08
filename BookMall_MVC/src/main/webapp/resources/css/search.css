@@ -59,7 +59,7 @@ a{
 	width: 50%;
 	height: 100%;
 	float:left;
-	background-color: #F5F5F5;
+	background-color: white;
 }
 
 .login_success_area{
@@ -96,7 +96,7 @@ a{
 	height: 100%;
 	display: inline-block;	
 	text-align: center;
-	background-color: #F5F5F5;
+	background-color: white;
 }
 .login_button{
 	height: 50%;
@@ -149,7 +149,7 @@ a{
 .footer_nav_container{
 	width: 100%;
 	height: 100%;
-	background-color:#8EC0E4;
+	background-color: #66CDAA;
 	border-radius: 12px;
 }
 .footer_nav_container>ul{
@@ -175,7 +175,7 @@ a{
 .footer{
 	width:100%;
 	height:100px;
-	background-color:#D4DFE6;
+	background-color: #DCDCDC;
 	padding-bottom : 50px;
 	border-radius: 12px;
 	margin-bottom: 7px;
@@ -271,6 +271,7 @@ a{
 	border-bottom: 1px solid #e7e7e7;
 }
 .detail div{
+	margin-left: 15px;
 	margin-bottom: 5px;
 }
 .category{
@@ -292,11 +293,12 @@ a{
 	text-align: center;
 }
 .org_price del{
-	font-size: 13px;
+	color: blue;
+	font-size: 18px;
 }
 .sell_price strong{
-	color: #da6262;
-   	font-size: 18px;
+	color: red;
+   	font-size: 20px;
 }
 
 /* 페이지 버튼 인터페이스 */
@@ -315,6 +317,7 @@ a{
     height: 40px;
     line-height: 40px;
     margin-left: 20px;
+    border-radius: 12px;
 }
 .active{
 	border : 2px solid black;
@@ -338,7 +341,7 @@ a{
 }
 
 .image_wrap img{
-	max-width: 90%;
+	width: 90%;
 	height: auto;
 	display: block;
 }

@@ -28,6 +28,11 @@
     font-weight: 900;
     color: white;
 }
+/* 페이지 로고 */
+.logo_wrap {
+	text-align: center;
+	font-style: italic;
+}
 
 /* 아이디 영역 */
 .id_wrap{

@@ -656,13 +656,12 @@
 	    		alert("이미지 파일이 아닙니다.");
 	    	}
 		});		
-
 		
 	});
 		
 	/* var, method related with attachFile */
 	let regex = new RegExp("(.*?)\.(jpg|png)$");
-	let maxSize = 1048576; //1MB	
+	let maxSize = 2097152; // 2MB	
 	
 	function fileCheck(fileName, fileSize){
 

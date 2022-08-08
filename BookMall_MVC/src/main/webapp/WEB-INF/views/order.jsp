@@ -19,10 +19,10 @@
 				<ul class="list">
 					<c:if test="${member == null}"> <!-- 로그인 안했을때 -->
 						<li>
-							<a href="/member/login">로그인</a>
+							<a href="/member/login">LOGIN</a>
 						</li>
 						<li>
-							<a href="/member/join">회원가입</a>
+							<a href="/member/join">JOIN</a>
 						</li>
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
@@ -30,7 +30,7 @@
 							<li><a href="/admin/goodsEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
-								<a id="gnb_logout_button">로그아웃</a>
+								<a id="gnb_logout_button">LOGOUT</a>
 							</li>
 						<li>
 							<a href="/cart/${member.memberId}">
@@ -46,7 +46,7 @@
 			<div class="top_area">
 				<!-- 로고영역 -->
 				<div class="logo_area">
-					<a href="/main"><img src="/resources/img/BookImage.png"></a>
+					<a href="/main"><img src="/resources/img/theBook.png"></a>
 				</div>
 				<div class="search_area">
 					<div class="search_wrap">
@@ -66,8 +66,8 @@
 					
 					<!-- 로그인 하지 않은 상태 -->
 					<c:if test = "${member == null}">
-							<div class="login_button"><a href="/member/login">로그인</a></div>
-								<span><a href="/member/join">회원가입</a></span>
+							<div class="login_button"><a href="/member/login">LOGIN</a></div>
+								<span><a href="/member/join">JOIN</a></span>
 					</c:if>
 						
 					<!-- 로그인 상태 -->
@@ -76,7 +76,7 @@
 							<span>회원 : ${member.memberName}</span>
 							<span>충전금액 : <fmt:formatNumber value="${member.money}" pattern="\#,###"/></span>
 							<span>포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###"/></span>
-							<a href="/member/logout.do">로그아웃</a>
+							<a href="/member/logout.do">LOGOUT</a>
 						</div>
 					</c:if>
 					
@@ -292,34 +292,27 @@
 				<div class="footer_nav_container">
 					<ul>
 						<li>회사소개</li>
-						<span class="line">|</span>
 						<li>이용약관</li>
-						<span class="line">|</span>
-						<li>고객센터</li>
-						<span class="line">|</span>
 						<li>광고문의</li>
-						<span class="line">|</span>
-						<li>채용정보</li>
-						<span class="line">|</span>
+						<li>고객센터</li>
 					</ul>
 				</div>
 			</div>	<!-- class="footer_nav" -->
 			
 			<div class="footer">
 				<div class="footer_container">
-					
 					<div class="footer_left">
 						<!-- 이미지파일 -->
 					</div>
 					<div class="footer_right">
-						(주) VamBook		대표이사 : OOO
+						(주) The BooK 대표 : 성OO
 						<br>
 						사업자등록번호 : OOO-OO-OOOOO
 						<br>
-						대표전화 : OOOO-OOOO (발신자 부담전화)
+						대표전화 : OOO-OOOO (발신자 부담전화)
 						<br>
 						<br>
-						COPYRIGHT(C) <strong>kimvampa.tistory.com</strong>		ALL RIGHTS RESERVED.
+						COPYRIGHT(C) <strong>The BooK.com</strong>	ALL RIGHTS RESERVED.
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -489,6 +482,8 @@ $(".order_point_input_btn").on("click", function(){
 		$(".order_point_input_btn_Y").css("display", "none");
 		$(".order_point_input_btn_N").css("display", "inline-block");
 	}
+	
+	setTotalInfo();
 	
 });
 
