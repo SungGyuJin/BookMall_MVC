@@ -7,15 +7,17 @@
 
 <img src="" width="">
 
-## 1. 회원가입 및 로그인 화면
+### 회원가입 및 로그인 화면 (아래)
 <img src="https://user-images.githubusercontent.com/79797179/183576520-37c39076-e450-47ca-bf71-afe469f30413.png" width="35%">&nbsp;<img src="https://user-images.githubusercontent.com/79797179/183576526-cd8564e8-4979-4149-b85b-0fd47470305b.png" width="35%">
-
-* 회원가입 양식 중 이메일 인증 부분 (아래)
-
+***
+### 이메일 인증 부분 (아래)
 <img src="https://user-images.githubusercontent.com/79797179/183579758-6f447f7f-96c0-41b6-b31e-c722eb3c309b.gif" width="50%"><img src="https://user-images.githubusercontent.com/79797179/183579782-51691ffa-d506-4371-ad62-716de0300702.png" width="50%">
 
-* 사이트 둘러보기 (아래)
-<img src="https://user-images.githubusercontent.com/79797179/183580450-c11ea305-4bad-42fc-974a-88b18a580395.gif" width="50%">
+***
+
+### 사이트 둘러보기 (아래)
+
+<img src="https://user-images.githubusercontent.com/79797179/183580450-c11ea305-4bad-42fc-974a-88b18a580395.gif" width="80%">
 
 
 ## 디테일한 부분
