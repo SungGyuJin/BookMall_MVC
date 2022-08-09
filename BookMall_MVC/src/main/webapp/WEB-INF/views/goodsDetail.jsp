@@ -192,7 +192,7 @@
 						대표전화 : OOO-OOOO (발신자 부담전화)
 						<br>
 						<br>
-						COPYRIGHT(C) <strong>The BooK.com</strong>	ALL RIGHTS RESERVED.
+						COPYRIGHT(C) <strong>thebook.com</strong>	ALL RIGHTS RESERVED.
 					</div>
 					<div class="clearfix"></div>
 				</div>

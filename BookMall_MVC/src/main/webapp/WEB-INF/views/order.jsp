@@ -288,6 +288,7 @@
 			<!-- 상품 정보 -->
 		</form>
 			<!-- Footer 영역 -->
+			<br><br><br>
 			<div class="footer_nav">
 				<div class="footer_nav_container">
 					<ul>
@@ -298,7 +299,6 @@
 					</ul>
 				</div>
 			</div>	<!-- class="footer_nav" -->
-			
 			<div class="footer">
 				<div class="footer_container">
 					<div class="footer_left">
@@ -312,7 +312,7 @@
 						대표전화 : OOO-OOOO (발신자 부담전화)
 						<br>
 						<br>
-						COPYRIGHT(C) <strong>The BooK.com</strong>	ALL RIGHTS RESERVED.
+						COPYRIGHT(C) <strong>thebook.com</strong>	ALL RIGHTS RESERVED.
 					</div>
 					<div class="clearfix"></div>
 				</div>

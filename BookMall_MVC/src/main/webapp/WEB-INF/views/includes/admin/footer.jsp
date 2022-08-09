@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/resources/css/includes/footer.css">
 </head>
 <div class="clearfix"></div>
-
+			<br><br><br><br><br><br>
 			<!-- Footer 영역 -->
 				<div class="footer_head">
 					<div class="footer_nav">

@@ -99,12 +99,12 @@
 								<caption>표 제목 부분</caption>
 								<tbody>
 										<tr>
-												<th class="td_width_1"></th>
-												<th class="td_width_2"></th>
-												<th class="td_width_3">상품명</th>
-												<th class="td_width_4">가격</th>
-												<th class="td_width_4">수량</th>
-												<th class="td_width_4">합계</th>
+												<th class="td_width_t1">선택</th>
+												<th class="td_width_t2">이미지</th>
+												<th class="td_width_t3">상품명</th>
+												<th class="td_width_t4">가격</th>
+												<th class="td_width_t5">수량</th>
+												<th class="td_width_t6">합계</th>
 										</tr>
 								</tbody>
 						</table>
@@ -251,7 +251,7 @@
 					</form>
 					
 			</div>
-			
+			<br><br><br>
 			<!-- Footer 영역 -->
 			<div class="footer_nav">
 				<div class="footer_nav_container">
@@ -277,7 +277,7 @@
 						대표전화 : OOO-OOOO (발신자 부담전화)
 						<br>
 						<br>
-						COPYRIGHT(C) <strong>The BooK.com</strong>	ALL RIGHTS RESERVED.
+						COPYRIGHT(C) <strong>thebook.com</strong>	ALL RIGHTS RESERVED.
 					</div>
 					<div class="clearfix"></div>
 				</div>

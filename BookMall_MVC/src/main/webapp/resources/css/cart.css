@@ -236,9 +236,28 @@ th {
 	background: #f4f9fd;
 	padding: 2px 0;
 }
+.td_width_t1{
+	width: 10%;
+}
+.td_width_t2{
+	width: 10%;
+}
+.td_width_t3{
+	text-align: center;
+}
+.td_width_t4{
+	text-align: center;
+}
+.td_width_t5{
+	text-align: center;
+}
+.td_width_t6{
+	text-align: center;
+}
 
 .td_width_1 {
 	width: 10%;
+	text-align: center;
 }
 
 .td_width_2 {
@@ -246,10 +265,12 @@ th {
 }
 
 .td_width_3 {
+	text-align: left;
 	width: 25%;
 }
 
 .td_width_4 {
+	text-align: left;
 	width: 15%;
 }
 
@@ -413,6 +434,7 @@ th {
 .image_wrap {
 	width: 100%;
 	height: 100%;
+	margin-left: 25px;
 }
 
 .image_wrap img {
