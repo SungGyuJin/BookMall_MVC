@@ -35,13 +35,13 @@ a{
 				<div class="login_wrap">
 					<div class="id_wrap">
 						<div class="id_input_box">
-							<input class="id_input" name="memberId" placeholder="ID" />
+							<input class="id_input" name="memberId" value="admin" placeholder="ID" />
 						</div>
 					</div>
 					<div class="pw_wrap">
 						<div class="pw_input_box">
-							<input type="password" class="pw_iput" name="memberPw"
-								placeholder="Password" />
+							<input type="password" class="pw_iput" name="memberPw" value="1234" placeholder="Password" />
+								
 						</div>
 					</div>
 

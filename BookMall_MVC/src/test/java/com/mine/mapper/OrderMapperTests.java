@@ -1,4 +1,4 @@
-package com.vam.mapper;
+package com.mine.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
