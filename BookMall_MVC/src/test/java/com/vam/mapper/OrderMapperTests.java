@@ -9,10 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vam.model.BookVO;
-import com.vam.model.MemberVO;
-import com.vam.model.OrderDTO;
-import com.vam.model.OrderItemDTO;
+import com.mine.mapper.OrderMapper;
+import com.mine.model.BookVO;
+import com.mine.model.MemberVO;
+import com.mine.model.OrderDTO;
+import com.mine.model.OrderItemDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
