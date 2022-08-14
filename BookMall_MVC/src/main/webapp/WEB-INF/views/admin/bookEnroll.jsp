@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/admin/goodsEnroll.css">
+<link rel="stylesheet" href="/resources/css/admin/bookEnroll.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 
 <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
@@ -43,54 +43,54 @@
 </style>
 </head>
 <body>
-	
+
 				<%@include file="../includes/admin/header.jsp" %>
-	
+
 				<div class="admin_content_wrap">
-					<div class="admin_content_subject"><span>도서등록</span></div>
+					<div class="admin_content_subject"><span>The BooK</span></div>
 					<div class="admin_content_main">
-						<form action="/admin/goodsEnroll" method="post" id="enrollForm">
+						<form action="/admin/bookEnroll" method="post" id="enrollForm">
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>제목</label>
+											<label>제목</label>
 										</div>
 										<div class="form_section_content">
-												<input name="bookName">
-												<span class="ck_warn bookName_warn">제목을 입력해주세요.</span>
+											<input name="bookName">
+											<span class="ck_warn bookName_warn">제목을 입력해주세요.</span>
 										</div>
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>작가</label>
+											<label>작가</label>
 										</div>
 										<div class="form_section_content">
 											<input id="authorName_input" readonly="readonly">
 											<input id="authorId_input" name="authorId" type="hidden">
 											<button class="authorId_btn">작가선택</button>
-												<span class="ck_warn authorId_warn">작가를 선택해주세요.</span>
+											<span class="ck_warn authorId_warn">작가를 선택해주세요.</span>
 										</div>
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>출판일</label>
+											<label>출판일</label>
 										</div>
 										<div class="form_section_content">
-												<input name="publeYear" autocomplete="off" readonly="readonly">
-												<span class="ck_warn publeYear_warn">출판일을 선택해주세요.</span>
+											<input name="publeYear" autocomplete="off" readonly="readonly">
+											<span class="ck_warn publeYear_warn">출판일을 선택해주세요.</span>
 										</div>
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>출판사</label>
+											<label>출판사</label>
 										</div>
 										<div class="form_section_content">
-												<input name="publisher">
-												<span class="ck_warn publisher_warn">출판사를 입력해주세요.</span>
+											<input name="publisher">
+											<span class="ck_warn publisher_warn">출판사를 입력해주세요.</span>
 										</div>
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>장르</label>
+											<label>장르</label>
 										</div>
 										<div class="form_section_content">
 											<div class="cate_wrap">
@@ -116,45 +116,45 @@
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>가격</label>
+											<label>가격</label>
 										</div>
 										<div class="form_section_content">
-												<input name="bookPrice" value="0">
-												<span class="ck_warn bookPrice_warn">가격을 입력해주세요.</span>
+											<input name="bookPrice" value="0">
+											<span class="ck_warn bookPrice_warn">가격을 입력해주세요.</span>
 										</div>
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>재고</label>
+											<label>재고</label>
 										</div>
 										<div class="form_section_content">
-												<input name="bookStock" value="0">
-												<span class="ck_warn bookStock_warn">재고를 입력해주세요.</span>
+											<input name="bookStock" value="0">
+											<span class="ck_warn bookStock_warn">재고를 입력해주세요.</span>
 										</div>
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>할인율</label>
+											<label>할인율</label>
 										</div>
 										<div class="form_section_content">
-												<input id="discount_interface" maxlength="2" value="0">
-												<input name="bookDiscount" type="hidden" value="0">
-												<span class="step_val">할인 가격 : <span class="span_discount"></span></span>
-												<span class="ck_warn bookDiscount_warn">1 ~ 99 숫자를 입력해주세요.</span>
+											<input id="discount_interface" maxlength="2" value="0">
+											<input name="bookDiscount" type="hidden" value="0">
+											<span class="step_val">할인 가격 : <span class="span_discount"></span></span>
+											<span class="ck_warn bookDiscount_warn">1 ~ 99 숫자를 입력해주세요.</span>
 										</div>
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>소개</label>
+											<label>소개</label>
 										</div>
 										<div class="form_section_content bit">
-												<textarea name="bookIntro" id="bookIntro_textarea"></textarea>
-												<span class="ck_warn bookIntro_warn">소개를 입력해주세요.</span>
+											<textarea name="bookIntro" id="bookIntro_textarea"></textarea>
+											<span class="ck_warn bookIntro_warn">소개를 입력해주세요.</span>
 										</div>
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>목차</label>
+											<label>목차</label>
 										</div>
 										<div class="form_section_content bct">
 											<textarea name="bookContents" id="bookContents_textarea"></textarea>
@@ -163,7 +163,7 @@
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-												<label>상품이미지</label>
+											<label>상품이미지</label>
 										</div>
 										<div class="form_section_content">
 											<input type="file" id ="fileItem" name='uploadFile' style="height: 30px;">
@@ -189,7 +189,7 @@
 	// 취소버튼
 	$("#cancelBtn").click(function(){
 		
-		location.href = "/admin/goodsManage";
+		location.href = "/admin/bookManage";
 		
 	});
 	
@@ -470,8 +470,8 @@
 		
 		let discountRate = userInput.val();					// 사용자가 입력할 할인값
 		let sendDiscountRate = discountRate / 100;			// 서버에 전송할 할인값
-		let goodsPrice = $("input[name='bookPrice']").val();			// 원가
-		let discountPrice = goodsPrice * (1 - sendDiscountRate);		// 할인가격
+		let bookPrice = $("input[name='bookPrice']").val();			// 원가
+		let discountPrice = bookPrice * (1 - sendDiscountRate);		// 할인가격
 
 		if(!isNaN(discountRate)){
 			
@@ -488,8 +488,8 @@
 		
 		let discountRate = userInput.val();					// 사용자가 입력한 할인값
 		let sendDiscountRate = discountRate / 100;			// 서버에 전송할 할인값
-		let goodsPrice = $("input[name='bookPrice']").val();			// 원가
-		let discountPrice = goodsPrice * (1 - sendDiscountRate);		// 할인가격
+		let bookPrice = $("input[name='bookPrice']").val();			// 원가
+		let discountPrice = bookPrice * (1 - sendDiscountRate);		// 할인가격
 		
 		if(!isNaN(discountRate)){
 			

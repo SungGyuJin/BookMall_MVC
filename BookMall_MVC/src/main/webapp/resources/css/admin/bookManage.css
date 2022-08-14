@@ -63,38 +63,8 @@ ul {
 	
 }
 
-.admin_list_03 {
+.admin_list_02 {
 	background-color: #C0C0C0;
-	border-radius: 12px;
-}
-
-.admin_list_03 {
-	background-color: #c8c8c8;
-	border-radius: 12px;
-}
-
-.admin_list_01:hover {
-	background-color: #D3D3D3;
-	border-radius: 12px;
-}
-
-.admin_list_02:hover {
-	background-color: #D3D3D3;
-	border-radius: 12px;
-}
-
-.admin_list_03:hover {
-	background-color: #D3D3D3;
-	border-radius: 12px;
-}
-
-.admin_list_04:hover {
-	background-color: #D3D3D3;
-	border-radius: 12px;
-}
-
-.admin_list_05:hover {
-	background-color: #D3D3D3;
 	border-radius: 12px;
 }
 
@@ -105,8 +75,7 @@ ul {
 	min-height: 700px;
 }
 
-/* 관리자 컨텐츠 제목 영역 */
-.admin_content_subject {
+.admin_content_subject { /* 관리자 컨텐츠 제목 영역 */
 	font-size: 40px;
 	font-weight: bolder;
 	padding-left: 15px;
@@ -115,87 +84,6 @@ ul {
 	line-height: 80px;
 	color: white;
 	border-radius: 12px;
-}
-/* 관리자 컨텐츠 메인 영역 */
-.form_section {
-	width: 95%;
-	margin-left: 2%;
-	margin-top: 20px;
-	border: 1px solid #dbdde2;
-	background-color: #efefef;
-}
-
-.form_section_title {
-	padding: 20px 35px;
-}
-
-.form_section_title label {
-	display: block;
-	font-size: 20px;
-	font-weight: 800;
-}
-
-.form_section_content {
-	padding: 20px 35px;
-	border-top: 1px solid #dbdde2;
-}
-
-.form_section_content input {
-	width: 98%;
-	height: 25px;
-	font-size: 20px;
-	padding: 5px 1%;
-}
-
-.form_section_content select {
-	width: 98%;
-	height: 35px;
-	font-size: 20px;
-	text-align: center;
-}
-
-/* 입력란 공란 경고 태그 */
-.form_section_content span {
-	display: none;
-	padding-top: 10px;
-	text-align: center;
-	color: red;
-	font-weight: 300;
-}
-
-/* 버튼 영역 */
-.btn_section {
-	text-align: center;
-	margin: 80px 0;
-}
-
-.btn {
-	min-width: 180px;
-	padding: 4px 30px;
-	font-size: 25px;
-	font-weight: 600;
-	line-height: 40px;
-	border-radius: 12px;
-	background-color: #DCDCDC;
-}
-
-.btn:hover {
-	cursor: pointer;
-	background-color: #A9A9A9;
-}
-
-.enroll_btn {
-	background-color: #dbdde2;
-	margin-left: 15px;
-}
-
-#enrollBtn {
-	background-color: #87CEFA;
-	border-radius: 12px;
-}
-
-#enrollBtn:hover {
-	background-color: #00BFFF;
 }
 
 /* footer navai 영역 */
@@ -208,6 +96,7 @@ ul {
 	width: 100%;
 	height: 100%;
 	background-color: #8EC0E4;
+	border-radius: 12px;
 }
 
 .footer_nav_container>ul {
@@ -234,9 +123,11 @@ ul {
 /* footer 영역 */
 .footer {
 	width: 100%;
-	height: 130px;
+	height: 100px;
 	background-color: #D4DFE6;
 	padding-bottom: 50px;
+	border-radius: 12px;
+	margin-bottom: 7px;
 }
 
 .footer_container {
@@ -264,6 +155,150 @@ ul {
 	width: 680px;
 	margin-left: 70px;
 	margin-top: 30px;
+}
+
+/* 상품 목록 영역 */
+.book_table_wrap {
+	padding: 20px 35px;
+}
+
+.book_table_wrap table {
+	padding: 20px 35px;
+}
+
+.book_table {
+	width: 100%;
+	border: 1px solid #d3d8e1;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+.book_table td {
+	padding: 10px 5px;
+	border: 1px solid #e9ebf0;
+}
+
+.book_table thead {
+	background-color: #f8f9fd;
+	font-weight: 600;
+}
+
+.book_table a {
+	color: #1088ed;
+	font-weight: 500;
+}
+
+.th_column_1 {
+	width: 120px;
+}
+
+.th_column_3 {
+	width: 110px;
+}
+
+.th_column_4 {
+	width: 140px;
+}
+
+.th_column_5 {
+	width: 140px;
+}
+
+.th_column_6 {
+	
+}
+
+.table_empty {
+	height: 50px;
+	text-align: center;
+	margin: 200px 0 215px 0px;
+	font-size: 25px;
+}
+
+/* 검색 영역 */
+.search_wrap {
+	margin-top: 15px;
+}
+
+.search_input {
+	position: relative;
+	text-align: center;
+}
+
+.search_input input[name='keyword'] {
+	padding: 4px 10px;
+	font-size: 15px;
+	height: 20px;
+	line-height: 20px;
+	border-radius: 12px;
+}
+
+.search_btn {
+	height: 32px;
+	width: 80px;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 20px;
+	position: absolute;
+	margin-left: 15px;
+	background-color: #c3daf7;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+.search_btn:hover {
+	background-color: #87CEFA;
+}
+
+/* 페이지 버튼 인터페이스 */
+.pageMaker_wrap {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+.pageMaker {
+	list-style: none;
+	display: inline-block;
+}
+
+.pageMaker_btn {
+	float: left;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 20px;
+	border-radius: 12px;
+}
+
+.active {
+	border: 2px solid black;
+	font-weight: 400;
+}
+
+.next, .prev {
+	border: 1px solid #ccc;
+	padding: 0 10px;
+}
+
+.pageMaker_btn a:link {
+	color: black;
+}
+
+.pageMaker_btn a:visited {
+	color: black;
+}
+
+.pageMaker_btn a:active {
+	color: black;
+}
+
+.pageMaker_btn a:hover {
+	color: black;
+}
+
+.next a, .prev a {
+	color: #ccc;
 }
 
 /* float 속성 해제 */

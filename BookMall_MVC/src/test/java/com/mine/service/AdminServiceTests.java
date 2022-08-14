@@ -23,6 +23,7 @@ public class AdminServiceTests {
 	@Test
 	public void bookEnrollTEsts() {
 
+		
 		BookVO book = new BookVO();
 		// 상품 정보
 		book.setBookName("service 아하");

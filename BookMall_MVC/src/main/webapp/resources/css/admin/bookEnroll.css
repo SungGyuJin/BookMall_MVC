@@ -63,8 +63,9 @@ ul {
 	
 }
 
-.admin_list_04 {
-	background-color: #c8c8c8;
+.admin_list_01 {
+	background-color: #C0C0C0;
+	border-radius: 12px;
 }
 
 /* 관리자페이지 컨텐츠 영역 */
@@ -73,16 +74,7 @@ ul {
 	float: left;
 	min-height: 700px;
 }
-/* 관리자 컨텐츠 제목 영역 */
-.admin_content_subject {
-	font-size: 40px;
-	font-weight: bolder;
-	padding-left: 15px;
-	background-color: #6AAFE6;
-	height: 80px;
-	line-height: 80px;
-	color: white;
-}
+
 /* 관리자 컨텐츠 메인 영역 */
 .form_section {
 	width: 95%;
@@ -114,27 +106,102 @@ ul {
 	padding: 5px 1%;
 }
 
-.form_section_content textarea {
-	width: 98%;
-	height: 170px;
-	font-size: 20px;
-}
-
 .form_section_content select {
 	width: 98%;
 	height: 35px;
 	font-size: 20px;
-	text-align-last: center;
+	text-align: center;
 }
 
-.input_block {
-	background-color: #f9f9f9;
+/* ckeditor 높이 */
+.ck-content {
+	height: 170px;
+}
+
+/* 캘린더 css 설정 */
+.ui-datepicker-trigger {
+	margin-left: 25px;
+	width: 14%;
+	height: 38px;
+	font-weight: 600;
+	background-color: #dfe8f5;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+input[name='publeYear'] {
+	width: 80%;
+	text-align: center;
+}
+
+.authorId_btn { /* 작가 선택 css 설정 */
+	margin-left: 20px;
+	width: 14%;
+	height: 38px;
+	font-weight: 600;
+	background-color: #dfe8f5;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+#authorName_input {
+	width: 80%;
+	text-align: center;
+}
+
+/* 작가 선택 css 설정 */
+.authorId_btn {
+	margin-left: 20px;
+	width: 14%;
+	height: 38px;
+	font-weight: 600;
+	background-color: #dfe8f5;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+#authorName_input {
+	width: 80%;
+	text-align: center;
+}
+/* 카테고리 css 설정 */
+.form_section_content select {
+	width: 92%;
+	height: 35px;
+	font-size: 20px;
+	text-align-last: center;
+	margin-left: 5px;
+}
+
+.cate_wrap span {
+	font-weight: 600;
+}
+
+.cate_wrap:not(:first-child) {
+	margin-top: 20px;
 }
 
 /* 버튼 영역 */
 .btn_section {
 	text-align: center;
 	margin: 80px 0;
+}
+
+#cancelBtn {
+	border-radius: 12px;
+}
+
+#cancelBtn:hover {
+	background-color: #D3D3D3;
+}
+
+#enrollBtn {
+	background-color: #87CEFA;
+	border-radius: 12px;
+}
+
+#enrollBtn:hover {
+	background-color: #00BFFF;
 }
 
 .btn {
@@ -144,24 +211,37 @@ ul {
 	font-weight: 600;
 	line-height: 40px;
 	cursor: pointer;
-	border-radius: 12px;
-}
-
-.modify_btn {
-	background-color: #87CEFA;
-	margin-left: 15px;
-}
-
-.modify_btn:hover {
-	background-color: #00BFFF;
-}
-
-#cancelBtn {
 	background-color: #DCDCDC;
 }
 
-#cancelBtn:hover {
+.btn:hover {
 	background-color: #A9A9A9;
+}
+
+.admin_content_subject { /* 관리자 컨텐츠 제목 영역 */
+	font-size: 40px;
+	font-weight: bolder;
+	padding-left: 15px;
+	background-color: #6AAFE6;
+	height: 80px;
+	line-height: 80px;
+	color: white;
+	border-radius: 12px;
+}
+
+/* 입력란 공란 경고 태그 */
+.ck_warn {
+	display: none;
+	padding-top: 10px;
+	text-align: center;
+	color: #e05757;
+	font-weight: 300;
+}
+/* 할인 가격 문구 */
+.step_val {
+	display: block;
+	padding-top: 5px;
+	font-weight: 500;
 }
 
 /* float 속성 해제 */

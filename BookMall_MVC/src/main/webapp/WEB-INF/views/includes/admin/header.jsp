@@ -25,21 +25,16 @@
 			<div class="admin_wrap">
 				<!-- nav 영역 -->
 				<div class="admin_navi_wrap">
-					<ul>
-						<li>
-							<a class="admin_list_01" href="/admin/goodsEnroll">도서등록</a>
-						</li>
-						<li>
-							<a class="admin_list_02" href="/admin/goodsManage">도서관리</a>
-						</li>
-						<li>
-							<a class="admin_list_03" href="/admin/authorEnroll">작가등록</a>
-						</li>
-						<li>
-							<a class="admin_list_04" href="/admin/authorManage">작가관리</a>
-						</li>
-						<li>
+					<div class="admin_div">
+							<a class="admin_list_01" href="/admin/bookEnroll">도서등록</a>&nbsp;&nbsp;&nbsp;
+					</div>
+					<div class="admin_div">
+							<a class="admin_list_02" href="/admin/bookManage">도서관리</a>&nbsp;&nbsp;&nbsp;
+					</div>
+							<a class="admin_list_03" href="/admin/authorEnroll">작가등록</a>&nbsp;&nbsp;&nbsp;
+							<a class="admin_list_04" href="/admin/authorManage">작가관리</a>&nbsp;&nbsp;&nbsp;
+						<!-- <li>
 							<a class="admin_list_05">회원관리</a>
-						</li>
+						</li> -->
 					</ul>
 				</div>

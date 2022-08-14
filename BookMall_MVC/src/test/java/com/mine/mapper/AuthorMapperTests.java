@@ -19,6 +19,7 @@ public class AuthorMapperTests {
 	@Autowired
 	private AuthorMapper mapper;
 	
+	
 	// 작가등록 테스트
 //	@Test
 //	public void authorEnroll() throws Exception{

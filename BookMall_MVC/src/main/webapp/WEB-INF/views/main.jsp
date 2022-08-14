@@ -32,7 +32,7 @@
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/goodsEnroll">관리자 페이지</a></li>
+							<li><a href="/admin/bookEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
 								<a id="gnb_logout_button">LOGOUT</a>
@@ -87,7 +87,7 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-			<div class="navi_bar_area">
+			<div class="navi_area">
 				<div class="dropdown">
 					<button class="dropbtn">국내
 						<i class="fa fa-caret-down"></i>
@@ -194,7 +194,9 @@
 			
 	</div>	<!-- .wrap end -->
 </div>	<!-- .wrapper end -->
-
+<%-- <%=application.getServerInfo() %><br>
+<%= application.getMajorVersion() %>.<%= application.getMinorVersion() %><br>
+<%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %><br> --%>
 <script type="text/javascript">
 	
 	$(document).ready(function(){

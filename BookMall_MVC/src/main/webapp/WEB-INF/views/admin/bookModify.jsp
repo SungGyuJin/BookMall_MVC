@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/admin/goodsModify.css">
+<link rel="stylesheet" href="/resources/css/admin/bookModify.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 
 <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
@@ -20,15 +20,15 @@
 				<%@include file="../includes/admin/header.jsp" %>
 				
                 <div class="admin_content_wrap">
-                    <div class="admin_content_subject"><span>도서수정</span></div>
+                    <div class="admin_content_subject"><span>The BooK</span></div>
                     <div class="admin_content_main">
-                    	<form action="/admin/goodsModify" method="post" id="modifyForm">
+                    	<form action="/admin/bookModify" method="post" id="modifyForm">
                     		<div class="form_section">
                     			<div class="form_section_title">
                     				<label>제목</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="bookName" value="${goodsInfo.bookName}">
+                    				<input name="bookName" value="${bookInfo.bookName}">
                     				<span class="ck_warn bookName_warn">제목을 입력해주세요.</span>
                     			</div>
                     		</div>
@@ -37,8 +37,8 @@
                     				<label>작가</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input id="authorName_input" readonly="readonly" value="${goodsInfo.authorName}">
-                    				<input id="authorId_input" name="authorId" type="hidden" value="${goodsInfo.authorId}">
+                    				<input id="authorName_input" readonly="readonly" value="${bookInfo.authorName}">
+                    				<input id="authorId_input" name="authorId" type="hidden" value="${bookInfo.authorId}">
                     				<button class="authorId_btn">작가 선택</button>
                     				<span class="ck_warn authorId_warn">작가를 선택해주세요</span>
                     			</div>
@@ -57,7 +57,7 @@
                     				<label>출판사</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="publisher" value="${goodsInfo.publisher}">
+                    				<input name="publisher" value="${bookInfo.publisher}">
                     				<span class="ck_warn publisher_warn">출판사를 입력해주세요.</span>
                     			</div>
                     		</div>             
@@ -92,7 +92,7 @@
                     				<label>가격</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="bookPrice" value="${goodsInfo.bookPrice}">
+                    				<input name="bookPrice" value="${bookInfo.bookPrice}">
                     				<span class="ck_warn bookPrice_warn">가격을 입력해주세요.</span>
                     			</div>
                     		</div>               
@@ -101,7 +101,7 @@
                     				<label>재고</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="bookStock" value="${goodsInfo.bookStock}">
+                    				<input name="bookStock" value="${bookInfo.bookStock}">
                     				<span class="ck_warn bookStock_warn">재고를 입력해주세요.</span>
                     			</div>
                     		</div>          
@@ -111,7 +111,7 @@
                     			</div>
                     			<div class="form_section_content">
                     				<input id="discount_interface" maxlength="2" value="0">
-                    				<input name="bookDiscount" type="hidden" value="${goodsInfo.bookDiscount}">
+                    				<input name="bookDiscount" type="hidden" value="${bookInfo.bookDiscount}">
                     				<span class="step_val">할인 가격 : <span class="span_discount"></span></span>
                     				<span class="ck_warn bookDiscount_warn">1~99 숫자를 입력해주세요.</span>
                     			</div>
@@ -121,7 +121,7 @@
                     				<label>소개</label>
                     			</div>
                     			<div class="form_section_content bit">
-                    				<textarea name="bookIntro" id="bookIntro_textarea">${goodsInfo.bookIntro}</textarea>
+                    				<textarea name="bookIntro" id="bookIntro_textarea">${bookInfo.bookIntro}</textarea>
                     				<span class="ck_warn bookIntro_warn">소개를 입력해주세요.</span>
                     			</div>
                     		</div>        		
@@ -130,7 +130,7 @@
                     				<label>목차</label>
                     			</div>
                     			<div class="form_section_content bct">
-                    				<textarea name="bookContents" id="bookContents_textarea">${goodsInfo.bookContents}</textarea>
+                    				<textarea name="bookContents" id="bookContents_textarea">${bookInfo.bookContents}</textarea>
                     				<span class="ck_warn bookContents_warn">목차를 입력해주세요.</span>
                     			</div>
                     		</div>
@@ -145,7 +145,7 @@
                     				</div>
                     			</div>
                     		</div>
-                    		<input type="hidden" name='bookId' value="${goodsInfo.bookId}">
+                    		<input type="hidden" name='bookId' value="${bookInfo.bookId}">
                    		</form>
                    			<div class="btn_section">
 	                    		<button id="modifyBtn" class="btn modify_btn">수 정</button>
@@ -153,11 +153,11 @@
 								<button id="deleteBtn" class="btn delete_btn">삭제</button>
 	                    	</div> 
                     </div>  
-                	<form id="moveForm" action="/admin/goodsManage" method="get">
+                	<form id="moveForm" action="/admin/bookManage" method="get">
  						<input type="hidden" name="pageNum" value="${cri.pageNum}">
 						<input type="hidden" name="amount" value="${cri.amount}">
 						<input type="hidden" name="keyword" value="${cri.keyword}">
-						<input type="hidden" name='bookId' value="${goodsInfo.bookId}">
+						<input type="hidden" name='bookId' value="${bookInfo.bookId}">
                 	</form>                     
                 </div>
 
@@ -189,7 +189,7 @@
 		// 캘린더
 		$(function() {	
 			
-			let publeYear = '${goodsInfo.publeYear}';
+			let publeYear = '${bookInfo.publeYear}';
 			//let puble_length = publeYear.indexOf(" ");
 			//publeYear = publeYear.substring(0, puble_length);
 			$("input[name='publeYear']").datepicker(config);
@@ -244,7 +244,7 @@
 		
 		
 		let targetCate2 = '';
-		let targetCate3 = '${goodsInfo.cateCode}';
+		let targetCate3 = '${bookInfo.cateCode}';
 		
 		// 소분류
 		for(let i = 0; i < cate3Array.length; i++){
@@ -321,8 +321,8 @@
 			
 			let discountRate = userInput.val();								// 사용자가 입력한 할인값
 			let sendDiscountRate = discountRate / 100;						// 서버에 전송할 할인값
-			let goodsPrice = $("input[name='bookPrice']").val();			// 원가
-			let discountPrice = goodsPrice * (1 - sendDiscountRate);		// 할인가격
+			let bookPrice = $("input[name='bookPrice']").val();			// 원가
+			let discountPrice = bookPrice * (1 - sendDiscountRate);		// 할인가격
 			
 			if(!isNaN(discountRate)){
 				$(".span_discount").html(discountPrice);		
@@ -339,8 +339,8 @@
 			
 			let discountRate = userInput.val();								// 사용자가 입력한 할인값
 			let sendDiscountRate = discountRate / 100;						// 서버에 전송할 할인값
-			let goodsPrice = $("input[name='bookPrice']").val();			// 원가
-			let discountPrice = goodsPrice * (1 - sendDiscountRate);		// 할인가격
+			let bookPrice = $("input[name='bookPrice']").val();			// 원가
+			let discountPrice = bookPrice * (1 - sendDiscountRate);		// 할인가격
 			
 			if(!isNaN(discountRate)){
 				$(".span_discount").html(discountPrice);	
@@ -350,7 +350,7 @@
 		});
 		
 		/* 기존 이미지 출력 */
-		let bookId = '<c:out value="${goodsInfo.bookId}"/>';
+		let bookId = '<c:out value="${bookInfo.bookId}"/>';
 		let uploadResult = $("#uploadResult");
 		
 		$.getJSON("/getAttachList", {bookId : bookId}, function(arr){
@@ -361,7 +361,7 @@
 				
 				let str = "";
 				str += "<div id='result_card'>";
-				str += "<img src='/resources/img/goodsNoImage.png'>";
+				str += "<img src='/resources/img/bookNoImage.png'>";
 				str += "</div>";
 				
 				uploadResult.html(str);				
@@ -480,8 +480,8 @@
 		
 		let moveForm = $("#moveForm");
 		moveForm.find("input").remove();
-		moveForm.append('<input type="hidden" name="bookId" value="${goodsInfo.bookId}">');
-		moveForm.attr("action", "/admin/goodsDelete");
+		moveForm.append('<input type="hidden" name="bookId" value="${bookInfo.bookId}">');
+		moveForm.attr("action", "/admin/bookDelete");
 		moveForm.attr("method", "post");
 		moveForm.submit();
 		

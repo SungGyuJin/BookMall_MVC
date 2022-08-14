@@ -124,10 +124,10 @@ a{
 }
 
 /* 제품 목록 네비 */
-.navi_bar_area{
+.navi_area{
 	width: 100%;
     height: 70px;
-    background-color: #7696fd;
+    background-color: #5E6B9E;
 }
 
 /* 홈페이지 메인 제품 목록  */

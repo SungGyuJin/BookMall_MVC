@@ -63,39 +63,8 @@ ul {
 	
 }
 
-.admin_list_03 {
-	background-color: #C0C0C0;
-	border-radius: 12px;
-}
-
-.admin_list_03 {
+.admin_list_02 {
 	background-color: #c8c8c8;
-	border-radius: 12px;
-}
-
-.admin_list_01:hover {
-	background-color: #D3D3D3;
-	border-radius: 12px;
-}
-
-.admin_list_02:hover {
-	background-color: #D3D3D3;
-	border-radius: 12px;
-}
-
-.admin_list_03:hover {
-	background-color: #D3D3D3;
-	border-radius: 12px;
-}
-
-.admin_list_04:hover {
-	background-color: #D3D3D3;
-	border-radius: 12px;
-}
-
-.admin_list_05:hover {
-	background-color: #D3D3D3;
-	border-radius: 12px;
 }
 
 /* 관리자페이지 컨텐츠 영역 */
@@ -105,8 +74,7 @@ ul {
 	min-height: 700px;
 }
 
-/* 관리자 컨텐츠 제목 영역 */
-.admin_content_subject {
+.admin_content_subject { /* 관리자 컨텐츠 제목 영역 */
 	font-size: 40px;
 	font-weight: bolder;
 	padding-left: 15px;
@@ -114,7 +82,6 @@ ul {
 	height: 80px;
 	line-height: 80px;
 	color: white;
-	border-radius: 12px;
 }
 /* 관리자 컨텐츠 메인 영역 */
 .form_section {
@@ -147,20 +114,38 @@ ul {
 	padding: 5px 1%;
 }
 
-.form_section_content select {
-	width: 98%;
-	height: 35px;
-	font-size: 20px;
+.ui-datepicker-trigger { /* 캘린더 css 설정 */
+	margin-left: 25px;
+	width: 14%;
+	height: 38px;
+	font-weight: 600;
+	background-color: #dfe8f5;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+input[name='publeYear'] {
+	width: 80%;
 	text-align: center;
 }
 
-/* 입력란 공란 경고 태그 */
-.form_section_content span {
-	display: none;
-	padding-top: 10px;
+.authorId_btn { /* 작가 선택 css 설정 */
+	margin-left: 20px;
+	width: 14%;
+	height: 38px;
+	font-weight: 600;
+	background-color: #dfe8f5;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+#authorName_input {
+	width: 80%;
 	text-align: center;
-	color: red;
-	font-weight: 300;
+}
+
+.ck-content { /* ckeditor 높이 */
+	height: 170px;
 }
 
 /* 버튼 영역 */
@@ -175,12 +160,27 @@ ul {
 	font-size: 25px;
 	font-weight: 600;
 	line-height: 40px;
-	border-radius: 12px;
-	background-color: #DCDCDC;
 }
 
 .btn:hover {
 	cursor: pointer;
+}
+
+.modify_btn {
+	border-radius: 12px;
+	background-color: #87CEFA;
+}
+
+.modify_btn:hover {
+	background-color: #00BFFF;
+}
+
+#cancelBtn {
+	background-color: #DCDCDC;
+	border-radius: 12px;
+}
+
+#cancelBtn:hover {
 	background-color: #A9A9A9;
 }
 
@@ -189,13 +189,41 @@ ul {
 	margin-left: 15px;
 }
 
-#enrollBtn {
-	background-color: #87CEFA;
+#enrollBtn:hover {
+	background-color: #c9cbd0;
+}
+
+.delete_btn {
+	background-color: #FFA07A;
 	border-radius: 12px;
 }
 
-#enrollBtn:hover {
-	background-color: #00BFFF;
+.delete_btn:hover {
+	background-color: #FF6347;
+}
+
+.form_section_content select { /* 카테고리 css 설정 */
+	width: 92%;
+	height: 35px;
+	font-size: 20px;
+	text-align-last: center;
+	margin-left: 5px;
+}
+
+.cate_wrap span {
+	font-weight: 600;
+}
+
+.cate_wrap:not(:first-child) {
+	margin-top: 20px;
+}
+
+.ck_warn { /* 입력란 공란 경고 태그 */
+	display: none;
+	padding-top: 10px;
+	text-align: center;
+	color: #e05757;
+	font-weight: 300;
 }
 
 /* footer navai 영역 */
@@ -264,6 +292,36 @@ ul {
 	width: 680px;
 	margin-left: 70px;
 	margin-top: 30px;
+}
+
+#result_card img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	padding: 5px;
+	margin-top: 10px;
+	margin: auto;
+}
+
+#result_card {
+	position: relative;
+}
+
+.imgDeleteBtn {
+	position: absolute;
+	top: 0;
+	right: 5%;
+	background-color: #ef7d7d;
+	color: wheat;
+	font-weight: 900;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	line-height: 26px;
+	text-align: center;
+	border: none;
+	display: block;
+	cursor: pointer;
 }
 
 /* float 속성 해제 */

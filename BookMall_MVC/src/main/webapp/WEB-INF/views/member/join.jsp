@@ -20,7 +20,6 @@ a{
 </style>
 </head>
 <body>
-<br><br><br>
 <div class="wrapper">
 		<form id="join_form" method="post">
 		<div class="wrap">

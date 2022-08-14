@@ -29,6 +29,7 @@ public class CartMapperTests {
 		cart.setBookCount(count);
 		
 		int result = 0;
+		
 		result = mapper.addCart(cart);
 		
 		System.out.println("결과 : " + result);

@@ -61,13 +61,13 @@ public class AdminController {
 	}
 
 	// 상품관리 페이지 접속
-	@RequestMapping(value = "goodsManage", method = RequestMethod.GET)
-	public void goodsManageGET(Criteria cri, Model model) throws Exception {
+	@RequestMapping(value = "bookManage", method = RequestMethod.GET)
+	public void bookManageGET(Criteria cri, Model model) throws Exception {
 
 		log.info("상품관리 페이지 접속");
 
 		// 상품 리스트 데이터
-		List list = adminService.goodsGetList(cri);
+		List list = adminService.bookGetList(cri);
 
 		if (!list.isEmpty()) {
 			model.addAttribute("list", list);
@@ -76,12 +76,12 @@ public class AdminController {
 			return;
 		}
 
-		model.addAttribute("pageMaker", new PageDTO(cri, adminService.goodsGetTotal(cri)));
+		model.addAttribute("pageMaker", new PageDTO(cri, adminService.bookGetTotal(cri)));
 	}
 
 	// 상품등록 페이지 접속
-	@RequestMapping(value = "goodsEnroll", method = RequestMethod.GET)
-	public void goodsEnrollGET(Model model) throws Exception {
+	@RequestMapping(value = "bookEnroll", method = RequestMethod.GET)
+	public void bookEnrollGET(Model model) throws Exception {
 
 		log.info("상품등록 페이지 접속");
 
@@ -99,10 +99,10 @@ public class AdminController {
 	}
 
 	// 상품조회 페이지
-	@GetMapping({ "/goodsDetail", "/goodsModify" })
-	public void goodsGetInfoGET(int bookId, Criteria cri, Model model) throws JsonProcessingException {
+	@GetMapping({ "/bookDetail", "/bookModify" })
+	public void bookGetInfoGET(int bookId, Criteria cri, Model model) throws JsonProcessingException {
 
-		log.info("goodsGetInfo()..." + bookId);
+		log.info("bookGetInfo()..." + bookId);
 
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -113,30 +113,30 @@ public class AdminController {
 		model.addAttribute("cri", cri);
 
 		// 조회페이지 정보
-		model.addAttribute("goodsInfo", adminService.goodsGetDetail(bookId));
+		model.addAttribute("bookInfo", adminService.bookGetDetail(bookId));
 	}
 
 	// 상품정보 수정
-	@PostMapping("/goodsModify")
-	public String goodsModifyPOST(BookVO vo, RedirectAttributes rttr) {
+	@PostMapping("/bookModify")
+	public String bookModifyPOST(BookVO vo, RedirectAttributes rttr) {
 
-		log.info("goodsModifyPOST..." + vo);
+		log.info("bookModifyPOST..." + vo);
 
-		int result = adminService.goodsModify(vo);
+		int result = adminService.bookModify(vo);
 
 		rttr.addFlashAttribute("modify_result", result);
 
 		System.out.println("modify_result: " + result);
 
-		return "redirect:/admin/goodsManage";
+		return "redirect:/admin/bookManage";
 
 	}
 
 	// 상품정보 삭제
-	@PostMapping("/goodsDelete")
-	public String goodsDeletePOST(int bookId, RedirectAttributes rttr) {
+	@PostMapping("/bookDelete")
+	public String bookDeletePOST(int bookId, RedirectAttributes rttr) {
 
-		log.info("goodsDeletePOST...");
+		log.info("bookDeletePOST...");
 		
 		List<AttachImageVO> fileList = adminService.getAttachInfo(bookId);
 		
@@ -163,13 +163,13 @@ public class AdminController {
 			
 		}
 
-		int result = adminService.goodsDelete(bookId);
+		int result = adminService.bookDelete(bookId);
 
 		rttr.addFlashAttribute("delete_result", result);
 
 		System.out.println("delete_result: " + result);
 
-		return "redirect:/admin/goodsManage";
+		return "redirect:/admin/bookManage";
 	}
 
 	// 작가등록 페이지 접속
@@ -264,16 +264,16 @@ public class AdminController {
 	}
 
 	// 상품등록
-	@PostMapping("/goodsEnroll")
-	public String goodsEnrollPOST(BookVO book, RedirectAttributes rttr) {
+	@PostMapping("/bookEnroll")
+	public String bookEnrollPOST(BookVO book, RedirectAttributes rttr) {
 
-		log.info("goodsEnrollPOST......" + book);
+		log.info("bookEnrollPOST......" + book);
 
 		adminService.bookEnroll(book);
 
 		rttr.addFlashAttribute("enroll_result", book.getBookName());
 
-		return "redirect:/admin/goodsManage";
+		return "redirect:/admin/bookManage";
 	}
 
 	// 작가 검색 팝업창

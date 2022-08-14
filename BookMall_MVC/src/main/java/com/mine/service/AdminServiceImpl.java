@@ -52,35 +52,35 @@ public class AdminServiceImpl implements AdminService{
 	
 	// 상품리스트
 	@Override
-	public List<BookVO> goodsGetList(Criteria cri) {
+	public List<BookVO> bookGetList(Criteria cri) {
 		
-		log.info("goodsGetTotalList()...");
+		log.info("bookGetTotalList()...");
 		
-		return adminMapper.goodsGetList(cri);
+		return adminMapper.bookGetList(cri);
 	}
 
 	// 상품 총 갯수
 	@Override
-	public int goodsGetTotal(Criteria cri) {
+	public int bookGetTotal(Criteria cri) {
 		
-		log.info("goodsGetTotal()...");
+		log.info("bookGetTotal()...");
 		
-		return adminMapper.goodsGetTotal(cri);
+		return adminMapper.bookGetTotal(cri);
 	}
 
 	@Override
-	public BookVO goodsGetDetail(int bookId) {
+	public BookVO bookGetDetail(int bookId) {
 
 		log.info("(service) bookGetDetail...");
 		
-		return adminMapper.goodsGetDetail(bookId);
+		return adminMapper.bookGetDetail(bookId);
 	}
 
 	// 상품정보 수정
 	@Override
-	public int goodsModify(BookVO vo) {
+	public int bookModify(BookVO vo) {
 
-		int result = adminMapper.goodsModify(vo);
+		int result = adminMapper.bookModify(vo);
 		
 		if(result == 1 && vo.getImageList() != null && vo.getImageList().size() > 0) {
 			
@@ -101,13 +101,13 @@ public class AdminServiceImpl implements AdminService{
 	// 상품정보 삭제
 	@Override
 	@Transactional
-	public int goodsDelete(int bookId) {
+	public int bookDelete(int bookId) {
 			
-		log.info("goodsDelete...");
+		log.info("bookDelete...");
 		
 		adminMapper.deleteImageAll(bookId);
 		
-		return adminMapper.goodsDelete(bookId);
+		return adminMapper.bookDelete(bookId);
 	}
 	
 	// 지정 상품 이미지 정보 얻기

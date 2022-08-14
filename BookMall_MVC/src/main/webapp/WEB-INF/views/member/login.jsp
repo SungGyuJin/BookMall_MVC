@@ -40,7 +40,7 @@ a{
 					</div>
 					<div class="pw_wrap">
 						<div class="pw_input_box">
-							<input type="password" class="pw_iput" name="memberPw" value="1234" placeholder="Password" />
+							<input type="password" class="pw_input" name="memberPw" value="1234" placeholder="Password" />
 								
 						</div>
 					</div>

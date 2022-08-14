@@ -1,9 +1,98 @@
 @charset "UTF-8";
-.admin_top_wrap{
+
+.admin_top_wrap {
+	width: 100%;
 	border-radius: 12px;
-	background-color: #87CEFA;
+	background-color: #D3D3D3;
+	text-align: center;
+	font-style: italic;
+}
+
+.admin_navi_wrap{
+	display: block;
+	width: 100%;
+	margin: 0 0 15px 25%;
+}
+
+/* .admin_navi_wrap li {
+	height: 80px;
+	line-height: 80px;
 	text-align: center;
 }
-.top_gnb_area{
+
+.admin_navi_wrap li a {
+	display: block;
+	height: 100%;
+	width: 95%;
+	margin: 0 auto;
+	cursor: pointer;
+	font-size: 30px;
+	font-weight: bolder;
+} */
+
+.admin_navi_wrap a{
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+	cursor: pointer;
+	font-size: 30px;
+	font-weight: bolder;
+	font-style: italic;
+	color: black;
+}
+
+.admin_div{
+	float: left;
+	width: 25%;
+	height: 50px;
+}
+.admin_div:hover{
+	background-color: #D3D3D3;
+	border-radius: 12px;
+	background-color: yellow;
+}
+
+.admin_navi_wrap li a:link {
+	color: black;
+}
+
+.admin_navi_wrap li a:visited {
+	color: black;
+}
+
+.admin_navi_wrap li a:active {
+	color: black;
+}
+
+.admin_navi_wrap li a:hover {
+	color: black;
+}
+
+.top_gnb_area {
+	border-radius: 12px;
+}
+
+.admin_list_01:hover {
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+
+.admin_list_02:hover {
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+
+.admin_list_03:hover {
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+
+.admin_list_04:hover {
+	background-color: #D3D3D3;
+	border-radius: 12px;
+}
+
+.admin_list_05:hover {
+	background-color: #D3D3D3;
 	border-radius: 12px;
 }

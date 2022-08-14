@@ -14,7 +14,7 @@
 				<%@include file="../includes/admin/header.jsp" %>
 						
 				<div class="admin_content_wrap">
-					<div class="admin_content_subject"><span>작가등록</span></div>
+					<div class="admin_content_subject"><span>The BooK</span></div>
 					
 					<div class="admin_content_main">
 						<form action="/admin/authorEnroll.do" method="post" id="enrollForm">
@@ -33,7 +33,7 @@
 										</div>
 										<div class="form_section_content">
 												<select name="nationId">
-														<option value="none" selected>=== 선택 ===</option>
+														<option value="none" selected>== 선택 ==</option>
 														<option value="01">국내</option>
 														<option value="02">국외</option>
 												</select>

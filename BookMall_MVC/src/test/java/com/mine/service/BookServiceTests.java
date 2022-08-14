@@ -1,4 +1,4 @@
-package com.mine.mapper;
+package com.mine.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

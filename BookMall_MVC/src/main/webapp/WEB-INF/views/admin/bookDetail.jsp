@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/admin/goodsDetail.css">
+<link rel="stylesheet" href="/resources/css/admin/bookDetail.css">
 
 <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
 <style type="text/css">
@@ -26,7 +26,7 @@
 				<%@include file="../includes/admin/header.jsp" %>
 				
                 <div class="admin_content_wrap">
-                    <div class="admin_content_subject"><span>도서상세</span></div>
+                    <div class="admin_content_subject"><span>The BooK</span></div>
 
                     <div class="admin_content_main">
 
@@ -35,7 +35,7 @@
                     				<label>제목</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="bookName" value="<c:out value="${goodsInfo.bookName}"/>" disabled>
+                    				<input name="bookName" value="<c:out value="${bookInfo.bookName}"/>" disabled>
                     			</div>
                     		</div>
                     		<div class="form_section">
@@ -43,7 +43,7 @@
                     				<label>등록일</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input value="<fmt:formatDate value='${goodsInfo.regDate}' pattern='yyyy-MM-dd'/>" disabled>
+                    				<input value="<fmt:formatDate value='${bookInfo.regDate}' pattern='yyyy-MM-dd'/>" disabled>
                     			</div>
                     		</div>
                     		<div class="form_section">
@@ -51,7 +51,7 @@
                     				<label>수정일</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input value="<fmt:formatDate value='${goodsInfo.updateDate}' pattern='yyyy-MM-dd'/>" disabled>
+                    				<input value="<fmt:formatDate value='${bookInfo.updateDate}' pattern='yyyy-MM-dd'/>" disabled>
                     			</div>
                     		</div>                    		                    		
                     		<div class="form_section">
@@ -59,7 +59,7 @@
                     				<label>작가</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input id="authorName_input" readonly="readonly" value="${goodsInfo.authorName }" disabled>
+                    				<input id="authorName_input" readonly="readonly" value="${bookInfo.authorName }" disabled>
                     				                    				
                     			</div>
                     		</div>            
@@ -68,7 +68,7 @@
                     				<label>출판일</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="publeYear" autocomplete="off" readonly="readonly" value="<c:out value="${goodsInfo.publeYear}"/>" disabled>                    				
+                    				<input name="publeYear" autocomplete="off" readonly="readonly" value="<c:out value="${bookInfo.publeYear}"/>" disabled>                    				
                     			</div>
                     		</div>            
                     		<div class="form_section">
@@ -76,7 +76,7 @@
                     				<label>출판사</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="publisher" value="<c:out value="${goodsInfo.publisher}"/>" disabled>
+                    				<input name="publisher" value="<c:out value="${bookInfo.publisher}"/>" disabled>
                     			</div>
                     		</div>             
                     		<div class="form_section">
@@ -109,7 +109,7 @@
                     				<label>가격</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="bookPrice" value="<c:out value="${goodsInfo.bookPrice}"/>" disabled>
+                    				<input name="bookPrice" value="<c:out value="${bookInfo.bookPrice}"/>" disabled>
                     			</div>
                     		</div>               
                     		<div class="form_section">
@@ -117,7 +117,7 @@
                     				<label>재고</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="bookStock" value="<c:out value="${goodsInfo.bookStock}"/>" disabled>
+                    				<input name="bookStock" value="<c:out value="${bookInfo.bookStock}"/>" disabled>
                     			</div>
                     		</div>          
                     		<div class="form_section">
@@ -133,7 +133,7 @@
                     				<label>소개</label>
                     			</div>
                     			<div class="form_section_content bit">
-                    				<textarea name="bookIntro" id="bookIntro_textarea" disabled>${goodsInfo.bookIntro}</textarea>
+                    				<textarea name="bookIntro" id="bookIntro_textarea" disabled>${bookInfo.bookIntro}</textarea>
                     			</div>
                     		</div>        		
                     		<div class="form_section">
@@ -141,7 +141,7 @@
                     				<label>목차</label>
                     			</div>
                     			<div class="form_section_content bct">
-                    				<textarea name="bookContents" id="bookContents_textarea" disabled>${goodsInfo.bookContents}</textarea>
+                    				<textarea name="bookContents" id="bookContents_textarea" disabled>${bookInfo.bookContents}</textarea>
                     			</div>
                     		</div>
                     		
@@ -162,7 +162,7 @@
 	                    	</div> 
                     </div>      
                 	
-                	<form id="moveForm" action="/admin/goodsManage" method="get">
+                	<form id="moveForm" action="/admin/bookManage" method="get">
  						<input type="hidden" name="pageNum" value="${cri.pageNum}">
 						<input type="hidden" name="amount" value="${cri.amount}">
 						<input type="hidden" name="keyword" value="${cri.keyword}">
@@ -177,11 +177,11 @@
 	$(document).ready(function(){
 		
 		// 할인율 삽입
-		let bookDiscount = '<c:out value="${goodsInfo.bookDiscount}"/>' * 100;
+		let bookDiscount = '<c:out value="${bookInfo.bookDiscount}"/>' * 100;
 		$("#discount_interface").attr("value", bookDiscount);
 		
 		/* 출판일 값 가공(oracle)
-		let publeYear = '${goodsInfo.publeYear}';
+		let publeYear = '${bookInfo.publeYear}';
 		let length = publeYear.indexOf(" ");
 		
 		publeYear = publeYear.substring(0, length);
@@ -250,7 +250,7 @@
 		
 		
 		let targetCate2 = '';
-		let targetCate3 = '${goodsInfo.cateCode}';
+		let targetCate3 = '${bookInfo.cateCode}';
 		
 		for(let i = 0; i < cate3Array.length; i++){
 			if(targetCate3 === cate3Array[i].cateCode){
@@ -300,7 +300,7 @@
 		});
 		
 		// 이미지 정보 호출
-		let bookId = '<c:out value="${goodsInfo.bookId}"/>';
+		let bookId = '<c:out value="${bookInfo.bookId}"/>';
 		let uploadResult = $("#uploadResult");
 		
 		$.getJSON("/getAttachList", {bookId : bookId}, function(arr){
@@ -309,7 +309,7 @@
 				
 				let str = "";
 				str += "<div id='result_card'>";
-				str += "<img src='/resources/img/goodsNoImage.png'";
+				str += "<img src='/resources/img/bookNoImage.png'";
 				str += "</div>";
 				
 				uploadResult.html(str);
@@ -353,10 +353,10 @@
 		
 		e.preventDefault();
 		
-		let addInput = '<input type="hidden" name="bookId" value="${goodsInfo.bookId}">';
+		let addInput = '<input type="hidden" name="bookId" value="${bookInfo.bookId}">';
 		
 		$("#moveForm").append(addInput);
-		$("#moveForm").attr("action", "/admin/goodsModify");
+		$("#moveForm").attr("action", "/admin/bookModify");
 		$("#moveForm").submit();
 	});
 	
