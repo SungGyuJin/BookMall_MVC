@@ -33,9 +33,9 @@ public class BookServiceImpl implements BookService{
 	
 	// 상품검색
 	@Override
-	public List<BookVO> getGoodsList(Criteria cri) {
+	public List<BookVO> getbookList(Criteria cri) {
 
-		log.info("getGoodsList()......");
+		log.info("getbookList()......");
 
 		String type = cri.getType();
 		String[] typeArr = type.split("");
@@ -54,7 +54,7 @@ public class BookServiceImpl implements BookService{
 			}
 		}
 		
-		List<BookVO> list = bookMapper.getGoodsList(cri);
+		List<BookVO> list = bookMapper.getbookList(cri);
 		
 		list.forEach(book -> {
 			
@@ -71,11 +71,11 @@ public class BookServiceImpl implements BookService{
 
 	// 상품 총 갯수
 	@Override
-	public int goodsGetTotal(Criteria cri) {
+	public int bookGetTotal(Criteria cri) {
 
-		log.info("goodsGetTotal()......");
+		log.info("bookGetTotal()......");
 		
-		return bookMapper.goodsGetTotal(cri);
+		return bookMapper.bookGetTotal(cri);
 	}
 
 	@Override
@@ -132,13 +132,13 @@ public class BookServiceImpl implements BookService{
 	}
 	
 	@Override
-	public BookVO getGoodsInfo(int bookId) {
+	public BookVO getbookInfo(int bookId) {
 		
-		BookVO goodsInfo = bookMapper.getGoodsInfo(bookId);
-		goodsInfo.setImageList(adminMapper.getAttachInfo(bookId));
+		BookVO bookInfo = bookMapper.getbookInfo(bookId);
+		bookInfo.setImageList(adminMapper.getAttachInfo(bookId));
 
 		
-		return goodsInfo;
+		return bookInfo;
 	}
 
 	@Override

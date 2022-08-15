@@ -17,7 +17,7 @@
 </script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
-<body>
+<body>🔍
 <div class="wrapper">
 	<div class="wrap">
 			<div class="top_gnb_area">
@@ -141,7 +141,7 @@
 					</div>
 					<div class="ls_div">
 						<c:forEach items="${mainList}" var="mList">
-							<a href="/goodsDetail/${mList.bookId}">
+							<a href="/bookDetail/${mList.bookId}">
 								<div class="ls_div_content_wrap">
 									<div class="ls_div_content">
 										<div class="image_wrap" data-bookid="${mList.imageList[0].bookId}" data-path="${mList.imageList[0].uploadPath}" data-uuid="${mList.imageList[0].uuid}" data-filename="${mList.imageList[0].fileName}">
@@ -223,7 +223,7 @@
 				
 				$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
 			} else {
-				$(this).find("img").attr('src', '/resources/img/goodsNoImage.png');
+				$(this).find("img").attr('src', '/resources/img/bookNoImage.png');
 			}
 			
 		});

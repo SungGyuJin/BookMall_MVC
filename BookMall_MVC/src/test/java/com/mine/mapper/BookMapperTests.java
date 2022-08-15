@@ -20,7 +20,7 @@ public class BookMapperTests {
 	private BookMapper mapper;
 	
 //	@Test
-//	public void getGoodsListTest() {
+//	public void getbookListTest() {
 //		
 //		Criteria cri = new Criteria();
 //		
@@ -28,12 +28,12 @@ public class BookMapperTests {
 //		// setKeyword("text");
 //		System.out.println("cri : " + cri);
 //		
-//		List<BookVO> list = mapper.getGoodsList(cri);
+//		List<BookVO> list = mapper.getbookList(cri);
 //		System.out.println("list : " + list);
 //		
 //		System.out.println("==========");
-//		int goodsTotal = mapper.goodsGetTotal(cri);
-//		System.out.println("total : " + goodsTotal);
+//		int bookTotal = mapper.bookGetTotal(cri);
+//		System.out.println("total : " + bookTotal);
 //		
 //		
 //	}
@@ -56,7 +56,7 @@ public class BookMapperTests {
 	/* 검색 (동적 쿼리 적용) - 작가*/
 	
 //		@Test 
-//		public void getGoodsListTest1() {
+//		public void getbookListTest1() {
 //
 //		Criteria cri = new Criteria();
 //		String type = "A";
@@ -68,7 +68,7 @@ public class BookMapperTests {
 //		cri.setAuthorArr(mapper.getAuthorIdList(keyword));
 //		cri.setCateCode(catecode);
 //		
-//		List<BookVO> list = mapper.getGoodsList(cri);
+//		List<BookVO> list = mapper.getbookList(cri);
 //		
 //		System.out.println("cri : " + cri);
 //		System.out.println("list : " + list);
@@ -78,7 +78,7 @@ public class BookMapperTests {
 		/* 검색 (동적 쿼리 적용) - 책제목*/
 		
 //		@Test 
-//		public void getGoodsListTest2() {
+//		public void getbookListTest2() {
 //			Criteria cri = new Criteria();
 //			String type = "T";
 //			String keyword = "테스트";			// 테이블에 등록된 책 제목 데이터
@@ -90,7 +90,7 @@ public class BookMapperTests {
 //			cri.setAuthorArr(mapper.getAuthorIdList(keyword));
 //			cri.setCateCode(catecode);
 //			
-//			List<BookVO> list = mapper.getGoodsList(cri);
+//			List<BookVO> list = mapper.getbookList(cri);
 //			
 //			System.out.println("cri : " + cri);
 //			System.out.println("list : " + list);
@@ -101,7 +101,7 @@ public class BookMapperTests {
 		/* 검색 (동적 쿼리 적용) - 카테고리*/
 		
 //		@Test 
-//		public void getGoodsListTest3() {
+//		public void getbookListTest3() {
 //			Criteria cri = new Criteria();
 //			String type = "C";
 //			String keyword = "";
@@ -112,7 +112,7 @@ public class BookMapperTests {
 //			cri.setAuthorArr(mapper.getAuthorIdList(keyword));
 //			cri.setCateCode(catecode);
 //			
-//			List<BookVO> list = mapper.getGoodsList(cri);
+//			List<BookVO> list = mapper.getbookList(cri);
 //			
 //			System.out.println("cri : " + cri);
 //			System.out.println("list : " + list);
@@ -123,7 +123,7 @@ public class BookMapperTests {
 		/* 검색 (동적 쿼리 적용) - 카테고리 + 작가 */
 		
 //		@Test 
-//		public void getGoodsListTest4() {
+//		public void getbookListTest4() {
 //			Criteria cri = new Criteria();
 //			String type = "AC";
 ////			String keyword = "유홍준";	// 카테고리에 존재하는 작가
@@ -135,7 +135,7 @@ public class BookMapperTests {
 //			cri.setAuthorArr(mapper.getAuthorIdList(keyword));
 //			cri.setCateCode(catecode);
 //			
-//			List<BookVO> list = mapper.getGoodsList(cri);
+//			List<BookVO> list = mapper.getbookList(cri);
 //			
 //			System.out.println("cri : " + cri);
 //			System.out.println("list : " + list);	
@@ -148,7 +148,7 @@ public class BookMapperTests {
 		/* 검색 (동적 쿼리 적용) - 카테고리 + 책 제목 */
 		
 //		@Test 
-//		public void getGoodsListTest5() {
+//		public void getbookListTest5() {
 //			Criteria cri = new Criteria();
 //			String type = "CT";			// 카테고리에 존재하는 책
 //			String keyword = "테스트";	// 카테고리에 존재하지 않는 책
@@ -160,7 +160,7 @@ public class BookMapperTests {
 //			cri.setAuthorArr(mapper.getAuthorIdList(keyword));
 //			cri.setCateCode(catecode);
 //			
-//			List<BookVO> list = mapper.getGoodsList(cri);
+//			List<BookVO> list = mapper.getbookList(cri);
 //			
 //			System.out.println("cri : " + cri);
 //			System.out.println("list : " + list);	
@@ -209,12 +209,12 @@ public class BookMapperTests {
 	
 	// 상품정보
 	@Test
-	public void getGoodsInfo() {
+	public void getbookInfo() {
 		
 		int bookId = 31;
-		BookVO goodsInfo = mapper.getGoodsInfo(bookId);
+		BookVO bookInfo = mapper.getbookInfo(bookId);
 		System.out.println("===================");
-		System.out.println(goodsInfo);
+		System.out.println(bookInfo);
 		System.out.println("===================");
 		
 	}

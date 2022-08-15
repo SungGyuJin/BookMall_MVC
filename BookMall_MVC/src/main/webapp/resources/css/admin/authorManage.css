@@ -116,7 +116,8 @@ ul {
 	min-height: 700px;
 }
 
-.admin_content_subject { /* 관리자 컨텐츠 제목 영역 */
+/* 관리자 컨텐츠 제목 영역 */
+.admin_content_subject { 
 	font-size: 40px;
 	font-weight: bolder;
 	padding-left: 15px;

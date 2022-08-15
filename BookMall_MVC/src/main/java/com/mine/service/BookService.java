@@ -11,10 +11,10 @@ import com.mine.model.SelectDTO;
 public interface BookService {
 
 	// 상품검색
-	public List<BookVO> getGoodsList(Criteria cri);
+	public List<BookVO> getbookList(Criteria cri);
 	
 	// 상품 총 갯수
-	public int goodsGetTotal(Criteria cri);
+	public int bookGetTotal(Criteria cri);
 	
 	// 국내 카테고리 리스트
 	public List<CateVO> getCateCode1();
@@ -26,7 +26,7 @@ public interface BookService {
 	public List<CateFilterDTO> getCateInfoList(Criteria cri);
 	
 	// 상품 정보 
-	public BookVO getGoodsInfo(int bookId);
+	public BookVO getbookInfo(int bookId);
 
 	public List<SelectDTO> likeSelect();
 	

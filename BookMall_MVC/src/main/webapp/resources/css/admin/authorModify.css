@@ -81,6 +81,7 @@ ul {
 
 .admin_list_04 {
 	background-color: #c8c8c8;
+	border-radius: 12px;
 }
 
 /* 관리자페이지 컨텐츠 영역 */
@@ -98,6 +99,7 @@ ul {
 	height: 80px;
 	line-height: 80px;
 	color: white;
+	border-radius: 12px;
 }
 /* 관리자 컨텐츠 메인 영역 */
 .form_section {

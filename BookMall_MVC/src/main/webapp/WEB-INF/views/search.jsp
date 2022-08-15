@@ -25,7 +25,7 @@
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/goodsEnroll">관리자 페이지</a></li>
+							<li><a href="/admin/bookEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
 								<a id="gnb_logout_button">LOGOUT</a>
@@ -51,7 +51,7 @@
 						<form id="searchForm" action="/search" method="get">
 							<div class="search_input">
 								<select name="type">
-									<option value="T">책 제목</option>
+									<option value="T" selected>책 제목</option>
 									<option value="A">작가</option>
 								</select>
 								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">
@@ -126,7 +126,7 @@
 								<tr>
 									<td class="image">
 										<div class="image_wrap" data-bookid="${list.imageList[0].bookId}" data-path="${list.imageList[0].uploadPath}" data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
-											<a href="/goodsDetail/${list.bookId}"><img></a>	
+											<a href="/bookDetail/${list.bookId}"><img></a>	
 										</div>
 									</td>
 									<td class="detail">
@@ -134,7 +134,7 @@
 											[${list.cateName}]
 										</div>
 										<div class="title">
-											<a href="/goodsDetail/${list.bookId}">
+											<a href="/bookDetail/${list.bookId}">
 												${list.bookName}
 											</a>
 										</div>
@@ -246,18 +246,15 @@
 	</div>	<!-- .wrap end -->
 </div>	<!-- .wrapper end -->
 
-			
-
-
 <script>
 	
 $(document).ready(function(){
 	
-	// 검색 타입 selected
+	/* // 검색 타입 selected
 	const selectedType = '<c:out value="${pageMaker.cri.type}"/>';
 	if(selectedType != ""){
 		$("select[name='type']").val(selectedType).attr("selected", "selected");
-	}
+	} */
 	
 	// 이미지 삽입
 	$(".image_wrap").each(function(i, obj){
@@ -274,7 +271,7 @@ $(document).ready(function(){
 			
 			$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
 		}else{
-			$(this).find("img").attr('src', '/resources/img/goodsNoImage.png');
+			$(this).find("img").attr('src', '/resources/img/bookNoImage.png');
 		}
 		
 		

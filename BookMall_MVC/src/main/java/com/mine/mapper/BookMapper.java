@@ -12,10 +12,10 @@ import com.mine.model.SelectDTO;
 public interface BookMapper {
 
 	// 상품검색
-	public List<BookVO> getGoodsList(Criteria cri);
+	public List<BookVO> getbookList(Criteria cri);
 	
 	// 상품 총 갯수
-	public int goodsGetTotal(Criteria cri);
+	public int bookGetTotal(Criteria cri);
 	
 	// 작가 id 리시트 요청
 	public String[] getAuthorIdList(String keyword);
@@ -33,7 +33,7 @@ public interface BookMapper {
 	public CateFilterDTO getCateInfo(Criteria cri);
 	
 	// 상품정보
-	public BookVO getGoodsInfo(int bookId);
+	public BookVO getbookInfo(int bookId);
 	
 	public List<SelectDTO> likeSelect();
 	

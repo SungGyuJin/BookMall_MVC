@@ -14,7 +14,6 @@
 									<%@include file="../includes/admin/header.jsp" %>
 										
 					<div class="admin_content_wrap">
-						<div class="admin_content_subject"><span>The BooK</span></div>
 						<div class="admin_content_main">
 							<form id="modifyForm" action="/admin/authorModify" method="post">
 											<div class="form_section">

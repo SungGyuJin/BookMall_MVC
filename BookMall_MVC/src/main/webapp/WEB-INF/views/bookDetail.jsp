@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/goodsDetail.css">
+<link rel="stylesheet" href="/resources/css/bookDetail.css">
 </head>
 <body>
 <div class="wrapper">
@@ -89,42 +89,42 @@
 				</div>			
 			<div class="content_top">
 				<div class="ct_left_area">
-					<div class="image_wrap" data-bookid="${goodsInfo.imageList[0].bookId}" data-path="${goodsInfo.imageList[0].uploadPath}" data-uuid="${goodsInfo.imageList[0].uuid}" data-filename="${goodsInfo.imageList[0].fileName}">
+					<div class="image_wrap" data-bookid="${bookInfo.imageList[0].bookId}" data-path="${bookInfo.imageList[0].uploadPath}" data-uuid="${bookInfo.imageList[0].uuid}" data-filename="${bookInfo.imageList[0].fileName}">
 						<img>
 					</div>				
 				</div>
 				<div class="ct_right_area">
 					<div class="title">
 						<h1>
-							${goodsInfo.bookName}
+							${bookInfo.bookName}
 						</h1>
 					</div>
 					<div class="line">
 					</div>
 					<div class="author">
 						 <span>
-						 	${goodsInfo.authorName} 지음
+						 	${bookInfo.authorName} 지음
 						 </span>
 						 <span>|</span>
 						 <span>
-						 	${goodsInfo.publisher}
+						 	${bookInfo.publisher}
 						 </span>
 						 <span>|</span>
 						 <span class="publeyear">
-						 	${goodsInfo.publeYear}
+						 	${bookInfo.publeYear}
 						 </span>
 					</div>
 					<div class="line">
 					</div>	
 					<div class="price">
-						<div class="sale_price">정가 : <fmt:formatNumber value="${goodsInfo.bookPrice}" pattern="#,### 원" /></div>
+						<div class="sale_price">정가 : <fmt:formatNumber value="${bookInfo.bookPrice}" pattern="#,### 원" /></div>
 						<div class="discount_price">
-							판매가 : <span class="discount_price_number"><fmt:formatNumber value="${goodsInfo.bookPrice - (goodsInfo.bookPrice*goodsInfo.bookDiscount)}" pattern="#,### 원" /></span> 
-							[<fmt:formatNumber value="${goodsInfo.bookDiscount*100}" pattern="###" />% 
-							<fmt:formatNumber value="${goodsInfo.bookPrice*goodsInfo.bookDiscount}" pattern="#,### 원" /> 할인]</div>							
+							판매가 : <span class="discount_price_number"><fmt:formatNumber value="${bookInfo.bookPrice - (bookInfo.bookPrice*bookInfo.bookDiscount)}" pattern="#,### 원" /></span> 
+							[<fmt:formatNumber value="${bookInfo.bookDiscount*100}" pattern="###" />% 
+							<fmt:formatNumber value="${bookInfo.bookPrice*bookInfo.bookDiscount}" pattern="#,### 원" /> 할인]</div>							
 					</div>			
 					<div>
-						적립 포인트 : <span class="point_span"></span>원
+						&nbsp;&nbsp;&nbsp;&nbsp;수량 당 적립 : <span class="point_span"></span>원
 					</div>
 					<div class="line">
 					</div>	
@@ -148,10 +148,10 @@
 			</div>				
 			<div class="content_middle">
 				<div class="book_intro">
-					${goodsInfo.bookIntro}
+					${bookInfo.bookIntro}
 				</div>
 				<div class="book_content">
-					${goodsInfo.bookContents }
+					${bookInfo.bookContents }
 				</div>
 			</div>
 			<div class="line">
@@ -161,7 +161,7 @@
 			</div> -->
 			<!-- 주문 form -->
 			<form action="/order/${member.memberId}" method="get" class="order_form">
-				<input type="hidden" name="orders[0].bookId" value="${goodsInfo.bookId}">
+				<input type="hidden" name="orders[0].bookId" value="${bookInfo.bookId}">
 				<input type="hidden" name="orders[0].bookCount" value="">
 			</form>
 				
@@ -219,11 +219,11 @@ $(document).ready(function(){
 		bobj.find("img").attr("src", "/display?fileName=" + fileCallPath);
 	
 	}else{
-		bobj.find("img").attr("src", "/resources/img/goodsNoImage.png");
+		bobj.find("img").attr("src", "/resources/img/bookNoImage.png");
 	}
 	
 	// publeyear
-	const year = "${goodsInfo.publeYear}";
+	const year = "${bookInfo.publeYear}";
 	
 	let tempYear = year.substr(0, 10);
 	
@@ -233,7 +233,7 @@ $(document).ready(function(){
 	$(".publeyear").html(publeYear);
 	
 	// 포인트 삽입
-	let salePrice = "${goodsInfo.bookPrice - (goodsInfo.bookPrice*goodsInfo.bookDiscount)}";
+	let salePrice = "${bookInfo.bookPrice - (bookInfo.bookPrice*bookInfo.bookDiscount)}";
 	let point = salePrice*0.05;
 	point = Math.floor(point);
 	$(".point_span").text(point);
@@ -260,7 +260,7 @@ $(document).ready(function(){
 	// 서버로 전송할 데이터
 	const form = {
 			memberId : "${member.memberId}",
-			bookId : "${goodsInfo.bookId}",
+			bookId : "${bookInfo.bookId}",
 			bookCount : ""
 	}
 	
@@ -285,6 +285,7 @@ $(document).ready(function(){
 			alert("장바구니에 추가를 하지 못하였습니다.");
 		}else if(result == '1'){
 			alert("장바구니에 추가되었습니다.");
+			
 		}else if(result == '2'){
 			alert("장바구니에 이미 추가되어 있습니다.");
 		}else if(result == '5'){

@@ -15,7 +15,6 @@
 								<%@include file="../includes/admin/header.jsp" %>
 								
 			<div class="admin_content_wrap">
-				<div class="admin_content_subject"><span>The BooK</span></div>
 				<div class="admin_content_main">
 							<div class="form_section">
 									<div class="form_section_title">

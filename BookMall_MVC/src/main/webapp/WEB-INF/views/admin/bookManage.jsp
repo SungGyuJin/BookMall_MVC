@@ -16,7 +16,6 @@
 				<%@include file="../includes/admin/header.jsp" %>
 
 				<div class="admin_content_wrap">
-					<div class="admin_content_subject"><span>The BooK</span></div>
 					
 					<div class="book_table_wrap">
 						<!-- 상품 리스트 -->

@@ -34,7 +34,7 @@
 	</sql>
 	
 	<!-- 상품검색 -->
-	<select id="getGoodsList" resultType="com.mine.model.BookVO">
+	<select id="getbookList" resultType="com.mine.model.BookVO">
 		
 			Select  bookId, bookName, b.authorName, a.authorId, c.cateName, a.cateCode, publisher, publeYear, bookPrice, bookDiscount
 			from mine_book a left outer join mine_author b on a.authorId = b.authorId
@@ -46,7 +46,7 @@
 	</select>
 	
 	<!-- 상품 총 갯수 -->
-	<select id="goodsGetTotal" resultType="int">
+	<select id="bookGetTotal" resultType="int">
 		
 			Select count(*) from mine_book a
 		
@@ -144,7 +144,7 @@
 	</select>
 	
 	<!-- 상품정보 -->
-	<select id="getGoodsInfo" resultType="com.mine.model.BookVO" parameterType="Integer">
+	<select id="getbookInfo" resultType="com.mine.model.BookVO" parameterType="Integer">
 		
 			Select a.BOOKID, a.BOOKNAME, a.AUTHORID, b.AUTHORNAME, a.PUBLEYEAR, a.PUBLISHER, a.CATECODE, c.CATENAME, a.BOOKPRICE, a.BOOKSTOCK, a.BOOKDISCOUNT, a.BOOKINTRO, a.BOOKCONTENTS 
 			From mine_book a left outer join mine_author b on a.authorId = b.authorId

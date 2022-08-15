@@ -84,16 +84,16 @@ public class BookServiceTests {
 	
 	// 상품 상세 정보
 	@Test
-	public void getGoodsInfoTest() {
+	public void getbookInfoTest() {
 		
 		int bookId = 31;
 		
-		BookVO goodsInfo = service.getGoodsInfo(bookId);
+		BookVO bookInfo = service.getbookInfo(bookId);
 		
 		System.out.println("==결과==");
-		System.out.println("전체 : " + goodsInfo);
-		System.out.println("bookId : " + goodsInfo.getBookId() );
-		System.out.println("이미지 정보 : " + goodsInfo.getImageList().isEmpty());
+		System.out.println("전체 : " + bookInfo);
+		System.out.println("bookId : " + bookInfo.getBookId() );
+		System.out.println("이미지 정보 : " + bookInfo.getImageList().isEmpty());
 		
 		
 	}

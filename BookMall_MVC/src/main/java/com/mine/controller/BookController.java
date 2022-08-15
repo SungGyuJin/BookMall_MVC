@@ -87,12 +87,12 @@ public class BookController {
 	
 	// 상품 검색
 	@GetMapping("/search")
-	public String searchGoodsGET(Criteria cri, Model model) {
+	public String searchbookGET(Criteria cri, Model model) {
 		model.addAttribute("cate1", bookService.getCateCode1());
 		model.addAttribute("cate2", bookService.getCateCode2());
 		log.info("cri : " + cri);
 		
-		List<BookVO> list = bookService.getGoodsList(cri);
+		List<BookVO> list = bookService.getbookList(cri);
 		log.info("pre list : " + list);
 		if(!list.isEmpty()) {
 			model.addAttribute("list", list);
@@ -103,7 +103,7 @@ public class BookController {
 			return "search";
 		}
 		
-		model.addAttribute("pageMaker", new PageDTO(cri, bookService.goodsGetTotal(cri)));
+		model.addAttribute("pageMaker", new PageDTO(cri, bookService.bookGetTotal(cri)));
 		
 		String[] typeArr = cri.getType().split("");
 		
@@ -118,14 +118,14 @@ public class BookController {
 	}
 	
 	// 상품상세
-	@GetMapping("/goodsDetail/{bookId}")
-	public String goodsDetailGet(@PathVariable("bookId")int bookId, Model model) {
+	@GetMapping("/bookDetail/{bookId}")
+	public String bookDetailGet(@PathVariable("bookId")int bookId, Model model) {
 		
-		log.info("goodsDetailGET()......");
+		log.info("bookDetailGET()......");
 		
-		model.addAttribute("goodsInfo", bookService.getGoodsInfo(bookId));
+		model.addAttribute("bookInfo", bookService.getbookInfo(bookId));
 		
-		return "/goodsDetail";
+		return "/bookDetail";
 		
 	}
 	

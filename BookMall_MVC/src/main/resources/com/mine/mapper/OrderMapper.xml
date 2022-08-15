@@ -22,7 +22,7 @@
 		<insert id="enrollOrder">
 		
 			Insert into mine_order(orderId, addressee, memberId, memberAddr1, memberAddr2, memberAddr3, orderState, deliveryCost, usePoint)
-			values (#{orderId}, #{addressee}, #{memberId}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, '배송준비', #{deliberyCost}, #{usePoint})
+			values (#{orderId}, #{addressee}, #{memberId}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, '배송준비', #{deliveryCost}, #{usePoint})
 			
 		</insert>
 		

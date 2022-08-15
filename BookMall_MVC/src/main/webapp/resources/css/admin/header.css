@@ -14,21 +14,16 @@
 	margin: 0 0 15px 25%;
 }
 
-/* .admin_navi_wrap li {
+/* 관리자 컨텐츠 제목 영역 */
+.admin_content_subject {
+	font-size: 40px;
+	font-weight: bolder;
+	padding-left: 15px;
+	background-color: #6AAFE6;
 	height: 80px;
 	line-height: 80px;
-	text-align: center;
+	color: white;
 }
-
-.admin_navi_wrap li a {
-	display: block;
-	height: 100%;
-	width: 95%;
-	margin: 0 auto;
-	cursor: pointer;
-	font-size: 30px;
-	font-weight: bolder;
-} */
 
 .admin_navi_wrap a{
 	width: 100%;
@@ -44,12 +39,9 @@
 .admin_div{
 	float: left;
 	width: 25%;
-	height: 50px;
 }
-.admin_div:hover{
-	background-color: #D3D3D3;
-	border-radius: 12px;
-	background-color: yellow;
+.admin_div a{
+	color: #2F4F4F;
 }
 
 .admin_navi_wrap li a:link {
