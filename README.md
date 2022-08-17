@@ -24,6 +24,14 @@
 * 댓글기능 (리뷰)
 * 관리자페이지 (작가, 도서관리)
 
+***
+
+## 데이터베이스 모델링
+
+<img src="https://user-images.githubusercontent.com/79797179/185130810-bc3ee493-9e89-4103-9e7c-52fd8e601fbc.png">
+
+***
+
 ## 사용방법
 
 ### 1. 로그인 및 회원가입 화면 (아래)
@@ -32,11 +40,8 @@
 
 * ID 중복검사는 Ajax를 적용하였습니다.
 
-<details>
- <summary>(클릭) Ajax 부분</summary>
-
 ```
-// ID 중복검사
+// ID 중복검사 (Ajax)
 $('.id_input').on("propertychange change keyup paste input", function(){
 		
 	var memberId = $('.id_input').val();   	// ID 입력 값
@@ -60,14 +65,10 @@ $('.id_input').on("propertychange change keyup paste input", function(){
 		}
 	});
 });
-```
-</details>
 
-<details>
- <summary>(클릭) Controller 부분</summary>
- 
-```
-// ID 중복검사
+----------------------------------------------------------------------------------
+
+// ID 중복검사 (Controller)
 @RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
 @ResponseBody
 public String memberIdChkPOST(String memberId) throws Exception{
@@ -81,18 +82,14 @@ public String memberIdChkPOST(String memberId) throws Exception{
 	}
 }
 ```
-</details>
 
-* 로그인 인터셉터적용
-  
-<details>
-<summary>(클릭) 인터셉터적용</summary>
-<img src="https://user-images.githubusercontent.com/79797179/184894822-2a62c990-f9be-44e0-b9d1-ad4fbf39073f.gif" width="85%">
-<img src="https://user-images.githubusercontent.com/79797179/184893288-2a016eca-39ea-4c8c-9d6e-a5d373f4c6c9.png" width="85%">
-
+## 로그인 인터셉터적용
 * 인터셉터 적용이유는 관리자권한이 없는자도 URL주소만 안다면 관리자페이지로 접근이 가능하여 이를 막기 위함.
 * 회원가입 후 회원테이블의 adminCK 값이 0이면 회원, 1이면 관리자가 되도록 구현. (기본: 0)
-</details>
+
+<img src="https://user-images.githubusercontent.com/79797179/184893288-2a016eca-39ea-4c8c-9d6e-a5d373f4c6c9.png" width="85%">
+
+<img src="https://user-images.githubusercontent.com/79797179/185150926-2780a451-2fff-4f2c-a15f-8e7d4d3c6006.gif" width="85%">
 
 ***
 
@@ -103,7 +100,7 @@ public String memberIdChkPOST(String memberId) throws Exception{
 
 ### 주소찾기 부분 (아래)
 
-<img src="https://user-images.githubusercontent.com/79797179/183598131-71ffecd2-f37b-4d00-8b08-9f9996afd111.gif">
+<img src="https://user-images.githubusercontent.com/79797179/185140996-a6e61518-13dd-4a32-9597-1bdb43dcb397.gif">
 
 ***
 
