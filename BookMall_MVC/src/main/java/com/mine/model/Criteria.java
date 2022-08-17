@@ -34,7 +34,7 @@ public class Criteria {
 	
 	// Criteria 기본생성자
 	public Criteria() {
-		this(1, 5);
+		this(1, 10);
 	}
 	
 	// 검색 타입 데이터 배열 반환

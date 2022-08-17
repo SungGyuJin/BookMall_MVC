@@ -7,6 +7,9 @@
 	text-align: center;
 	font-style: italic;
 }
+.admin_top_wrap span{
+	color: black;
+}
 
 .admin_navi_wrap{
 	display: block;
@@ -19,10 +22,9 @@
 	font-size: 40px;
 	font-weight: bolder;
 	padding-left: 15px;
-	background-color: #6AAFE6;
+	background-color: #D3D3D3;
 	height: 80px;
 	line-height: 80px;
-	color: white;
 }
 
 .admin_navi_wrap a{
@@ -41,7 +43,8 @@
 	width: 25%;
 }
 .admin_div a{
-	color: #2F4F4F;
+	color: white;
+	font-style: italic;
 }
 
 .admin_navi_wrap li a:link {
@@ -65,26 +68,26 @@
 }
 
 .admin_list_01:hover {
-	background-color: #D3D3D3;
+	background-color: #A9A9A9;
 	border-radius: 12px;
 }
 
 .admin_list_02:hover {
-	background-color: #D3D3D3;
+	background-color: #A9A9A9;
 	border-radius: 12px;
 }
 
 .admin_list_03:hover {
-	background-color: #D3D3D3;
+	background-color: #A9A9A9;
 	border-radius: 12px;
 }
 
 .admin_list_04:hover {
-	background-color: #D3D3D3;
+	background-color: #A9A9A9;
 	border-radius: 12px;
 }
 
 .admin_list_05:hover {
-	background-color: #D3D3D3;
+	background-color: #A9A9A9;
 	border-radius: 12px;
 }

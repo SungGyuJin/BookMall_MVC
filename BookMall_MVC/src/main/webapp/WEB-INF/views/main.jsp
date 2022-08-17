@@ -17,7 +17,7 @@
 </script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
-<body>🔍
+<body>
 <div class="wrapper">
 	<div class="wrap">
 			<div class="top_gnb_area">
@@ -58,7 +58,7 @@
 						<form id="searchForm" action="/search" method="get">
 							<div class="search_input">
 								<select name="type">
-									<option value="T">책 제목</option>
+									<option value="T">제목</option>
 									<option value="A">작가</option>
 								</select>
 								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">
@@ -89,7 +89,7 @@
 			</div>
 			<div class="navi_area">
 				<div class="dropdown">
-					<button class="dropbtn">국내
+					<button class="dropbtn">국내도서
 						<i class="fa fa-caret-down"></i>
 					</button>
 					<div class="dropdown-content">
@@ -99,7 +99,7 @@
 					</div>
 				</div>
 				<div class="dropdown">
-					<button class="dropbtn">해외
+					<button class="dropbtn">국외도서
 						<i class="fa fa-caret-down"></i>
 					</button>
 					<div class="dropdown-content">
@@ -194,9 +194,6 @@
 			
 	</div>	<!-- .wrap end -->
 </div>	<!-- .wrapper end -->
-<%-- <%=application.getServerInfo() %><br>
-<%= application.getMajorVersion() %>.<%= application.getMinorVersion() %><br>
-<%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %><br> --%>
 <script type="text/javascript">
 	
 	$(document).ready(function(){

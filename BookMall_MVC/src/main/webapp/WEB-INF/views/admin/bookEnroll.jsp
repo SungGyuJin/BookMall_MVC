@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../includes/header.jsp" %>
+<%@ include file="../includes/script_header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,9 +63,8 @@
 											<label>작가</label>
 										</div>
 										<div class="form_section_content">
-											<input id="authorName_input" readonly="readonly">
+											<input id="authorName_input" class="authorId_btn" placeholder="Click" readonly="readonly">
 											<input id="authorId_input" name="authorId" type="hidden">
-											<button class="authorId_btn">작가선택</button>
 											<span class="ck_warn authorId_warn">작가를 선택해주세요.</span>
 										</div>
 								</div>
@@ -74,7 +73,7 @@
 											<label>출판일</label>
 										</div>
 										<div class="form_section_content">
-											<input name="publeYear" autocomplete="off" readonly="readonly">
+											<input name="publeYear" id="testDatepicker" autocomplete="off" placeholder="Click" readonly="readonly">
 											<span class="ck_warn publeYear_warn">출판일을 선택해주세요.</span>
 										</div>
 								</div>
@@ -162,7 +161,7 @@
 								</div>
 								<div class="form_section">
 										<div class="form_section_title">
-											<label>상품이미지</label>
+											<label>도서이미지</label>
 										</div>
 										<div class="form_section_content">
 											<input type="file" id ="fileItem" name='uploadFile' style="height: 30px;">
@@ -192,7 +191,7 @@
 		
 	});
 	
-	// 상품등록 버튼
+	// 도서등록 버튼
 	$("#enrollBtn").on("click", function(e){
 		
 		e.preventDefault();
@@ -330,12 +329,9 @@
 		});
 	
 	// 달력 위젯 사용
-	
 	// 날짜 패턴설정
 	const config = {
 			dateFormat: 'yy-mm-dd',
-			showOn: "button",
-			buttonText: "날짜선택",
 	  		prevText: '이전 달',
 			nextText: '다음 달',
    			monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
@@ -349,10 +345,9 @@
      		
 	}
 	
-	// 달력
 	$(function() {
 		
-		$("input[name='publeYear']").datepicker(config);
+		$("#testDatepicker").datepicker(config);
 	});
 	
 	// 작가 선택 버튼

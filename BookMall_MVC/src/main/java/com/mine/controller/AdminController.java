@@ -52,21 +52,13 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 
-	// 관리자 페이지 이동 메서드
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public void adminMainGET() throws Exception {
-
-		log.info("관리자페이지 이동");
-
-	}
-
-	// 상품관리 페이지 접속
+	// 도서관리 페이지 접속
 	@RequestMapping(value = "bookManage", method = RequestMethod.GET)
 	public void bookManageGET(Criteria cri, Model model) throws Exception {
 
-		log.info("상품관리 페이지 접속");
+		log.info("도서관리 페이지 접속");
 
-		// 상품 리스트 데이터
+		// 도서 리스트 데이터
 		List list = adminService.bookGetList(cri);
 
 		if (!list.isEmpty()) {
@@ -79,11 +71,11 @@ public class AdminController {
 		model.addAttribute("pageMaker", new PageDTO(cri, adminService.bookGetTotal(cri)));
 	}
 
-	// 상품등록 페이지 접속
+	// 도서등록 페이지 접속
 	@RequestMapping(value = "bookEnroll", method = RequestMethod.GET)
 	public void bookEnrollGET(Model model) throws Exception {
 
-		log.info("상품등록 페이지 접속");
+		log.info("도서등록 페이지 접속");
 
 		ObjectMapper objm = new ObjectMapper();
 
@@ -98,7 +90,7 @@ public class AdminController {
 
 	}
 
-	// 상품조회 페이지
+	// 도서조회 페이지
 	@GetMapping({ "/bookDetail", "/bookModify" })
 	public void bookGetInfoGET(int bookId, Criteria cri, Model model) throws JsonProcessingException {
 
@@ -116,7 +108,7 @@ public class AdminController {
 		model.addAttribute("bookInfo", adminService.bookGetDetail(bookId));
 	}
 
-	// 상품정보 수정
+	// 도서정보 수정
 	@PostMapping("/bookModify")
 	public String bookModifyPOST(BookVO vo, RedirectAttributes rttr) {
 
@@ -132,7 +124,7 @@ public class AdminController {
 
 	}
 
-	// 상품정보 삭제
+	// 도서정보 삭제
 	@PostMapping("/bookDelete")
 	public String bookDeletePOST(int bookId, RedirectAttributes rttr) {
 
@@ -263,7 +255,7 @@ public class AdminController {
 		return "redirect:/admin/authorManage";
 	}
 
-	// 상품등록
+	// 도서등록
 	@PostMapping("/bookEnroll")
 	public String bookEnrollPOST(BookVO book, RedirectAttributes rttr) {
 

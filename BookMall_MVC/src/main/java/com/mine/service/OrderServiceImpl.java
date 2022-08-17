@@ -78,6 +78,8 @@ public class OrderServiceImpl implements OrderService{
 			
 			OrderItemDTO orderItem = orderMapper.getOrderInfo(oid.getBookId());
 			
+			orderItem.setBookCount(oid.getBookCount());
+			
 			orderItem.initSaleTotal();
 			
 			ords.add(orderItem);

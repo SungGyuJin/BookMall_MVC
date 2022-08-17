@@ -41,7 +41,6 @@
 				<!-- nav 영역 -->
 				<div class="admin_navi_wrap">
 							
-							
 						<!-- <li>
 							<a class="admin_list_05">회원관리</a>
 						</li> -->

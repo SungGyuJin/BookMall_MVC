@@ -361,12 +361,13 @@ a{
     border-radius: 12px;
 }
 .filter_button{
-	background-color: #04AA6D;
+	background-color: #6495ED;
 	border: 1px solid green;
 	color: white;
 	padding: 10px 24px;
 	cursor: pointer;
 	float: left;
+	font-size: x-large;
 } 
 .filter_button_wrap:after {
     content: "";
@@ -377,10 +378,10 @@ a{
     border-right: none;
 }
 .filter_button:hover {
-    background-color: #3e8e41;
+    background-color: #4682B4;
 }
 .filter_active{
-	background-color: #045d3c;
+	background-color: #4682B4;
 }
 .filter_content{
 	padding:20px 50px 20px 50px;

@@ -173,20 +173,20 @@ public class OrderDTO {
 
 	public void getOrderPriceInfo() {
 		
-		// 상품 비용 & 적립포인트
+		// 비용 & 포인트
 		for(OrderItemDTO order : orders) {
 			orderSalePrice += order.getTotalPrice();
 			orderSavePoint += order.getTotalSavePoint();
 		}
 		
-		// 배송비용
+		// 배송비 계산
 		if(orderSalePrice >= 30000) {
 			deliveryCost = 0;
 		}else {
 			deliveryCost = 3000;
 		}
 		
-		// 최종 비용
+		// 총 비용
 		orderFinalSalePrice = orderSalePrice + deliveryCost - usePoint;
 		
 	}

@@ -37,6 +37,16 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String startMain(Model model) {
+
+		model.addAttribute("cate1", bookService.getCateCode1());
+		model.addAttribute("cate2", bookService.getCateCode2());
+		model.addAttribute("mainList", bookService.likeSelect());
+		
+		return "/main";
+	}
+	
 	// 메인페이지 이동
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public void mainPageGET(Model model) {
@@ -85,7 +95,7 @@ public class BookController {
 		
 	}
 	
-	// 상품 검색
+	// 도서 검색
 	@GetMapping("/search")
 	public String searchbookGET(Criteria cri, Model model) {
 		model.addAttribute("cate1", bookService.getCateCode1());
@@ -117,7 +127,7 @@ public class BookController {
 		
 	}
 	
-	// 상품상세
+	// 도서상세
 	@GetMapping("/bookDetail/{bookId}")
 	public String bookDetailGet(@PathVariable("bookId")int bookId, Model model) {
 		

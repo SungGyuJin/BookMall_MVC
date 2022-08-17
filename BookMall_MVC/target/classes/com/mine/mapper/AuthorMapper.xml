@@ -8,7 +8,7 @@
   
       <!-- 작가등록 -->
       <insert id="authorEnroll">
-      	Insert into mine_author(authorName, nationId, authorIntro) Values (#{authorName}, #{nationId}, #{authorIntro})
+      	Insert into mine_author(authorName, nationId) Values (#{authorName}, #{nationId})
       </insert>
       
       <!-- 작가목록 mysql-->
@@ -48,7 +48,6 @@
       	Update mine_author set 
       		authorName = #{authorName}
       		, nationId = #{nationId}
-      		, authorIntro = #{authorIntro}
       		, updatedate = now() 
       	where authorId = #{authorId}
       </update>

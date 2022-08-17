@@ -63,11 +63,6 @@ ul {
 	
 }
 
-.admin_list_04 {
-	background-color: #C0C0C0;
-	border-radius: 12px;
-}
-
 /* 관리자페이지 네비 영역 */
 .admin_navi_wrap {
 	width: 20%;
@@ -116,16 +111,18 @@ ul {
 	min-height: 700px;
 }
 
+
 /* 관리자 컨텐츠 제목 영역 */
-.admin_content_subject { 
+.admin_content_subject{ 
 	font-size: 40px;
 	font-weight: bolder;
 	padding-left: 15px;
-	background-color: #6AAFE6;
 	height: 80px;
 	line-height: 80px;
-	color: white;
 	border-radius: 12px;
+}
+.admin_content_subject .admin_list_04{
+	color: black;
 }
 
 /* 작가 목록 영역 */

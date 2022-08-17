@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="includes/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="includes/script_header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,7 @@
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/main">관리자 페이지</a></li>
+							<li><a href="/admin/bookEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
 								<a id="gnb_logout_button">LOGOUT</a>
@@ -54,7 +54,7 @@
 						<form id="searchForm" action="/search" method="get">
 							<div class="search_input">
 								<select name="type">
-									<option value="T">책 제목</option>
+									<option value="T">제목</option>
 									<option value="A">작가</option>
 								</select>
 								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">

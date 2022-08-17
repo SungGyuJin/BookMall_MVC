@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../includes/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@include file="../includes/script_header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,19 +40,9 @@
 													</div>
 													<div class="form_section_content">
 															<select name="nationId">
-																	<option value="none" disabled="disabled">=== 선택 ===</option>
 																	<option value="01" <c:out value="${authorInfo.nationId eq '01' ?'selected':''}"/>>국내</option>
 																	<option value="02" <c:out value="${authorInfo.nationId eq '02' ?'selected':''}"/>>국외</option>
 															</select>
-													</div>
-											</div>
-											<div class="form_section">
-													<div class="form_section_title">
-															<label>작가소개</label>
-													</div>
-													<div class="form_section_content">
-															<textarea name="authorIntro"><c:out value='${authorInfo.authorIntro}'/></textarea>
-															<span id="warn_authorIntro">작가소개를 입력해주세요.</span>
 													</div>
 											</div>
 											<div class="form_section">
@@ -127,10 +117,8 @@
 	$("#modifyBtn").on("click", function(e){
 		
 		let authorName = $(".form_section_content input[name='authorName']").val();
-		let authorIntro = $(".form_section_content textarea").val();
 		
 		let nameCk = false;
-		let introCk = false;
 		
 		e.preventDefault();
 		
@@ -141,14 +129,8 @@
 			nameCk = true;
 		}
 		
-		if(!authorIntro){
-			$("#warn_authorIntro").css("display", "block");
-		}else{
-			$("#warn_authroIntro").css("display", "none");
-			introCk = true;
-		}
 		
-		if(nameCk && introCk){
+		if(nameCk){
 			modifyForm.submit();
 		}else{
 			return false;

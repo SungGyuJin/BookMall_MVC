@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../includes/header.jsp" %>
+<%@ include file="../includes/script_header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,20 +39,11 @@
 												<span id="warn_nationId">소속국적를 선택해주세요.</span>
 										</div>
 								</div>
-								<div class="form_section">
-										<div class="form_section_title">
-												<label>작가소개</label>
-										</div>
-										<div class="form_section_content">
-												<input name="authorIntro" type="text">
-												<span id="warn_authorIntro">작가소개를 입력해주세요.</span>
-										</div>
-								</div>
 						</form>
-								<div class="btn_section">
-										<button id="enrollBtn" class="btn enroll_btn">등 록</button>
-										<button id="cancelBtn" class="btn">취 소</button>
-								</div>
+						<div class="btn_section">
+								<button id="enrollBtn" class="btn enroll_btn">등 록</button>
+								<button id="cancelBtn" class="btn">취 소</button>
+						</div>
 					</div>
 					
 				</div>

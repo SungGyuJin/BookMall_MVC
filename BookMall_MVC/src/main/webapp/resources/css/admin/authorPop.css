@@ -9,10 +9,11 @@
 	font-size: 33px;
 	font-weight: bolder;
 	padding-left: 15px;
-	background-color: #6AAFE6;
+	background-color: #DCDCDC;
 	height: 13%;
 	line-height: 70px;
-	color: white;
+	color: black;
+	border-radius: 12px;
 }
 
 .content_wrap {
@@ -89,7 +90,8 @@
 	line-height: 20px;
 	position: absolute;
 	margin-left: 15px;
-	background-color: #c3daf7;
+	background-color: #DCDCDC;
+	border-radius: 12px;
 }
 
 /* 페이지 버튼 인터페이스 */

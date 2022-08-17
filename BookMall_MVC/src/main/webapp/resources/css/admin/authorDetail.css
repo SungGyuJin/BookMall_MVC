@@ -63,21 +63,18 @@ ul {
 	
 }
 
+
 /* 관리자 컨텐츠 제목 영역 */
-.admin_content_subject { 
+.admin_content_subject{ 
 	font-size: 40px;
 	font-weight: bolder;
 	padding-left: 15px;
-	background-color: #6AAFE6;
 	height: 80px;
 	line-height: 80px;
-	color: white;
 	border-radius: 12px;
 }
-
-.admin_list_04 {
-	background-color: #c8c8c8;
-	border-radius: 12px;
+.admin_content_subject .admin_list_04{
+	color: black;
 }
 
 /* 관리자페이지 컨텐츠 영역 */
@@ -89,11 +86,11 @@ ul {
 
 /* 관리자 컨텐츠 메인 영역 */
 .form_section {
-	width: 95%;
+	width: 97%;
 	margin-left: 2%;
 	margin-top: 20px;
-	border: 1px solid #dbdde2;
-	background-color: #efefef;
+	background-color: #DCDCDC;
+	border-radius: 12px;
 }
 
 .form_section_title {
@@ -116,6 +113,7 @@ ul {
 	height: 25px;
 	font-size: 20px;
 	padding: 5px 1%;
+	text-align: center;
 }
 
 .form_section_content textarea {
@@ -128,7 +126,7 @@ ul {
 	width: 98%;
 	height: 35px;
 	font-size: 20px;
-	text-align-last: center;
+	text-align: center;
 }
 
 .input_block {

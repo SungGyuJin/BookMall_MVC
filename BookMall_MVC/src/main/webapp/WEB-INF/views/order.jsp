@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="includes/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="includes/script_header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/goodsEnroll">관리자 페이지</a></li>
+							<li><a href="/admin/bookEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
 								<a id="gnb_logout_button">LOGOUT</a>
@@ -53,7 +53,7 @@
 						<form id="searchForm" action="/search" method="get">
 							<div class="search_input">
 								<select name="type">
-									<option value="T">책 제목</option>
+									<option value="T">제목</option>
 									<option value="A">작가</option>
 								</select>
 								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">
@@ -159,14 +159,14 @@
 							</div>
 						</div>
 					</div>
-					<!-- 상품 정보 -->
-					<div class="orderGoods_div">
-						<!-- 상품 종류 -->
-						<div class="goods_kind_div">
-							주문상품 <span class="goods_kind_div_kind"></span>종 <span class="goods_kind_div_count"></span>개
+					<!-- 도서 정보 -->
+					<div class="orderbook_div">
+						<!-- 도서 종류 -->
+						<div class="book_kind_div">
+							주문도서 <span class="book_kind_div_kind"></span>종 <span class="book_kind_div_count"></span>개
 						</div>
-						<!-- 상품 테이블 -->
-						<table class="goods_subject_table">
+						<!-- 도서 테이블 -->
+						<table class="book_subject_table">
 							<colgroup>
 								<col width="15%">
 								<col width="45%">
@@ -175,12 +175,12 @@
 							<tbody>
 								<tr>
 									<th>이미지</th>
-									<th>상품 정보</th>
+									<th>도서정보</th>
 									<th>판매가</th>
 								</tr>
 							</tbody>
 						</table>
-						<table class="goods_table">
+						<table class="book_table">
 							<colgroup>
 								<col width="15%">
 								<col width="45%">
@@ -200,7 +200,7 @@
 											</div>
 										</td>
 										<td>${ol.bookName}</td>
-										<td class="goods_table_price_td">
+										<td class="book_table_price_td">
 											<fmt:formatNumber value="${ol.salePrice}" pattern="#,### 원" /> | 수량 ${ol.bookCount}개
 											<br><fmt:formatNumber value="${ol.totalPrice}" pattern="#,### 원" />
 											<br>[<fmt:formatNumber value="${ol.totalPoint}" pattern="#,### 원" />P]
@@ -243,7 +243,7 @@
 						<div class="total_info_price_div">
 								<ul>
 										<li>
-												<span class="price_span_label">상품 금액</span>
+												<span class="price_span_label">도서금액</span>
 												<span class="totalPrice_span">100000</span>원
 										</li>
 										<li>
@@ -257,12 +257,12 @@
 										<li class="price_total_li">
 												<strong class="price_span_label total_price_label">최종 결제 금액</strong>
 												<strong class="strong_red">
-														<span class="total_price_red finalTotalPrice_span">1500000</span>원
+														<span class="total_price_red finalTotalPrice_span"></span>원
 												</strong>
 										</li>
 										<li class="point_li">
 												<span class="price_span_label">적립예정 포인트</span>
-												<span class="totalPoint_span">7960원</span>
+												<span class="totalPoint_span"></span>원
 										</li>
 								</ul>
 						</div>
@@ -285,7 +285,7 @@
 			<input name="memberAddr3" type="hidden">
 			<!-- 사용 포인트 -->
 			<input name="usePoint" type="hidden">
-			<!-- 상품 정보 -->
+			<!-- 도서 정보 -->
 		</form>
 			<!-- Footer 영역 -->
 			<br><br><br>
@@ -328,7 +328,7 @@ $(document).ready(function(){
 	// 주문 조합정보 최신
 	setTotalInfo();
 	
-	/* 이미지 삽입 */
+	// 이미지 삽입 
 	$(".image_wrap").each(function(i, obj){
 		
 		const bobj = $(obj);
@@ -342,7 +342,7 @@ $(document).ready(function(){
 			
 			$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
 		} else {
-			$(this).find("img").attr('src', '/resources/img/goodsNoImage.png');
+			$(this).find("img").attr('src', '/resources/img/bookNoImage.png');
 		}
 		
 	});
@@ -498,7 +498,7 @@ function setTotalInfo(){
 	let usePoint = 0;				// 사용 포인트
 	let finalTotalPrice = 0; 		// 최종 가격
 	
-	$(".goods_table_price_td").each(function(index, element){
+	$(".book_table_price_td").each(function(index, element){
 		// 총 가격
 		totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
 		// 총 갯수
@@ -509,8 +509,7 @@ function setTotalInfo(){
 		totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());
 	});	
 
-	
-	/* 배송비 결정 */
+	// 배송비 결정 
 	if(totalPrice >= 30000){
 		deliveryPrice = 0;
 	} else if(totalPrice == 0){
@@ -519,20 +518,19 @@ function setTotalInfo(){
 		deliveryPrice = 3000;	
 	}
 	
-	finalTotalPrice = totalPrice + deliveryPrice;	
-	
-	/* 사용 포인트 */
+	// 포인트 할당
 	usePoint = $(".order_point_input").val();
 	
-	finalTotalPrice = totalPrice - usePoint;	
+	// 총 결제비용 계산
+	finalTotalPrice = (totalPrice + deliveryPrice) - usePoint;	
 	
-	/* 값 삽입 */
+	// 값 삽입 
 	// 총 가격
 	$(".totalPrice_span").text(totalPrice.toLocaleString());
 	// 총 갯수
-	$(".goods_kind_div_count").text(totalCount);
+	$(".book_kind_div_count").text(totalCount);
 	// 총 종류
-	$(".goods_kind_div_kind").text(totalKind);
+	$(".book_kind_div_kind").text(totalKind);
 	// 총 마일리지
 	$(".totalPoint_span").text(totalPoint.toLocaleString());
 	// 배송비
@@ -543,10 +541,10 @@ function setTotalInfo(){
 	$(".usePoint_span").text(usePoint.toLocaleString());
 }
 
-/* 주문 요청 */
+// 주문 요청 
 $(".order_btn").on("click", function(){;	
 	
-	/* 주소 정보 & 받는이*/
+	// 주소 정보 & 받는이
 	$(".addressInfo_input_div").each(function(i, obj){
 		if($(obj).find(".selectAddress").val() === 'T'){
 			$("input[name='addressee']").val($(obj).find(".addressee_input").val());
@@ -556,12 +554,12 @@ $(".order_btn").on("click", function(){;
 		}
 	});	
 	
-	/* 사용 포인트 */
+	// 사용 포인트 
 	$("input[name='usePoint']").val($(".order_point_input").val());	
 	
-	/* 상품정보 */
+	// 도서정보 
 	let form_contents = ''; 
-	$(".goods_table_price_td").each(function(index, element){
+	$(".book_table_price_td").each(function(index, element){
 		let bookId = $(element).find(".individual_bookId_input").val();
 		let bookCount = $(element).find(".individual_bookCount_input").val();
 		let bookId_input = "<input name='orders[" + index + "].bookId' type='hidden' value='" + bookId + "'>";
@@ -571,7 +569,7 @@ $(".order_btn").on("click", function(){;
 	});	
 	$(".order_form").append(form_contents);	
 	
-	/* 서버 전송 */
+	// 서버 전송 
 	$(".order_form").submit();	
 	
 });

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="includes/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="includes/script_header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +51,7 @@
 						<form id="searchForm" action="/search" method="get">
 							<div class="search_input">
 								<select name="type">
-									<option value="T" selected>책 제목</option>
+									<option value="T" selected>제목</option>
 									<option value="A">작가</option>
 								</select>
 								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">
@@ -88,8 +88,8 @@
 				
 					<div class="search_filter">
 							<div class="filter_button_wrap">
-									<button class="filter_button filter_active" id="filter_button_a">국내</button>
-									<button class="filter_button" id="filter_button_b">해외</button>
+									<button class="filter_button filter_active" id="filter_button_a">국내도서</button>
+									<button class="filter_button" id="filter_button_b">해외도서</button>
 							</div>
 							<div class="filter_content filter_a">
 								<c:forEach items="${filter_info}" var="filter">
@@ -311,7 +311,6 @@ $(document).ready(function(){
 		moveForm.submit();
 		
 	});
-	
 
 	// 검색필터
 	let buttonA = $("#filter_button_a");

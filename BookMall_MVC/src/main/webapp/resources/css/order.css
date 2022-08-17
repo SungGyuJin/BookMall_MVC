@@ -532,24 +532,24 @@ table {
 	cursor: pointer;
 }
 
-.orderGoods_div {
+.orderbook_div {
 	margin-top: 30px;
 }
 
-.goods_kind_div {
+.book_kind_div {
 	font-size: 25px;
 	line-height: 35px;
 	font-weight: bold;
 }
 
-.goods_subject_table {
+.book_subject_table {
 	font-size: 14px;
 	line-height: 20px;
 	width: 100%;
 	text-align: center;
 }
 
-.goods_subject_table th {
+.book_subject_table th {
 	text-align: center;
 	color: #333;
 	border-bottom: 1px solid #e7e7e7;
@@ -558,17 +558,17 @@ table {
 	padding: 2px 0;
 }
 
-.goods_table {
+.book_table {
 	font-size: 14px;
 	line-height: 20px;
 	border-bottom: 1px solid #e7e7e7;
 }
 
-.goods_table tr {
+.book_table tr {
 	height: 110px;
 }
 
-.goods_table_price_td {
+.book_table_price_td {
 	text-align: center;
 }
 

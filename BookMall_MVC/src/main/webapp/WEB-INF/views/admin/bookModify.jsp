@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../includes/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="../includes/script_header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,9 +36,8 @@
                     				<label>작가</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input id="authorName_input" readonly="readonly" value="${bookInfo.authorName}">
+                    				<input id="authorName_input" class="authorId_btn" readonly="readonly" value="${bookInfo.authorName}">
                     				<input id="authorId_input" name="authorId" type="hidden" value="${bookInfo.authorId}">
-                    				<button class="authorId_btn">작가 선택</button>
                     				<span class="ck_warn authorId_warn">작가를 선택해주세요</span>
                     			</div>
                     		</div>            
@@ -47,7 +46,7 @@
                     				<label>출판일</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="publeYear" autocomplete="off" readonly="readonly">
+                    				<input name="publeYear"  id="testDatepicker" autocomplete="off" readonly="readonly" value="${bookInfo.publeYear}">
                     				<span class="ck_warn publeYear_warn">출판일을 선택해주세요.</span>
                     			</div>
                     		</div>            
@@ -109,7 +108,7 @@
                     				<label>할인율</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input id="discount_interface" maxlength="2" value="0">
+                    				<input id="discount_interface" maxlength="2" value="10">
                     				<input name="bookDiscount" type="hidden" value="${bookInfo.bookDiscount}">
                     				<span class="step_val">할인 가격 : <span class="span_discount"></span></span>
                     				<span class="ck_warn bookDiscount_warn">1~99 숫자를 입력해주세요.</span>
@@ -135,7 +134,7 @@
                     		</div>
                     		<div class="form_section">
                     			<div class="form_section_title">
-	                    			<label>상품이미지</label>
+	                    			<label>도서이미지</label>
                     			</div>
 	                    		<div class="form_section_content">
 	                    			<input type="file" id="fileItem" name="uploadFile" style="height: 30px;">
@@ -167,32 +166,25 @@
 	
 	$(document).ready(function(){
 		
-		/* 캘린더 위젯 적용 */
-		/* 설정 */
+		// 달력 위젯 사용
+		// 날짜 패턴설정
 		const config = {
-			dateFormat: 'yy-mm-dd',
-			showOn : "button",
-			buttonText:"날짜 선택",
-		    prevText: '이전 달',
-		    nextText: '다음 달',
-		    monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-		    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-		    dayNames: ['일','월','화','수','목','금','토'],
-		    dayNamesShort: ['일','월','화','수','목','금','토'],
-		    dayNamesMin: ['일','월','화','수','목','금','토'],
-		    yearSuffix: '년',
-	        changeMonth: true,
-	        changeYear: true
+				dateFormat: 'yy-mm-dd',
+			    prevText: '이전 달',
+			    nextText: '다음 달',
+			    monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+			    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+			    dayNames: ['일','월','화','수','목','금','토'],
+			    dayNamesShort: ['일','월','화','수','목','금','토'],
+			    dayNamesMin: ['일','월','화','수','목','금','토'],
+			    yearSuffix: '년',
+		        changeMonth: true,
+		        changeYear: true
 		}			
 		
-		// 캘린더
 		$(function() {	
 			
-			let publeYear = '${bookInfo.publeYear}';
-			//let puble_length = publeYear.indexOf(" ");
-			//publeYear = publeYear.substring(0, puble_length);
-			$("input[name='publeYear']").datepicker(config);
-			$("input[name='publeYear']").datepicker("setDate", publeYear);
+			$("#testDatepicker").datepicker(config);
 		});
 		
 		// 작가 선택 버튼

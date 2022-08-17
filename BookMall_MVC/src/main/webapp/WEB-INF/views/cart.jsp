@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="includes/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="includes/script_header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,7 @@
 					</c:if>
 					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/goodsEnroll">관리자 페이지</a></li>
+							<li><a href="/admin/bookEnroll">관리자 페이지</a></li>
 						</c:if>
 							<li>
 								<a id="gnb_logout_button">LOGOUT</a>
@@ -51,7 +51,7 @@
 						<form id="searchForm" action="/search" method="get">
 							<div class="search_input">
 								<select name="type">
-									<option value="T">책 제목</option>
+									<option value="T">제목</option>
 									<option value="A">작가</option>
 								</select>
 								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">
@@ -101,7 +101,7 @@
 										<tr>
 												<th class="td_width_t1">선택</th>
 												<th class="td_width_t2">이미지</th>
-												<th class="td_width_t3">상품명</th>
+												<th class="td_width_t3">도서명</th>
 												<th class="td_width_t4">가격</th>
 												<th class="td_width_t5">수량</th>
 												<th class="td_width_t6">합계</th>
@@ -164,7 +164,7 @@
 									<td>
 										<table>
 											<tr>
-												<td>총 상품 가격</td>
+												<td>총 주문 가격</td>
 												<td>
 													<span class="totalPrice_span">70000</span> 원
 												</td>
@@ -176,7 +176,7 @@
 												</td>
 											</tr>									
 											<tr>
-												<td>총 주문 상품수</td>
+												<td>총 주문 수량</td>
 												<td><span class="totalKind_span"></span>종 <span class="totalCount_span"></span>권</td>
 											</tr>
 										</table>
@@ -307,7 +307,7 @@ $(document).ready(function(){
 			$(this).find("img").attr("src", "/display?fileName=" + fileCallPath);
 		}else{
 			
-			$(this).find("img").attr("src", "/resources/img/goodsNoImage.png");
+			$(this).find("img").attr("src", "/resources/img/bookNoImage.png");
 		}
 		
 	});

@@ -11,7 +11,7 @@ public class OrderItemDTO {
 	// 주문 수량
 	private int bookCount;
 	
-	// vam_orderItem 기본키
+	// mine_orderItem 기본키
 	private int orderItemId;
 	
 	// 상품 한개 가격

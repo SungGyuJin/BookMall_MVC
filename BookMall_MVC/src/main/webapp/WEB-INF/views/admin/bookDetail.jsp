@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../includes/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="../includes/script_header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -340,7 +340,7 @@
 	}); // document end
 	
 	
-	// 상품관리 목록이동 버튼
+	// 도서관리 목록이동 버튼
 	$("#cancelBtn").on("click", function(e){
 		
 		e.preventDefault();
