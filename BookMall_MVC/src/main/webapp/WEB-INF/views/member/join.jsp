@@ -205,21 +205,17 @@ a{
 		});
 	});
 	
-	// 아이디 중복검사
+	// ID 중복검사
 	$('.id_input').on("propertychange change keyup paste input", function(){
 		
-		// console.log("keyup 테스트");
-		
-		var memberId = $('.id_input').val();   	// .id_input에 입력되는 값
-		var data = {memberId : memberId};       // controller에 넘길 데이터 이름 : 데이터(.id_input에 입력 되는 값)
+		var memberId = $('.id_input').val();   	// ID 입력 값
+		var data = {memberId : memberId};       // Controller에 넘길 데이터 이름 : 데이터(ID에 입력 되는 값)
 		
 		$.ajax({
 			type : "post",
 			url : "/member/memberIdChk",
 			data : data,
 			success : function(result){
-				
-				// console.log("성공여부 : " + result);
 				
 				if(result != 'fail'){
 					
@@ -231,16 +227,14 @@ a{
 					
 					$('.id_input_re_2').css("display", "inline-block");
 					$('.id_input_re_1').css("display", "none");
-					//code = data;
+
 					idckCheck = false;
-					
 				}
-				
-			}// success 종료
-			
-		});// 에이작스 종료
+			}
 		
-	});
+		}); // .ajax end
+		
+	}); // .id_input end
 	
 	// email 인증번호 전송
 	$(".mail_check_button").click(function(){

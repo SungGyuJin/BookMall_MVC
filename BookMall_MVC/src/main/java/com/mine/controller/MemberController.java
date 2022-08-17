@@ -71,26 +71,21 @@ public class MemberController {
 		log.info("로그인페이지 진입");
 	}
 	
-	// 아이디 중복 검사
+	// ID 중복검사
 	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
 	@ResponseBody
 	public String memberIdChkPOST(String memberId) throws Exception{
 		
-		log.info("memberIdChk() 진입");
-		
 		int result = memberservice.idCheck(memberId);
-		
-		log.info("결과값 = " + result);
 		
 		if(result != 0) {
 			
-			return "fail"; // 중복아이디 존재 O
+			return "fail"; // 중복ID 존재 O
 		}else {
 			
-			return "success"; // 중복아이디 존재 X
+			return "success"; // 중복ID 존재 X
 		}
-		
-	} // memberIdChkPOST() 종료
+	}
 	
 	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
 	@ResponseBody
