@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -97,7 +99,12 @@ public class BookController {
 	
 	// 도서 검색
 	@GetMapping("/search")
-	public String searchbookGET(Criteria cri, Model model) {
+	public String searchbookGET(Criteria cri, Model model, HttpServletRequest request) {
+		
+		String searchParam = request.getParameter("searchParam");
+		
+		model.addAttribute("searchParam", searchParam);
+		
 		model.addAttribute("cate1", bookService.getCateCode1());
 		model.addAttribute("cate2", bookService.getCateCode2());
 		log.info("cri : " + cri);
@@ -118,7 +125,7 @@ public class BookController {
 		String[] typeArr = cri.getType().split("");
 		
 		for(String s : typeArr) {
-			if(s.equals("T") || s.equals("A")) {
+			if(s.equals("T") || s.equals("A") || s.equals("TC")) {
 				model.addAttribute("filter_info", bookService.getCateInfoList(cri));
 			}
 		}
@@ -128,12 +135,13 @@ public class BookController {
 	}
 	
 	// 도서상세
-	@GetMapping("/bookDetail/{bookId}")
+	@GetMapping("/bookDetail/pageParam={bookId}")
 	public String bookDetailGet(@PathVariable("bookId")int bookId, Model model) {
 		
 		log.info("bookDetailGET()......");
 		
 		model.addAttribute("bookInfo", bookService.getbookInfo(bookId));
+		model.addAttribute("pageParam", bookId);
 		
 		return "/bookDetail";
 		

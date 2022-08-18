@@ -57,7 +57,7 @@
 									<option value="A">작가</option>
 								</select>
 								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">
-								<button class="btn search_btn">검색</button>
+								<button class="btn search_btn">🔍</button>
 							</div>					
 						</form>
 					</div>

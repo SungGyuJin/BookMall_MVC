@@ -18,8 +18,8 @@ a{
 /* 홈페이지 기능 네비 */ 
 .top_gnb_area{
 	width: 100%;
-    height: 50px;
-    background-color: #f0f0f1;
+	height: 50px;
+	border-radius: 12px;
 }
  
 .top_gnb_area{
@@ -38,6 +38,129 @@ a{
     font-weight: 900;
     cursor: pointer;
 }
+
+/* 로그인 전  */
+.div_head {
+	width: 100%;
+}
+
+.div_left {
+	margin: 13px 0 0 0;
+	font-size: 16px;
+	width: 50%;
+	float: left;
+	border: none;
+	color: black;
+}
+
+.div_left #login_button {
+	width: 50px;
+	height: 22px;
+	background: white;
+	border: 1px solid #000000;
+}
+
+.div_left #login_button:hover {
+	cursor: pointer;
+	color: blue;
+	text-decoration: underline;
+}
+
+.div_left .id_input {
+	width: 100px;
+	height: 20px;
+	font-size: 15px;
+}
+
+.div_left .pw_input {
+	width: 100px;
+	height: 20px;
+	font-size: 15px;
+}
+
+.div_right {
+	width: 50%;
+	float: right;
+	border: none;
+	font-size: 15px;
+	cursor: pointer;
+	text-align: right;
+	margin: 13px 0 0 0;
+}
+
+.div_right a {
+	background: white;
+	color: balck;
+	color: #000000;
+}
+
+.div_right a:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+.div_right button:hover {
+	color: black;
+}
+
+.div_right button {
+	width: 50px;
+	margin: 2px 0 0 0;
+	background: white;
+	cursor: pointer;
+	background: white;
+	border: solid 1px #000000;
+	font-size: 15px;
+}
+
+.div_right button:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+/* 로그인 후  */
+.after_div_head {
+	width: 100%;
+}
+
+.after_div_left {
+	width: 50%;
+	height: 50px;
+	float: left;
+	border: none;
+	background: #87CEFA;
+	color: white;
+	font-size: 25px;
+	font-style: italic;
+	text-align: left;
+}
+
+.after_div_right {
+	width: 50%;
+	height: 50px;
+	float: right;
+	border: none;
+	background: #87CEFA;
+	color: white;
+	font-style: italic;
+	cursor: pointer;
+	text-align: right;
+}
+
+.after_div_right a {
+	font-size: 25px;
+}
+
+.after_div_right a:hover {
+	color: red;
+}
+/* 로그인 실패*/
+.login_warn {
+	text-align: center;
+	color: red;
+	font-size: 15px;
+	font-weight: 500;
+}
 /* 로고, 검색, 로그인 */
 .top_area{
 	width: 100%;
@@ -45,21 +168,15 @@ a{
     /* background-color: #f7f0b9; */
 }
 /* 로고 영역 */
-.logo_area{
-	width: 25%;
-	height: 100%;
-	float:left;
+.logo_area {
+	width: 40%;
+	height: 130px;
+	float: left;
+	margin: 18px 0 0 0;
 }
-.logo_area img{
+
+.logo_area img {
 	width: 100%;
-	height: 100%;
-}
-/* 검색 박스 영역 */
-.search_area{
-	width: 50%;
-	height: 100%;
-	float:left;
-	background-color: white;
 }
 
 .login_success_area{
@@ -204,6 +321,73 @@ a{
 	margin-left: 70px;
 	margin-top : 30px;
 }
+
+/* 검색 박스 영역 */
+.search_area {
+	width: 60%;
+	height: 150px;
+	float: right;
+	text-align: left;
+}
+
+.search_wrap {
+	width: 100%;
+	height: 100%;
+}
+
+#searchForm {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.search_input {
+	display: flex;
+	height: 30%;
+	width: 80%;
+	height: 40px;
+}
+
+.search_input select {
+	width: 20%;
+	text-align: center;
+	font-size: 15px;
+	border-radius: 20px;
+	border: 4px solid #5E6B9E;
+}
+
+.search_input input {
+	margin-left: 10px;
+	width: 100%;
+	font-size: 18px;
+	padding-left: 2%;
+	border-radius: 20px;
+	border: 4px solid #5E6B9E;
+}
+
+.search_btn {
+	margin: 0 0 0 10px;
+	width: 10%;
+	border-radius: 14px;
+	font-size: 20px;
+	font-weight: 600;
+	border-radius: 20px;
+	cursor: pointer;
+	background: white;
+	border: 4px solid #5E6B9E;
+}
+
+.search_btn:hover {
+	background-color: #D3D3D3;
+}
+
+.navi_bar_area {
+	overflow: hidden;
+	background-color: #6495ED;
+	border-radius: 12px;
+}
 .search_wrap{
 	width: 100%;
     height: 100%;
@@ -214,35 +398,6 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.search_input{
-    display: flex;
-    height: 30%;
-    width: 80%;	
-}
-.search_input select{
-	width: 25%;
-    border-radius: 12px;
-}
-.search_input select{
-	width: 25%;
-    text-align: center;
-    font-size: 15px;	
-}
-.search_input input{
-    margin-left: 10px;
-    width: 57%;	
-    font-size: 18px;
-    padding-left: 2%;
-    border-radius: 12px;
-}
-.search_btn{
-	margin-left: 10px;
-    width: 17%;
-    border-radius: 14px;
-    font-size: 17px;
-    font-weight: 600;	
-    cursor: pointer;
 }
 .search_btn:hover{
 	background-color: #D3D3D3;	

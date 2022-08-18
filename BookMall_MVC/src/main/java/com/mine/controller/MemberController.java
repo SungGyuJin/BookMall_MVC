@@ -130,12 +130,14 @@ public class MemberController {
 		return num;
 	}
 	
-	
 	// 로그인
 	@RequestMapping(value="login.do", method=RequestMethod.POST)
 	public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr) throws Exception{
 		
 		HttpSession session = request.getSession();
+		String pageParam = request.getParameter("pageParam");
+		String pageName = request.getParameter("pageName");
+		
 		String rawPw = "";
 		String encodePw = "";
 		
@@ -150,18 +152,50 @@ public class MemberController {
 				
 				lvo.setMemberPw("");					// 인코딩된 비번 정보 지움
 				session.setAttribute("member", lvo);	// session에 사용자의 정보 저장
+				if(pageParam.equals("main") || pageName.equals("main")) {
+					System.out.println("로그인성공 Main 동작");
+					return "redirect:/main";	// main으로 이동
+				}else if(pageName.equals("bookDetail")){
+					System.out.println("로그인성공 bookDetail 동작");
+					return "redirect:/" + pageName + "/pageParam=" + pageParam + "";	// bookDetail으로 이동
+				}else if(pageName.equals("search")){
+					System.out.println("로그인 성공 search 동작");
+					return "redirect:/" + pageName + "?type=T&keyword=";
+				}
 				return "redirect:/main";				// 메인페이지 이동
 				
-			}else {
+			}else { // 아이디는 존재하는데 비밀번호가 틀릴시
 				
 				rttr.addFlashAttribute("result", 0);
-				return "redirect:/member/login";	// 로그인 페이지로 이동
+				if(pageParam.equals("main") || pageName.equals("main")) {
+					System.out.println("ID존재 로그인 실패 main");
+					return "redirect:/main";
+				}else if(pageName.equals("bookDetail")) {
+					System.out.println("ID 존재 로그인 실패 bookDetail");
+					return "redirect:/" + pageName + "/pageParam=" + pageParam + "";
+				}else if(pageName.equals("search")){
+					System.out.println("ID 존재 로그인 실패 search 동작");
+					return "redirect:/" + pageName + "?type=T&keyword=";
+				}
+				
+				return "redirect:/main";	
 			}
 			
-		}else {									// 일치하는 아이디가 존재하지 않을 시 (로그인 실패)
+		}else {	// 아이디자체가 존재하지 않을시 로그엔 페이지로 이동			
 			
 			rttr.addFlashAttribute("result", 0);
-			return "redirect:/member/login";	// 로그엔 페이지로 이동	
+			if(pageParam.equals("main") || pageName.equals("main")) {
+				System.out.println("ID X main");
+				return "redirect:/main";
+			}else if(pageName.equals("bookDetail")) {
+				System.out.println("ID X bookDetail");
+				return "redirect:/" + pageName + "/pageParam=" + pageParam + "";
+			}else if(pageName.equals("search")){
+				System.out.println("ID X search ");
+				return "redirect:/" + pageName + "?type=T&keyword=";
+			}
+			
+			return "redirect:/main";		
 		}
 		
 	}

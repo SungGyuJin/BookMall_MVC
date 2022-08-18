@@ -21,7 +21,6 @@ a {
 .top_gnb_area {
 	width: 100%;
 	height: 50px;
-	background-color: #f0f0f1;
 	position: relative;
 }
 
@@ -38,30 +37,153 @@ a {
 	font-weight: 900;
 	cursor: pointer;
 }
+/* 로그인 전  */
+.div_head {
+	width: 100%;
+}
+
+.div_left {
+	margin: 13px 0 0 0;
+	font-size: 16px;
+	width: 50%;
+	float: left;
+	border: none;
+	color: black;
+}
+
+.div_left #login_button {
+	width: 50px;
+	height: 22px;
+	background: white;
+	border: 1px solid #000000;
+}
+
+.div_left #login_button:hover {
+	cursor: pointer;
+	color: blue;
+	text-decoration: underline;
+}
+
+.div_left .id_input {
+	width: 100px;
+	height: 20px;
+	font-size: 15px;
+}
+
+.div_left .pw_input {
+	width: 100px;
+	height: 20px;
+	font-size: 15px;
+}
+
+.div_right {
+	width: 50%;
+	float: right;
+	border: none;
+	font-size: 15px;
+	cursor: pointer;
+	text-align: right;
+	margin: 13px 0 0 0;
+}
+
+.div_right a {
+	background: white;
+	color: balck;
+	color: #000000;
+}
+
+.div_right a:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+.div_right button:hover {
+	color: black;
+}
+
+.div_right button {
+	width: 50px;
+	margin: 2px 0 0 0;
+	background: white;
+	cursor: pointer;
+	background: white;
+	border: solid 1px #000000;
+	font-size: 15px;
+}
+
+.div_right button:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+/* 로그인 후  */
+.after_div_head {
+	width: 100%;
+}
+
+.after_div_left {
+	width: 50%;
+	height: 50px;
+	float: left;
+	border: none;
+	background: #87CEFA;
+	color: white;
+	font-size: 25px;
+	font-style: italic;
+	text-align: left;
+}
+
+.after_div_right {
+	width: 50%;
+	height: 50px;
+	float: right;
+	border: none;
+	background: #87CEFA;
+	color: white;
+	font-style: italic;
+	cursor: pointer;
+	text-align: right;
+}
+
+.after_div_right a {
+	font-size: 25px;
+}
+
+.after_div_right a:hover {
+	color: red;
+}
+
+/* 로그인 실패*/
+.login_warn {
+	text-align: center;
+	color: red;
+	font-size: 15px;
+	font-weight: 500;
+}
+
 /* 로고, 검색, 로그인 */
 .top_area {
 	width: 100%;
 	height: 150px;
-	/* background-color: #f7f0b9; */
 }
 /* 로고 영역 */
 .logo_area {
-	width: 25%;
-	height: 100%;
+	width: 40%;
+	height: 130px;
 	float: left;
+	margin: 18px 0 0 0;
 }
 
 .logo_area img {
 	width: 100%;
-	height: 100%;
 }
 
 /* 검색 박스 영역 */
 .search_area {
-	width: 50%;
-	height: 100%;
-	float: left;
-	background-color: white;
+	width: 60%;
+	height: 150px;
+	float: right;
+	text-align: left;
 }
 
 .search_wrap {
@@ -81,34 +203,40 @@ a {
 	display: flex;
 	height: 30%;
 	width: 80%;
+	height: 40px;
 }
 
 .search_input select {
-	width: 25%;
+	width: 20%;
 	text-align: center;
 	font-size: 15px;
-    border-radius: 12px;
+	border-radius: 20px;
+	border: 4px solid #5E6B9E;
 }
 
 .search_input input {
 	margin-left: 10px;
-	width: 57%;
+	width: 100%;
 	font-size: 18px;
 	padding-left: 2%;
-    border-radius: 12px;
+	border-radius: 20px;
+	border: 4px solid #5E6B9E;
 }
 
 .search_btn {
-	margin-left: 10px;
-	width: 17%;
+	margin: 0 0 0 10px;
+	width: 10%;
 	border-radius: 14px;
-	font-size: 17px;
+	font-size: 20px;
 	font-weight: 600;
-    border-radius: 12px;
-    cursor: pointer;
+	border-radius: 20px;
+	cursor: pointer;
+	background: white;
+	border: 4px solid #5E6B9E;
 }
-.search_btn:hover{
-	background-color: #D3D3D3;	
+
+.search_btn:hover {
+	background-color: #D3D3D3;
 }
 
 /* 로그인 버튼 영역 */
@@ -148,9 +276,10 @@ a {
 	width: 100%;
 	height: 70px;
 	background-color: #7696fd;
-  	border-radius: 12px;
+	border-radius: 12px;
 }
-.login_button:hover{
+
+.login_button:hover {
 	background-color: #C0C0C0;
 }
 
@@ -426,13 +555,14 @@ a {
 	font-size: 16px;
 	line-height: 15px;
 }
-.plus_btn{
-	cursor: pointer;
-}
-.minus_btn{
+
+.plus_btn {
 	cursor: pointer;
 }
 
+.minus_btn {
+	cursor: pointer;
+}
 
 .btn_cart {
 	display: inline-block;
@@ -483,47 +613,52 @@ a {
 	background-color: #e7dbdb;
 }
 /* 포인트 영역 */
-.point_div{
+.point_div {
 	margin-top: 30px;
-    margin-bottom: 50px;
+	margin-bottom: 50px;
 }
-.point_div_subject{
+
+.point_div_subject {
 	font-size: 25px;
-    line-height: 35px;
-    font-weight: bold;
+	line-height: 35px;
+	font-weight: bold;
 }
-.point_table{
+
+.point_table {
 	border-color: #ddd;
-    border-spacing: 0;
-    border-top: 1px solid #363636;
-    border-bottom: 1px solid #b6b6b6;
+	border-spacing: 0;
+	border-top: 1px solid #363636;
+	border-bottom: 1px solid #b6b6b6;
 }
-.point_table th{
+
+.point_table th {
 	border-color: #ddd;
-    vertical-align: top;
-    text-align: center;
-    color: #333333;
-    background: #fbfbfb;
-    text-indent: 0;
-    padding: 12px 5px 12px 20px;
-    font-size: 15px;
-    line-height: 20px;
+	vertical-align: top;
+	text-align: center;
+	color: #333333;
+	background: #fbfbfb;
+	text-indent: 0;
+	padding: 12px 5px 12px 20px;
+	font-size: 15px;
+	line-height: 20px;
 }
-.point_table_td{
+
+.point_table_td {
 	border-color: #ddd;
-    text-align: left;
-    color: #333333;
-    padding: 8px 15px;
+	text-align: left;
+	color: #333333;
+	padding: 8px 15px;
 }
-.order_point_input_btn{
+
+.order_point_input_btn {
 	vertical-align: middle;
-    display: inline-block;
-    border: 1px solid #aaa;
-    width: 60px;
-    text-align: center;
-    height: 20px;
-    line-height: 20px;
-    color: #555;
-    cursor: pointer;
-    font-size: 12px;
+	display: inline-block;
+	border: 1px solid #aaa;
+	width: 60px;
+	text-align: center;
+	height: 20px;
+	line-height: 20px;
+	color: #555;
+	cursor: pointer;
+	font-size: 12px;
 }

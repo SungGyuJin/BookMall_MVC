@@ -13,34 +13,46 @@
 <body>
 <div class="wrapper">
 	<div class="wrap">
-			<div class="top_gnb_area">
-				<ul class="list">
-					<c:if test="${member == null}"> <!-- 로그인 안했을때 -->
-						<li>
-							<a href="/member/login">LOGIN</a>
-						</li>
-						<li>
-							<a href="/member/join">JOIN</a>
-						</li>
-					</c:if>
-					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
+			<div class="top_gnb_area div_head">
+			 	<!-- 로그인 X -->
+				<c:if test="${member == null}">
+					<div class="div_left">
+						<form id="login_form" method="post">
+							<input class="id_input" name="memberId" value="admin" placeholder="ID" />
+							<input type="password" class="pw_input" name="memberPw" value="1234" placeholder="PW" />
+							<input type="text" name="pageName" value="search" readonly="readonly">
+							<input type="text" name="pageParam" value="searchParam" readonly="readonly">
+							<input type="button" id="login_button" value="로그인" />
+							<c:if test="${result == 0 }">
+							<span class="login_warn">로그인 오류<span>
+							</c:if>
+						</form>
+					</div>
+					<div class="div_right">
+						<a href="/member/join">회원가입</a>&nbsp;
+						<a href="/">메인페이지</a>
+						<a href="/">고객센터</a>
+					</div>
+				</c:if>
+				
+				<!-- 로그인 O -->
+				<c:if test="${member != null}">
+					<div class="div_left">
+						${member.memberName} |
+						<fmt:formatNumber value="${member.money}" pattern="#,###"/> 원 |
+						<fmt:formatNumber value="${member.point}" pattern="#,###"/> P
+					</div>
+					<div class="div_right">
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/bookEnroll">관리자 페이지</a></li>
+							<a href="/admin/bookEnroll">관리자페이지</a>&nbsp;&nbsp;
 						</c:if>
-							<li>
-								<a id="gnb_logout_button">LOGOUT</a>
-							</li>
-						<li>
-							<a href="/cart/${member.memberId}">
-								장바구니
-							</a>
-						</li>
-					</c:if>
-						<li>
-							고객센터
-						</li>
-				</ul>			
+						<a href="/cart/${member.memberId}">장바구니</a>&nbsp;&nbsp;
+						<a id="gnb_logout_button">로그아웃</a>&nbsp;&nbsp;
+						<a href="/">고객센터</a>
+					</div>
+				</c:if>
 			</div>
+			<hr>
 			<div class="top_area">
 				<!-- 로고영역 -->
 				<div class="logo_area">
@@ -49,35 +61,18 @@
 				<div class="search_area">
 					<div class="search_wrap">
 						<form id="searchForm" action="/search" method="get">
+							<input type="text" name="pageName" value="search">
+							<input type="text" name="pageParam" value="searchParam">
 							<div class="search_input">
 								<select name="type">
 									<option value="T" selected>제목</option>
 									<option value="A">작가</option>
 								</select>
-								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">
-								<button class="btn search_btn">검색</button>
+								<input type="text" name="keyword" placeholder="검색어를 입력해주세요" value="<c:out value='${pageMaker.cri.keyword}'/>">
+								<button class="btn search_btn">🔍</button>
 							</div>					
 						</form>
 					</div>
-				</div>
-				<div class="login_area">
-					
-					<!-- 로그인 하지 않은 상태 -->
-					<c:if test = "${member == null}">
-							<div class="login_button"><a href="/member/login">LOGIN</a></div>
-								<span><a href="/member/join">JOIN</a></span>
-					</c:if>
-						
-					<!-- 로그인 상태 -->
-					<c:if test="${member != null}">
-						<div class="login_success_area">
-							<span>회원 : ${member.memberName}</span>
-							<span>충전금액 : <fmt:formatNumber value="${member.money}" pattern="\#,###"/></span>
-							<span>포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###"/></span>
-							<a href="/member/logout.do">LOGOUT</a>
-						</div>
-					</c:if>
-					
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -89,7 +84,7 @@
 					<div class="search_filter">
 							<div class="filter_button_wrap">
 									<button class="filter_button filter_active" id="filter_button_a">국내도서</button>
-									<button class="filter_button" id="filter_button_b">해외도서</button>
+									<button class="filter_button" id="filter_button_b">외국도서</button>
 							</div>
 							<div class="filter_content filter_a">
 								<c:forEach items="${filter_info}" var="filter">
@@ -126,7 +121,7 @@
 								<tr>
 									<td class="image">
 										<div class="image_wrap" data-bookid="${list.imageList[0].bookId}" data-path="${list.imageList[0].uploadPath}" data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
-											<a href="/bookDetail/${list.bookId}"><img></a>	
+											<a href="/bookDetail/pageParam=${list.bookId}"><img></a>	
 										</div>
 									</td>
 									<td class="detail">
@@ -134,7 +129,7 @@
 											[${list.cateName}]
 										</div>
 										<div class="title">
-											<a href="/bookDetail/${list.bookId}">
+											<a href="/bookDetail/pageParam=${list.bookId}">
 												${list.bookName}
 											</a>
 										</div>
@@ -247,6 +242,15 @@
 </div>	<!-- .wrapper end -->
 
 <script>
+// 로그인 버튼 클릭 메소드
+$("#login_button").click(function() {
+
+	// alert("로그인 버튼 작용");
+
+	// 로그인 메서드 서버 요청
+	$("#login_form").attr("action", "/member/login.do");
+	$("#login_form").submit();
+});
 	
 $(document).ready(function(){
 	
