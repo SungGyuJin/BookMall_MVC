@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+a {
+	text-decoration: none;
+}
 .admin_top_wrap {
 	width: 100%;
 	border-radius: 12px;
@@ -7,11 +10,12 @@
 	text-align: center;
 	font-style: italic;
 }
-.admin_top_wrap span{
+
+.admin_top_wrap span {
 	color: black;
 }
 
-.admin_navi_wrap{
+.admin_navi_wrap {
 	display: block;
 	width: 100%;
 	margin: 0 0 15px 25%;
@@ -27,7 +31,7 @@
 	line-height: 80px;
 }
 
-.admin_navi_wrap a{
+.admin_navi_wrap a {
 	width: 100%;
 	height: 100px;
 	margin: 0 auto;
@@ -38,11 +42,17 @@
 	color: black;
 }
 
-.admin_div{
+A:link{text-decoration: none; color: #000000;}
+A:visited{text-decoration: none; color: #000000;}
+A:active{text-decoration: none; color: #000000;}
+A:hover{text-decoration: none; color: #000000;}
+
+.admin_div {
 	float: left;
 	width: 25%;
 }
-.admin_div a{
+
+.admin_div a {
 	color: white;
 	font-style: italic;
 }
@@ -62,9 +72,44 @@
 .admin_navi_wrap li a:hover {
 	color: black;
 }
+/* 홈페이지 기능 네비 */
+.top_gnb_area {
+	width: 100%;
+	height: 50px;
+	border-radius: 12px;
+	background-color: white;
+}
 
 .top_gnb_area {
-	border-radius: 12px;
+	text-align: center;
+}
+
+.div_right {
+	width: 50%;
+	float: right;
+	border: none;
+	font-size: 16px;
+	text-align: right;
+	margin: 13px 0 0 0;
+}
+
+.div_right a {
+	background: white;
+	color: balck;
+	color: #000000;
+}
+
+.div_right a:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+.div_right button:hover {
+	color: black;
+}
+.top_gnb_area a:hover{
+	text-decoration: underline;
+	color: blue;
 }
 
 .admin_list_01:hover {

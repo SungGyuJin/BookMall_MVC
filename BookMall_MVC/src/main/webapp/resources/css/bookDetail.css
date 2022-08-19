@@ -81,9 +81,11 @@ a {
 	float: right;
 	border: none;
 	font-size: 15px;
-	cursor: pointer;
 	text-align: right;
 	margin: 13px 0 0 0;
+}
+#gnb_logout_button{
+	cursor: pointer;
 }
 
 .div_right a {

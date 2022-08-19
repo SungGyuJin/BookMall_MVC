@@ -10,13 +10,12 @@
 		<div class="wrap">
 			<!-- gnb_aera -->
 			<div class="top_gnb_area">
-				<ul class="list">
-					<li><a href="/main">메인 페이지</a>
-					<li><a href="/member/logout.do">로그아웃</a>
-					<li>고객센터</li>
-				</ul>
+				<div class="div_right">
+					<a href="/">메인페이지</a>
+				</div>
 			</div>
-			
+			<hr>
+			<br>
 			<!-- top_subject_area -->
 			<div class="admin_top_wrap">
 				<span>관리자 페이지</span>

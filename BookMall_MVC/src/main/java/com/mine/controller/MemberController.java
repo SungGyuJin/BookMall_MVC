@@ -47,10 +47,6 @@ public class MemberController {
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPOST(MemberVO member) throws Exception{
 		
-//		log.info("join 진입");
-//		memberservice.memberJoin(member);
-//		log.info("join Service  성공");
-		
 		String rawPw = "";		// 인코딩 전 비번
 		String encodePw = "";	// 인코딩 후 비번
 		
@@ -201,24 +197,30 @@ public class MemberController {
 	}
 	
 	// 메인페이지 로그아웃
-	@RequestMapping(value="logout.do", method=RequestMethod.GET)
-	public String logoutMainGET(HttpServletRequest request) throws Exception{
-		
-		log.info("logoutMainGET 메서드 진입");
-		
-		HttpSession session = request.getSession();
-		
-		session.invalidate();
-		
-		return "redirect:/main";
-		
-	}
+	/*
+	 * @RequestMapping(value="logout.do", method=RequestMethod.GET) public String
+	 * logoutMainGET(HttpServletRequest request) throws Exception{
+	 * 
+	 * log.info("logoutMainGET 메서드 진입");
+	 * 
+	 * System.out.println("logoutMainGET 메서드 진입");
+	 * 
+	 * HttpSession session = request.getSession();
+	 * 
+	 * session.invalidate();
+	 * 
+	 * return "redirect:/main";
+	 * 
+	 * }
+	 */
 	
 	@RequestMapping(value="logout.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void logoutPOST(HttpServletRequest request) throws Exception{
 		
-		log.info("비동기 로그아웃 메서드 진입");
+		log.info("비동기 로그아웃");
+
+		System.out.println("비동기 로그아웃");
 		
 		 HttpSession session = request.getSession();
 		 

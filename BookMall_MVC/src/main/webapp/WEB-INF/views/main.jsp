@@ -25,38 +25,45 @@
 				<c:if test="${member == null}">
 					<div class="div_left">
 						<form id="login_form" method="post">
-							<input class="id_input" name="memberId" value="admin" placeholder="ID" />
-							<input type="password" class="pw_input" name="memberPw" value="1234" placeholder="PW" />
+							<input class="id_input" name="memberId" placeholder="ID" />
+							<input type="password" class="pw_input" name="memberPw" placeholder="PW" />
 							<input type="hidden" name="pageName" value="main">
 							<input type="hidden" name="pageParam" value="main">
 							<input type="button" id="login_button" value="로그인" />
 							<c:if test="${result == 0 }">
-							<span class="login_warn">로그인 오류<span>
+							<span class="login_warn">로그인 실패<span>
 							</c:if>
 						</form>
 					</div>
 					<div class="div_right">
-						<a href="/member/join">회원가입</a>&nbsp;
-						<a href="/">메인페이지</a>
-						<a href="/">고객센터</a>
+						<a href="/member/join">회원가입</a>&nbsp;&nbsp;
+						<a href="/">메인페이지</a>&nbsp;&nbsp;
 					</div>
 				</c:if>
-				
 				<!-- 로그인 O -->
 				<c:if test="${member != null}">
-					<div class="div_left">
-						${member.memberName} |
-						<fmt:formatNumber value="${member.money}" pattern="#,###"/> 원 |
-						<fmt:formatNumber value="${member.point}" pattern="#,###"/> P
-					</div>
-					<div class="div_right">
 						<c:if test="${member.adminCk == 1}">
-							<a href="/admin/bookEnroll">관리자페이지</a>&nbsp;&nbsp;
+							<div class="div_left">
+								관리자계정으로 로그인하셨습니다.
+							</div>
+							<div class="div_right">
+								<a href="/admin/bookEnroll">관리자페이지</a>&nbsp;&nbsp;
+								<a id="gnb_logout_button">로그아웃</a>&nbsp;&nbsp;
+								<a href="/">메인페이지</a>
+							</div>
 						</c:if>
-						<a href="/cart/${member.memberId}">장바구니</a>&nbsp;&nbsp;
-						<a id="gnb_logout_button">로그아웃</a>&nbsp;&nbsp;
-						<a href="/">고객센터</a>
-					</div>
+						<c:if test="${member.adminCk == 0}">
+							<div class="div_left">
+								${member.memberName} |
+								<fmt:formatNumber value="${member.money}" pattern="#,###"/> 원 |
+								<fmt:formatNumber value="${member.point}" pattern="#,###"/> P
+							</div>
+							<div class="div_right">
+								<a id="gnb_logout_button">로그아웃</a>&nbsp;&nbsp;
+								<a href="/cart/${member.memberId}">장바구니</a>&nbsp;&nbsp;
+								<a href="/">메인페이지</a>
+							</div>
+						</c:if>
 				</c:if>
 			</div>
 			<hr>
@@ -68,8 +75,6 @@
 				<div class="search_area">
 					<div class="search_wrap">
 						<form id="searchForm" action="/search" method="get">
-							<input type="hidden" name="pageName" value="search">
-							<input type="hidden" name="pageParam" value="">
 							<div class="search_input">
 								<select name="type">
 									<option value="T">제목</option>
@@ -85,6 +90,12 @@
 			</div>
 			<hr>
 			<div class="navi_area">
+				<div class="dropdown">
+					<a href="search?type=T&keyword=">
+					<button class="dropbtn">전체
+					</button>
+					</a>
+				</div>
 				<div class="dropdown">
 					<button class="dropbtn">국내도서
 						<i class="fa fa-caret-down"></i>
@@ -259,6 +270,13 @@
 			
 		}); // ajax
 		
+	});
+	
+	$(".search_btn").click(function(){
+		if($("input[name=keyword]").val() == ""){
+			alert("검색어를 입력해주세요");		
+			return false;
+		}
 	});
 	
 </script>

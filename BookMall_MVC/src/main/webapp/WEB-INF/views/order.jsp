@@ -15,34 +15,53 @@
 <body>
 <div class="wrapper">
 	<div class="wrap">
-			<div class="top_gnb_area">
-				<ul class="list">
-					<c:if test="${member == null}"> <!-- 로그인 안했을때 -->
-						<li>
-							<a href="/member/login">LOGIN</a>
-						</li>
-						<li>
-							<a href="/member/join">JOIN</a>
-						</li>
-					</c:if>
-					<c:if test="${member != null}"> <!-- 로그인 했을때 -->
+			<div class="top_gnb_area div_head">
+			 	<!-- 로그인 X -->
+				<c:if test="${member == null}">
+					<div class="div_left">
+						<form id="login_form" method="post">
+							<input class="id_input" name="memberId" placeholder="ID" />
+							<input type="password" class="pw_input" name="memberPw" placeholder="PW" />
+							<input type="hidden" name="pageName" value="main">
+							<input type="hidden" name="pageParam" value="main">
+							<input type="button" id="login_button" value="로그인" />
+							<c:if test="${result == 0 }">
+							<span class="login_warn">로그인 실패<span>
+							</c:if>
+						</form>
+					</div>
+					<div class="div_right">
+						<a href="/member/join">회원가입</a>&nbsp;&nbsp;
+						<a href="/">메인페이지</a>&nbsp;&nbsp;
+					</div>
+				</c:if>
+				<!-- 로그인 O -->
+				<c:if test="${member != null}">
 						<c:if test="${member.adminCk == 1}">
-							<li><a href="/admin/bookEnroll">관리자 페이지</a></li>
+							<div class="div_left">
+								관리자계정으로 로그인하셨습니다.
+							</div>
+							<div class="div_right">
+								<a href="/admin/bookEnroll">관리자페이지</a>&nbsp;&nbsp;
+								<a id="gnb_logout_button">로그아웃</a>&nbsp;&nbsp;
+								<a href="/">메인페이지</a>
+							</div>
 						</c:if>
-							<li>
-								<a id="gnb_logout_button">LOGOUT</a>
-							</li>
-						<li>
-							<a href="/cart/${member.memberId}">
-								장바구니
-							</a>
-						</li>
-					</c:if>
-						<li>
-							고객센터
-						</li>
-				</ul>			
+						<c:if test="${member.adminCk == 0}">
+							<div class="div_left">
+								${member.memberName} |
+								<fmt:formatNumber value="${member.money}" pattern="#,###"/> 원 |
+								<fmt:formatNumber value="${member.point}" pattern="#,###"/> P
+							</div>
+							<div class="div_right">
+								<a id="gnb_logout_button">로그아웃</a>&nbsp;&nbsp;
+								<a href="/cart/${member.memberId}">장바구니</a>&nbsp;&nbsp;
+								<a href="/">메인페이지</a>
+							</div>
+						</c:if>
+				</c:if>
 			</div>
+			<hr>
 			<div class="top_area">
 				<!-- 로고영역 -->
 				<div class="logo_area">
@@ -56,35 +75,16 @@
 									<option value="T">제목</option>
 									<option value="A">작가</option>
 								</select>
-								<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword}'/>">
+								<input type="text" name="keyword" placeholder="검색어를 입력해주세요" value="<c:out value='${pageMaker.cri.keyword}'/>">
 								<button class="btn search_btn">🔍</button>
 							</div>					
 						</form>
 					</div>
 				</div>
-				<div class="login_area">
-					
-					<!-- 로그인 하지 않은 상태 -->
-					<c:if test = "${member == null}">
-							<div class="login_button"><a href="/member/login">LOGIN</a></div>
-								<span><a href="/member/join">JOIN</a></span>
-					</c:if>
-						
-					<!-- 로그인 상태 -->
-					<c:if test="${member != null}">
-						<div class="login_success_area">
-							<span>회원 : ${member.memberName}</span>
-							<span>충전금액 : <fmt:formatNumber value="${member.money}" pattern="\#,###"/></span>
-							<span>포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###"/></span>
-							<a href="/member/logout.do">LOGOUT</a>
-						</div>
-					</c:if>
-					
-				</div>
 				<div class="clearfix"></div>
 			</div>
 			<div class="content_area">
-				<div class="content_subject"><span>장바구니</span></div>
+				<div class="content_subject"><span>결제하기</span></div>
 					
 				<div class="content_main">
 					<!-- 회원정보 -->
@@ -203,7 +203,7 @@
 										<td class="book_table_price_td">
 											<fmt:formatNumber value="${ol.salePrice}" pattern="#,### 원" /> | 수량 ${ol.bookCount}개
 											<br><fmt:formatNumber value="${ol.totalPrice}" pattern="#,### 원" />
-											<br>[<fmt:formatNumber value="${ol.totalPoint}" pattern="#,### 원" />P]
+											<br>[<fmt:formatNumber value="${ol.totalPoint}" pattern="#,### " />P]
 											<input type="hidden" class="individual_bookPrice_input" value="${ol.bookPrice}">
 											<input type="hidden" class="individual_salePrice_input" value="${ol.salePrice}">
 											<input type="hidden" class="individual_bookCount_input" value="${ol.bookCount}">
@@ -217,29 +217,33 @@
 							</tbody>
 						</table>
 					</div>
-					<!-- 포인트 정보 -->
-					<div class="point_div">
-						<div class="point_div_subject">포인트 사용</div>
-						<table class="point_table">
-							<colgroup>
-								<col width="25%">
-								<col width="*">
-							</colgroup>
-							<tbody>
-								 	<tr>
-								 			<th>포인트 사용</th>
-								 			<td>
-								 					${memberInfo.point} | <input class="order_point_input" value="0">원
-								 					<a class="order_point_input_btn order_point_input_btn_N" data-state="N">모두사용</a>
-								 					<a class="order_point_input_btn order_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
-								 			</td>
-								 	</tr>
-							</tbody>
-						</table>
-					</div>
 					<!-- 주문 종합 정보 -->
+					<!-- 가격 종합 정보 -->
 					<div class="total_info_div">
-						<!-- 가격 종합 정보 -->
+					<!-- 포인트 정보 -->
+						<div class="point_div">
+							<table class="point_table">
+								<colgroup>
+									<col width="25%">
+									<col width="*">
+								</colgroup>
+								<tbody>
+									 	<tr>
+									 			<td>
+									 				<input class="order_point_input" value="0"> P
+									 				<a class="order_point_input_btn order_point_input_btn_N" data-state="N">모두사용</a>
+									 				<a class="order_point_input_btn order_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
+									 			</td>
+									 	</tr>
+									 	<tr>
+									 			<td>
+									 				<hr>
+									 				보유포인트 : ${memberInfo.point}
+									 			</td>
+									 	</tr>
+								</tbody>
+							</table>
+						</div>
 						<div class="total_info_price_div">
 								<ul>
 										<li>
@@ -262,7 +266,7 @@
 										</li>
 										<li class="point_li">
 												<span class="price_span_label">적립예정 포인트</span>
-												<span class="totalPoint_span"></span>원
+												<span class="totalPoint_span"></span> P
 										</li>
 								</ul>
 						</div>
@@ -322,6 +326,16 @@
 </div>	<!-- .wrapper end -->
 
 <script>
+
+// 로그인 버튼 클릭 메소드
+$("#login_button").click(function() {
+
+	// alert("로그인 버튼 작용");
+
+	// 로그인 메서드 서버 요청
+	$("#login_form").attr("action", "/member/login.do");
+	$("#login_form").submit();
+});
 
 $(document).ready(function(){
 	
@@ -573,14 +587,31 @@ $(".order_btn").on("click", function(){;
 	$(".order_form").submit();	
 	
 });
+//gnb-area 로그아웃 버튼작동
+$("#gnb_logout_button").click(function(){
+	
+	// alert("버튼 작동");
+	
+	$.ajax({
+		
+		type: "POST",
+		url: "/member/logout.do",
+		success: function(data){
+			document.location.reload();
+			location.href = "/main";
+		}
+		
+	}); // ajax
+	
+});
 
 
-
-
-
-
-
-
+$(".search_btn").click(function(){
+	if($("input[name=keyword]").val() == ""){
+		alert("검색어를 입력해주세요");		
+		return false;
+	}
+});
 
 
 </script>

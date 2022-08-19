@@ -83,9 +83,11 @@ a{
 	float: right;
 	border: none;
 	font-size: 15px;
-	cursor: pointer;
 	text-align: right;
 	margin: 13px 0 0 0;
+}
+#gnb_logout_button{
+	cursor: pointer;
 }
 
 .div_right a {
@@ -502,27 +504,29 @@ a{
 }
 /* 필터정보 */
 .search_filter {
-    width: 90%;
-    margin: auto;
-	margin-top: 30px;
-    margin-bottom: 50px;    
+    width: 100%;
+	height: auto;
+    margin: 10px 0 50px 0;
+    
 } 
 .filter_button_wrap {
     width: 100%;
+	height: 50px;
+	margin: 0 0 20px 0;
 }
 
 .filter_button_wrap button {
     width: 50%;
-    border-radius: 12px;
 }
 .filter_button{
-	background-color: #6495ED;
-	border: 1px solid green;
-	color: white;
+	background-color: white;
+	border: none;
+	color: black;
 	padding: 10px 24px;
 	cursor: pointer;
 	float: left;
 	font-size: x-large;
+	height: 60px;
 } 
 .filter_button_wrap:after {
     content: "";
@@ -533,26 +537,28 @@ a{
     border-right: none;
 }
 .filter_button:hover {
-    background-color: #4682B4;
+    background-color: #5E6B9E;
+	color: white;
 }
 .filter_active{
-	background-color: #4682B4;
+	background-color: #5E6B9E;
+	color: white;
 }
 .filter_content{
 	padding:20px 50px 20px 50px;
-	border: 1px solid gray;
 }
 .filter_content a:not(:first-child){
 	margin-left: 10px;
 }
+.filter_content a:hover{
+	text-decoration: underline;
+}
 .filter_a{
 	display: block;
-    border-radius: 12px;
 }
 
 .filter_b{
 	display: none;
-    border-radius: 12px;
 }
 
 

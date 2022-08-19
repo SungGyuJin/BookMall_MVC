@@ -140,6 +140,8 @@ public class BookController {
 		
 		log.info("bookDetailGET()......");
 		
+		model.addAttribute("buy_chk", bookId);
+		
 		model.addAttribute("bookInfo", bookService.getbookInfo(bookId));
 		model.addAttribute("pageParam", bookId);
 		

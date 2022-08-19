@@ -18,8 +18,8 @@
 				<c:if test="${member == null}">
 					<div class="div_left">
 						<form id="login_form" method="post">
-							<input class="id_input" name="memberId" value="admin" placeholder="ID" />
-							<input type="password" class="pw_input" name="memberPw" value="1234" placeholder="PW" />
+							<input class="id_input" name="memberId" placeholder="ID" />
+							<input type="password" class="pw_input" name="memberPw" placeholder="PW" />
 							<input type="button" id="login_button" value="로그인" />
 							<c:if test="${result == 0 }">
 							<span class="login_warn">로그인 오류<span>
@@ -27,27 +27,34 @@
 						</form>
 					</div>
 					<div class="div_right">
-						<a href="/member/join">회원가입</a>&nbsp;
-						<a href="/">메인페이지</a>
-						<a href="/">고객센터</a>
+						<a href="/member/join">회원가입</a>&nbsp;&nbsp;
+						<a href="/">메인페이지</a>&nbsp;&nbsp;
 					</div>
 				</c:if>
-				
 				<!-- 로그인 O -->
 				<c:if test="${member != null}">
-					<div class="div_left">
-						${member.memberName} |
-						<fmt:formatNumber value="${member.money}" pattern="#,###"/> 원 |
-						<fmt:formatNumber value="${member.point}" pattern="#,###"/> P
-					</div>
-					<div class="div_right">
 						<c:if test="${member.adminCk == 1}">
-							<a href="/admin/bookEnroll">관리자페이지</a>&nbsp;&nbsp;
+							<div class="div_left">
+								관리자계정으로 로그인하셨습니다.
+							</div>
+							<div class="div_right">
+								<a href="/admin/bookEnroll">관리자페이지</a>&nbsp;&nbsp;
+								<a id="gnb_logout_button">로그아웃</a>&nbsp;&nbsp;
+								<a href="/">메인페이지</a>
+							</div>
 						</c:if>
-						<a href="/cart/${member.memberId}">장바구니</a>&nbsp;&nbsp;
-						<a id="gnb_logout_button">로그아웃</a>&nbsp;&nbsp;
-						<a href="/">고객센터</a>
-					</div>
+						<c:if test="${member.adminCk == 0}">
+							<div class="div_left">
+								${member.memberName} |
+								<fmt:formatNumber value="${member.money}" pattern="#,###"/> 원 |
+								<fmt:formatNumber value="${member.point}" pattern="#,###"/> P
+							</div>
+							<div class="div_right">
+								<a id="gnb_logout_button">로그아웃</a>&nbsp;&nbsp;
+								<a href="/cart/${member.memberId}">장바구니</a>&nbsp;&nbsp;
+								<a href="/">메인페이지</a>
+							</div>
+						</c:if>
 				</c:if>
 			</div>
 			<hr>
@@ -69,25 +76,6 @@
 							</div>					
 						</form>
 					</div>
-				</div>
-				<div class="login_area">
-					
-					<!-- 로그인 하지 않은 상태 -->
-					<c:if test = "${member == null}">
-							<div class="login_button"><a href="/member/login">LOGIN</a></div>
-								<span><a href="/member/join">JOIN</a></span>
-					</c:if>
-						
-					<!-- 로그인 상태 -->
-					<c:if test="${member != null}">
-						<div class="login_success_area">
-							<span>회원 : ${member.memberName}</span>
-							<span>충전금액 : <fmt:formatNumber value="${member.money}" pattern="\#,###"/></span>
-							<span>포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###"/></span>
-							<a href="/member/logout.do">LOGOUT</a>
-						</div>
-					</c:if>
-					
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -484,18 +472,30 @@ $(".order_btn").on("click", function(){
 	
 });
 
+//gnb-area 로그아웃 버튼작동
+$("#gnb_logout_button").click(function(){
+	
+	// alert("버튼 작동");
+	
+	$.ajax({
+		
+		type: "POST",
+		url: "/member/logout.do",
+		success: function(data){
+			document.location.reload();
+		}
+		
+	}); // ajax
+	
+});
 
 
-
-
-
-
-
-
-
-
-
-
+$(".search_btn").click(function(){
+	if($("input[name=keyword]").val() == ""){
+		alert("검색어를 입력해주세요");		
+		return false;
+	}
+});
 
 
 </script>
