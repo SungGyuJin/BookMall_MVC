@@ -75,7 +75,8 @@ a {
 	text-align: right;
 	margin: 13px 0 0 0;
 }
-#gnb_logout_button{
+
+#gnb_logout_button {
 	cursor: pointer;
 }
 
@@ -236,7 +237,6 @@ a {
 	background-color: #C0C0C0;
 }
 
-
 /* 홈페이지 메인 제품 목록  */
 .content_area {
 	width: 100%;
@@ -388,6 +388,7 @@ a {
 	background-color: #5E6B9E;
 	border: 1px solid #5E6B9E;
 }
+
 .navi_bar_area {
 	overflow: hidden;
 	background-color: #6495ED;

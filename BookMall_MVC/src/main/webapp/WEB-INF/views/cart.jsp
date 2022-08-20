@@ -13,7 +13,7 @@
 <body>
 <div class="wrapper">
 	<div class="wrap">
-			<div class="top_gnb_area div_head">
+		<div class="top_gnb_area div_head">
 			 	<!-- 로그인 X -->
 				<c:if test="${member == null}">
 					<div class="div_left">
@@ -81,10 +81,6 @@
 			</div>
 			<div class="content_area">
 				<div class="content_subject"><span>장바구니</span></div>
-				<!-- 장바구니 리스트 -->
-				<div class="content_middle_section"></div>
-				<!-- 장바구니 가격 합계 -->
-				<!-- cartInfo -->
 				<div class="content_totalCount_section">
 						
 						<!-- 체크박스 전체 여부 -->
@@ -96,14 +92,14 @@
 						<table class="subject_table">
 								<caption>표 제목 부분</caption>
 								<tbody>
-										<tr>
-												<th class="td_width_t1">선택</th>
-												<th class="td_width_t2">이미지</th>
-												<th class="td_width_t3">도서명</th>
-												<th class="td_width_t4">가격</th>
-												<th class="td_width_t5">수량</th>
-												<th class="td_width_t6">합계</th>
-										</tr>
+									<tr>
+										<th class="td_width_t1">선택</th>
+										<th class="td_width_t2">이미지</th>
+										<th class="td_width_t3">도서명</th>
+										<th class="td_width_t4">가격</th>
+										<th class="td_width_t5">수량</th>
+										<th class="td_width_t6">합계</th>
+									</tr>
 								</tbody>
 						</table>
 						<table class="cart_table">
@@ -122,7 +118,10 @@
 												<input type="hidden" class="individual_bookId_input" value="${ci.bookId}">
 											</td>
 											<td class="td_width_1">
-												<div class="image_wrap" data-bookid="${ci.imageList[0].bookId}" data-path="${ci.imageList[0].uploadPath}" data-uuid="${ci.imageList[0].uuid}" data-filename="${ci.imageList[0].fileName}">
+												<div class="image_wrap" data-bookid="${ci.imageList[0].bookId}" 
+													data-path="${ci.imageList[0].uploadPath}" 
+													data-uuid="${ci.imageList[0].uuid}" 
+													data-filename="${ci.imageList[0].fileName}">
 													<img>
 												</div>
 											</td>
@@ -247,7 +246,6 @@
 					<form action="/order/${member.memberId}" method="get" class="order_form">
 						
 					</form>
-					
 			</div>
 			<br><br><br>
 			<!-- Footer 영역 -->
@@ -280,47 +278,35 @@
 					<div class="clearfix"></div>
 				</div>
 			</div>
-			
-	</div>	<!-- .wrap end -->
-</div>	<!-- .wrapper end -->
+	</div>
+</div>
 
 <script>
 
-// 로그인 버튼 클릭 메소드
-$("#login_button").click(function() {
-
-	// alert("로그인 버튼 작용");
-
-	// 로그인 메서드 서버 요청
-	$("#login_form").attr("action", "/member/login.do");
-	$("#login_form").submit();
-});
-$(document).ready(function(){
-	
-	// 종합 정보 
-	setTotalInfo();
-	
-	// 이미지 삽입
-	$(".image_wrap").each(function(i, obj){
+	$(document).ready(function(){
 		
-		const bobj = $(obj);
+		// 종합 정보 
+		setTotalInfo();
 		
-		if(bobj.data("bookid")){
-			const uploadPath = bobj.data("path");
-			const uuid = bobj.data("uuid");
-			const fileName = bobj.data("filename");
+		// 이미지 삽입
+		$(".image_wrap").each(function(i, obj){
 			
-			const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
+			const bobj = $(obj);
 			
-			$(this).find("img").attr("src", "/display?fileName=" + fileCallPath);
-		}else{
-			
-			$(this).find("img").attr("src", "/resources/img/bookNoImage.png");
-		}
-		
+			if(bobj.data("bookid")){
+				const uploadPath = bobj.data("path");
+				const uuid = bobj.data("uuid");
+				const fileName = bobj.data("filename");
+				
+				const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
+				
+				$(this).find("img").attr("src", "/display?fileName=" + fileCallPath);
+			}else{
+				
+				$(this).find("img").attr("src", "/resources/img/bookNoImage.png");
+			}
+		});
 	});
-	
-});
 
 	// 체크여부에 따른 종합 정보
 	$(".individual_cart_checkbox").on("change", function(){
@@ -342,163 +328,159 @@ $(document).ready(function(){
 		
 		// 총 주문 정보 세팅
 		setTotalInfo($(".cart_info_td"));
-		
-		
 	});
-
-
-// 총 주문 정보
-function setTotalInfo(){
 	
-	let totalPrice = 0;
-	let totalCount = 0;
-	let totalKind = 0;
-	let totalPoint = 0;
-	let deliveryPrice = 0;
-	let finalTotalPrice = 0;
-	
-	$(".cart_info_td").each(function(index, element){
+	// 총 주문 정보
+	function setTotalInfo(){
 		
-		if($(element).find(".individual_cart_checkbox").is(":checked") === true){
+		let totalPrice = 0;
+		let totalCount = 0;
+		let totalKind = 0;
+		let totalPoint = 0;
+		let deliveryPrice = 0;
+		let finalTotalPrice = 0;
+		
+		$(".cart_info_td").each(function(index, element){
 			
-			// 총 가격
-			totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
-			
-			// 총 갯수
-			totalCount += parseInt($(element).find(".individual_bookCount_input").val());
-			
-			// 총 종류
-			totalKind += 1;
-			
-			// 총 마일리지
-			totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());
+			if($(element).find(".individual_cart_checkbox").is(":checked") === true){
+				
+				// 총 가격
+				totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
+				
+				// 총 갯수
+				totalCount += parseInt($(element).find(".individual_bookCount_input").val());
+				
+				// 총 종류
+				totalKind += 1;
+				
+				// 총 마일리지
+				totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());
+			}
+		});
+		
+		// 배송비 결정
+		if(totalPrice >= 30000){
+			deliveryPrice = 0;
+		}else if(totalPrice == 0){
+			deliveryPrice = 0;
+		}else{
+			deliveryPrice = 3000;
 		}
-	});
-	
-	// 배송비 결정
-	if(totalPrice >= 30000){
-		deliveryPrice = 0;
-	}else if(totalPrice == 0){
-		deliveryPrice = 0;
-	}else{
-		deliveryPrice = 3000;
-	}
-	
+		
 		finalTotalPrice = totalPrice + deliveryPrice;
-	
-	// 총 가격
-	$(".totalPrice_span").text(totalPrice.toLocaleString());
-	
-	// 총 갯수
-	$(".totalCount_span").text(totalCount);
-	
-	// 총 종류
-	$(".totalKind_span").text(totalKind);
-	
-	// 총 마일리지
-	$(".totalPoint_span").text(totalPoint.toLocaleString());
-	
-	// 배송비
-	$(".delivery_price").text(deliveryPrice);
-	
-	// 최종 가격
-	$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());
 		
-}
-
-$(".plus_btn").on("click", function(){
-	
-	let quantity = $(this).parent("div").find("input").val();
-	$(this).parent("div").find("input").val(++quantity);
-	
-});
-
-$(".minus_btn").on("click", function(){
-	
-	let quantity = $(this).parent("div").find("input").val();
-	if(quantity > 1){
-		$(this).parent("div").find("input").val(--quantity);
+		// 총 가격
+		$(".totalPrice_span").text(totalPrice.toLocaleString());
+		
+		// 총 갯수
+		$(".totalCount_span").text(totalCount);
+		
+		// 총 종류
+		$(".totalKind_span").text(totalKind);
+		
+		// 총 마일리지
+		$(".totalPoint_span").text(totalPoint.toLocaleString());
+		
+		// 배송비
+		$(".delivery_price").text(deliveryPrice);
+		
+		// 최종 가격
+		$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());
+			
 	}
-	
-});
 
-// 수량 수정 버튼
-$(".quantity_modify_btn").on("click", function(){
-	
-	let cartId = $(this).data("cartid");
-	let bookCount = $(this).parent("td").find("input").val();
-	$(".update_cartId").val(cartId);
-	$(".update_bookCount").val(bookCount);
-	$(".quantity_update_form").submit();
-	
-});
-
-// 장바구니 삭제
-$(".delete_btn").on("click", function(e){
-	
-	e.preventDefault();
-	const cartId = $(this).data("cartid");
-	$(".delete_cartId").val(cartId);
-	$(".quantity_delete_form").submit();
-	
-});
-
-// 주문 페이지 이동
-$(".order_btn").on("click", function(){
-	
-	let form_contents = '';
-	let orderNumber = 0;
-	
-	$(".cart_info_td").each(function(index, element){
+	$(".plus_btn").on("click", function(){
 		
-		// 체크여부
-		if($(element).find(".individual_cart_checkbox").is(":checked") === true){
-			
-			let bookId = $(element).find(".individual_bookId_input").val();
-			let bookCount = $(element).find(".individual_bookCount_input").val();
-			
-			let bookId_input = "<input name='orders[" + orderNumber + "].bookId' type='hidden' value='" + bookId + "'>";
-			form_contents += bookId_input;
-			
-			let bookCount_input = "<input name='orders[" + orderNumber + "].bookCount' type='hidden' value='" + bookCount + "'>";
-			form_contents += bookCount_input;
-			
-			orderNumber += 1;
+		let quantity = $(this).parent("div").find("input").val();
+		$(this).parent("div").find("input").val(++quantity);
+		
+	});
+
+	$(".minus_btn").on("click", function(){
+		
+		let quantity = $(this).parent("div").find("input").val();
+		if(quantity > 1){
+			$(this).parent("div").find("input").val(--quantity);
 		}
 	});
-	
-	$(".order_form").html(form_contents);
-	$(".order_form").submit();
-	
-});
 
-//gnb-area 로그아웃 버튼작동
-$("#gnb_logout_button").click(function(){
-	
-	// alert("버튼 작동");
-	
-	$.ajax({
+	// 수량 수정 버튼
+	$(".quantity_modify_btn").on("click", function(){
 		
-		type: "POST",
-		url: "/member/logout.do",
-		success: function(data){
-			document.location.reload();
+		let cartId = $(this).data("cartid");
+		let bookCount = $(this).parent("td").find("input").val();
+		$(".update_cartId").val(cartId);
+		$(".update_bookCount").val(bookCount);
+		$(".quantity_update_form").submit();
+		
+	});
+
+	// 장바구니 삭제
+	$(".delete_btn").on("click", function(e){
+		
+		e.preventDefault();
+		const cartId = $(this).data("cartid");
+		$(".delete_cartId").val(cartId);
+		$(".quantity_delete_form").submit();
+		
+	});
+
+	// 주문 페이지 이동
+	$(".order_btn").on("click", function(){
+		
+		let form_contents = '';
+		let orderNumber = 0;
+		
+		$(".cart_info_td").each(function(index, element){
+			
+			// 체크여부
+			if($(element).find(".individual_cart_checkbox").is(":checked") === true){
+				
+				let bookId = $(element).find(".individual_bookId_input").val();
+				let bookCount = $(element).find(".individual_bookCount_input").val();
+				
+				let bookId_input = "<input name='orders[" + orderNumber + "].bookId' type='hidden' value='" + bookId + "'>";
+				form_contents += bookId_input;
+				
+				let bookCount_input = "<input name='orders[" + orderNumber + "].bookCount' type='hidden' value='" + bookCount + "'>";
+				form_contents += bookCount_input;
+				
+				orderNumber += 1;
+			}
+		});
+		
+		$(".order_form").html(form_contents);
+		$(".order_form").submit();
+		
+	});
+	
+	// 버튼 (로그인)
+	$("#login_button").click(function() {
+	
+		$("#login_form").attr("action", "/member/login.do");
+		$("#login_form").submit();
+	});
+
+	// 버튼 (로그아웃)
+	$("#gnb_logout_button").click(function(){
+		
+		$.ajax({
+			
+			type: "POST",
+			url: "/member/logout.do",
+			success: function(data){
+				document.location.reload();
+			}
+		});
+	});
+
+	$(".search_btn").click(function(){
+		if($("input[name=keyword]").val() == ""){
+			alert("검색어를 입력해주세요");		
+			return false;
 		}
-		
-	}); // ajax
-	
-});
-
-
-$(".search_btn").click(function(){
-	if($("input[name=keyword]").val() == ""){
-		alert("검색어를 입력해주세요");		
-		return false;
-	}
-});
-
+	});
 
 </script>
-	
 </body>
 </html>

@@ -11,54 +11,53 @@ import com.mine.model.AttachImageVO;
 import com.mine.model.CartDTO;
 
 @Service
-public class CartServiceImpl implements CartService{
+public class CartServiceImpl implements CartService {
 
-	
 	@Autowired
 	private CartMapper cartMapper;
-	
+
 	@Autowired
 	private AttachMapper attachMapper;
 
 	@Override
 	public int addCart(CartDTO cart) {
-		
-		//   장바구니 데이터 체크
+
+		// 장바구니 데이터 체크
 		CartDTO checkCart = cartMapper.checkCart(cart);
-		
-		if(checkCart != null) {
-			
+
+		if (checkCart != null) {
+
 			return 2;
 		}
-		
+
 		// 장바구니 등록 & 에러 시 0 반환
 		try {
 			return cartMapper.addCart(cart);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			return 0;
 		}
-		
+
 	}
 
 	@Override
 	public List<CartDTO> getCartList(String memberId) {
 
 		List<CartDTO> cart = cartMapper.getCart(memberId);
-		
-		for(CartDTO dto : cart) {
-			
+
+		for (CartDTO dto : cart) {
+
 			// 종합 정보 초기화
 			dto.initSaleTotal();
-			
+
 			// 이미지 정보 얻기
 			int bookId = dto.getBookId();
-			
+
 			List<AttachImageVO> imageList = attachMapper.getAttachList(bookId);
-			
+
 			dto.setImageList(imageList);
-			
+
 		}
-		
+
 		return cart;
 	}
 
@@ -73,5 +72,5 @@ public class CartServiceImpl implements CartService{
 
 		return cartMapper.deleteCart(cartId);
 	}
-	
+
 }

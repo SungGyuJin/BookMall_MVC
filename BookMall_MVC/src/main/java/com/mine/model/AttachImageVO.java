@@ -1,16 +1,16 @@
 package com.mine.model;
 
 public class AttachImageVO {
-	
+
 	// 경로
 	private String uploadPath;
-	
+
 	// uuid
 	private String uuid;
-	
+
 	// 파일이름
 	private String fileName;
-	
+
 	// 상품 id
 	private int bookId;
 
@@ -37,7 +37,7 @@ public class AttachImageVO {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-	
+
 	public int getBookId() {
 		return bookId;
 	}
@@ -51,6 +51,5 @@ public class AttachImageVO {
 		return "AttachImageVO [uploadPath=" + uploadPath + ", uuid=" + uuid + ", fileName=" + fileName + ", bookId="
 				+ bookId + "]";
 	}
-	
-	
+
 }

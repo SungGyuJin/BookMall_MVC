@@ -6,13 +6,17 @@
 	
 	<!-- 카트 추가 -->
 	<insert id="addCart">
+	
 		insert into mine_cart(memberId, bookId, bookCount)
 		values(#{memberId}, #{bookId}, #{bookCount})
+		
 	</insert>
 	
 	<!-- 카트 삭제 -->
 	<delete id="deleteCart">
+	
 		delete from mine_cart where cartId = #{cartId}
+		
 	</delete>
 	
 	<!-- 카트 수정 삭제 -->
@@ -42,6 +46,5 @@
 		Delete from mine_cart where memberId = #{memberId} and bookId = #{bookId}
 		
 	</delete>
-	
 	
   </mapper>

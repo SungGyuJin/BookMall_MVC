@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/order.css">
-<!-- Daum 주소 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
@@ -20,11 +19,11 @@
 				<c:if test="${member == null}">
 					<div class="div_left">
 						<form id="login_form" method="post">
-							<input class="id_input" name="memberId" placeholder="ID" />
-							<input type="password" class="pw_input" name="memberPw" placeholder="PW" />
+							<input class="id_input" name="memberId" placeholder="ID">
+							<input type="password" class="pw_input" name="memberPw" placeholder="PW">
 							<input type="hidden" name="pageName" value="main">
 							<input type="hidden" name="pageParam" value="main">
-							<input type="button" id="login_button" value="로그인" />
+							<input type="button" id="login_button" value="로그인">
 							<c:if test="${result == 0 }">
 							<span class="login_warn">로그인 실패<span>
 							</c:if>
@@ -85,25 +84,15 @@
 			</div>
 			<div class="content_area">
 				<div class="content_subject"><span>결제하기</span></div>
-					
+				
 				<div class="content_main">
 					<!-- 회원정보 -->
-					<div class="member_info_div">
-						<table class="table_text_align_center memberInfo_table">
-							<tbody>
-								<tr>
-									<th style="width: 25%;">주문자</th>
-									<th style="width: *">${memberInfo.memberName} | ${memberInfo.memberMail}</th>
-								</tr>
-							</tbody>
-						</table>
-					</div>
 					<div class="addressInfo_div">
-						<!-- 배송지 정보 -->
+						<!-- 배송지 정보 --><hr>
 						<div class="addressInfo_button_div">
-							<button class="address_btn address_btn_1" onClick="showAdress('1')" style="background-color: #3c3838;">사용자 정보 주소록</button>
-							<button class="address_btn address_btn_2" onClick="showAdress('2')">직접입력</button>
-						</div>
+							<button class="address_btn address_btn_1" onClick="showAdress('1')">기본주소</button>
+							<button class="address_btn address_btn_2" onClick="showAdress('2')">새 주소 입력</button>
+						</div><hr>
 						<div class="addressInfo_input_div_wrap">
 							<div class="addressInfo_input_div addressInfo_input_div_1" style="display: block;">
 								<table>
@@ -113,21 +102,21 @@
 									</colgroup>
 									<tbody>
 										<tr>
-												<th>이름</th>
-												<td>
-													${memberInfo.memberName}
-												</td>
+											<th>주문자</th>
+											<td>
+												${memberInfo.memberName}
+											</td>
 										</tr>
 										<tr>
-												<th>주소</th>
-												<td>
-													${memberInfo.memberAddr1} ${memberInfo.memberAddr2}<br>${memberInfo.memberAddr3}
-													<input class="selectAddress" value="T" type="hidden">
-													<input class="addressee_input" value="${memberInfo.memberName}" type="hidden">
-													<input class="address1_input" type="hidden" value="${memberInfo.memberAddr1}">
-													<input class="address2_input" type="hidden" value="${memberInfo.memberAddr2}">
-													<input class="address3_input" type="hidden" value="${memberInfo.memberAddr3}">
-												</td>
+											<th>주소</th>
+											<td>
+												${memberInfo.memberAddr1} ${memberInfo.memberAddr2}<br>${memberInfo.memberAddr3}
+												<input class="selectAddress" value="T" type="hidden">
+												<input class="addressee_input" value="${memberInfo.memberName}" type="hidden">
+												<input class="address1_input" type="hidden" value="${memberInfo.memberAddr1}">
+												<input class="address2_input" type="hidden" value="${memberInfo.memberAddr2}">
+												<input class="address3_input" type="hidden" value="${memberInfo.memberAddr3}">
+											</td>
 										</tr>
 									</tbody>
 								</table>
@@ -140,19 +129,19 @@
 									</colgroup>
 									<tbody>
 											<tr>
-													<th>이름</th>
-													<td>
-														<input class="addressee_input">
-													</td>
+												<th>이름</th>
+												<td>
+													<input class="addressee_input">
+												</td>
 											</tr>
 											<tr>
-													<th>주소</th>
-													<td>
-															<input class="selectAddress" value="F" type="hidden">
-															<input class="address1_input" readonly="readonly"><a class="address_search_btn" onClick="execution_daum_address()">주소 찾기</a><br>		
-															<input class="address2_input" readonly="readonly"><br>
-															<input class="address3_input" readonly="readonly">							
-													</td>
+												<th>주소</th>
+												<td>
+														<input class="selectAddress" value="F" type="hidden">
+														<input class="address1_input" readonly="readonly"><a class="address_search_btn" onClick="execution_daum_address()">주소 찾기</a><br>		
+														<input class="address2_input" readonly="readonly"><br>
+														<input class="address3_input" readonly="readonly">							
+												</td>
 											</tr>
 									</tbody>
 								</table>
@@ -199,7 +188,7 @@
 												<img>
 											</div>
 										</td>
-										<td>${ol.bookName}</td>
+										<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>${ol.bookName}</strong></td>
 										<td class="book_table_price_td">
 											<fmt:formatNumber value="${ol.salePrice}" pattern="#,### 원" /> | 수량 ${ol.bookCount}개
 											<br><fmt:formatNumber value="${ol.totalPrice}" pattern="#,### 원" />
@@ -229,17 +218,16 @@
 								</colgroup>
 								<tbody>
 									 	<tr>
-									 			<td>
-									 				<input class="order_point_input" value="0"> P
-									 				<a class="order_point_input_btn order_point_input_btn_N" data-state="N">모두사용</a>
-									 				<a class="order_point_input_btn order_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
-									 			</td>
+									 		<td>
+									 			보유포인트 : ${memberInfo.point}
+									 		</td>
 									 	</tr>
 									 	<tr>
-									 			<td>
-									 				<hr>
-									 				보유포인트 : ${memberInfo.point}
-									 			</td>
+									 		<td>
+									 			<input class="order_point_input" value="0"> P
+									 			<a class="order_point_input_btn order_point_input_btn_N" data-state="N">모두사용</a>
+									 			<a class="order_point_input_btn order_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
+									 		</td>
 									 	</tr>
 								</tbody>
 							</table>
@@ -247,26 +235,26 @@
 						<div class="total_info_price_div">
 								<ul>
 										<li>
-												<span class="price_span_label">도서금액</span>
-												<span class="totalPrice_span">100000</span>원
+											<span class="price_span_label">도서금액</span>
+											<span class="totalPrice_span">100000</span>원
 										</li>
 										<li>
-												<span class="price_span_label">배송비</span>
-												<span class="delivery_price_span">100000</span>원
+											<span class="price_span_label">배송비</span>
+											<span class="delivery_price_span">100000</span>원
 										</li>
 										<li>
-												<span class="price_span_label">할인금액</span>
-												<span class="usePoint_span">100000</span>원
+											<span class="price_span_label">할인금액</span>
+											<span class="usePoint_span">100000</span>원
 										</li>
 										<li class="price_total_li">
-												<strong class="price_span_label total_price_label">최종 결제 금액</strong>
-												<strong class="strong_red">
-														<span class="total_price_red finalTotalPrice_span"></span>원
-												</strong>
+											<strong class="price_span_label total_price_label">최종 결제 금액</strong>
+											<strong class="strong_red">
+													<span class="total_price_red finalTotalPrice_span"></span>원
+											</strong>
 										</li>
 										<li class="point_li">
-												<span class="price_span_label">적립예정 포인트</span>
-												<span class="totalPoint_span"></span> P
+											<span class="price_span_label">적립예정 포인트</span>
+											<span class="totalPoint_span"></span> P
 										</li>
 								</ul>
 						</div>
@@ -276,7 +264,6 @@
 						</div>
 					</div>
 				</div>
-					
 			</div>
 			<!-- 주문 요청 form -->
 		<form class="order_form" action="/order" method="post">
@@ -325,296 +312,286 @@
 	</div>	<!-- .wrap end -->
 </div>	<!-- .wrapper end -->
 
-<script>
+<script type="text/javascript">
 
-// 로그인 버튼 클릭 메소드
-$("#login_button").click(function() {
-
-	// alert("로그인 버튼 작용");
-
-	// 로그인 메서드 서버 요청
-	$("#login_form").attr("action", "/member/login.do");
-	$("#login_form").submit();
-});
-
-$(document).ready(function(){
-	
-	// 주문 조합정보 최신
-	setTotalInfo();
-	
-	// 이미지 삽입 
-	$(".image_wrap").each(function(i, obj){
+	$(document).ready(function(){
 		
-		const bobj = $(obj);
+		// 주문정보 최신
+		setTotalInfo();
 		
-		if(bobj.data("bookid")){
-			const uploadPath = bobj.data("path");
-			const uuid = bobj.data("uuid");
-			const fileName = bobj.data("filename");
+		// 이미지 삽입 
+		$(".image_wrap").each(function(i, obj){
 			
-			const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
+			const bobj = $(obj);
 			
-			$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
+			if(bobj.data("bookid")){
+				const uploadPath = bobj.data("path");
+				const uuid = bobj.data("uuid");
+				const fileName = bobj.data("filename");
+				
+				const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
+				
+				$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
+			} else {
+				$(this).find("img").attr('src', '/resources/img/bookNoImage.png');
+			}
+			
+		});
+	});
+
+	// 주소 입력란 버튼 동작(숨김, 등장)
+	function showAdress(className){
+		
+		// 컨텐츠 동작
+		// 모두 숨기기
+		$(".addressInfo_input_div").css("display", "none");
+		// 컨텐츠 보이기
+		$(".addressInfo_input_div_" + className).css("display", "block");
+		
+		// 버튼 색상 변경
+		// 모든 색상 동일
+		$(".address_btn").css("backgroundColor", "white");
+		$(".address_btn").css("color", "black");
+		// 지정 색상 변경
+		$(".address_btn_" + className).css("backgroundColor", "#5E6B9E");
+		$(".address_btn_" + className).css("color", "white");
+		
+		$(".address_btn").hover(function(){
+			$(this).css("backgroundColor", "#5E6B9E");
+			$(this).css("color", "white");
+		}, function(){
+			$(this).css("color", "white");
+			$(this).css("backgroundColor", "#5E6B9E");
+		});
+		
+		// selectAddress T/F
+		// 모든 selectAddress F만들기
+		$(".addressInfo_input_div").each(function(i, obj){
+			$(obj).find(".selectAddress").val("F");
+		});
+		
+		// 선택한 selectaddress T만들기
+		$(".addressInfo_input_div_" + className).find(".selectAddress").val("T");
+	}
+
+	// 다음 주소 연동
+	function execution_daum_address(){
+		
+		new daum.Postcode({
+			oncomplete: function(data){
+				
+				var addr = '';		// 주소변수
+				var extraAddr = '';	// 참고항목 변수
+				
+				// 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+				if(data.userSelectedType === 'R'){
+					
+					addr = data.roadAddress;
+				}else{
+					addr = data.jibunAddress;
+				}
+				
+				// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+				if(data.userSeletedType === 'R'){
+					
+					if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+						extraAddr += data.bname;
+					}
+					
+					// 건물명이 있고, 공동주택일 경우 추가
+					if(data.buildingName !== '' && data.apartment === 'Y'){
+						extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+					}
+					
+					// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+					if(extraAddr !== ''){
+						extraAddr = ' (' + extraAddr + ")";
+					}
+					
+					// 추가해야할 코드
+					// 주소변수 문자열과 참고항목 문자열 합치기
+					addr += extraAddr;
+				
+				}else{
+					addr += ' ';
+				}
+				
+				// 제거해야할 코드
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				$(".address1_input").val(data.zonecode);
+				$(".address2_input").val(addr);
+				
+				// 커서를 상세주소를 필드로 이동한다.
+				$(".address3_input").attr("readonly", false);
+				$(".address3_input").focus();
+			}
+		}).open();
+	}
+
+	// 포인트 입력
+	// 0 이상 & 최대 포인트 수 입력
+	$(".order_point_input").on("propertychange change keyup paste input", function(){
+		
+		const maxPoint = parseInt("${memberInfo.point}");
+		
+		let inputValue = parseInt($(this).val());
+		
+		if(inputValue < 0){
+			$(this).val(0);
+		}else if(inputValue > maxPoint){
+			$(this).val(maxPoint);
+		}
+		
+		setTotalInfo();
+	});
+
+	// 포이트 모두사용 취소 버튼
+	// Y 모두사용, N 모두 취소
+	$(".order_point_input_btn").on("click", function(){
+		
+		const maxPoint = parseInt("${memberInfo.point}");
+		
+		let state = $(this).data("state");
+		
+		if(state == 'N'){
+			console.log("n동작");
+			
+			// 모두사용
+			// 값 변경
+			$(".order_point_input").val(maxPoint);
+			// 글 변경
+			$(".order_point_input_btn_Y").css("display", "inline-block");
+			$(".order_point_input_btn_N").css("display", "none");
+		}else if(state == 'Y'){
+			console.log("y동작");
+			
+			// 취소
+			// 값 변경
+			$(".order_point_input").val(0);
+			
+			// 글 변경
+			$(".order_point_input_btn_Y").css("display", "none");
+			$(".order_point_input_btn_N").css("display", "inline-block");
+		}
+		
+		setTotalInfo();
+	});
+
+	// 총 주문 정보
+	function setTotalInfo(){
+	
+		let totalPrice = 0;				// 총 가격
+		let totalCount = 0;				// 총 갯수
+		let totalKind = 0;				// 총 종류
+		let totalPoint = 0;				// 총 마일리지
+		let deliveryPrice = 0;			// 배송비
+		let usePoint = 0;				// 사용 포인트
+		let finalTotalPrice = 0; 		// 최종 가격
+		
+		$(".book_table_price_td").each(function(index, element){
+			// 총 가격
+			totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
+			// 총 갯수
+			totalCount += parseInt($(element).find(".individual_bookCount_input").val());
+			// 총 종류
+			totalKind += 1;
+			// 총 마일리지
+			totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());
+		});	
+	
+		// 배송비 결정 
+		if(totalPrice >= 30000){
+			deliveryPrice = 0;
+		} else if(totalPrice == 0){
+			deliveryPrice = 0;
 		} else {
-			$(this).find("img").attr('src', '/resources/img/bookNoImage.png');
+			deliveryPrice = 3000;	
 		}
 		
-	});
-
-	
-});
-
-// 주소 입력란 버튼 동작(숨김, 등장)
-function showAdress(className){
-	
-	// 컨텐츠 동작
-	// 모두 숨기기
-	$(".addressInfo_input_div").css("display", "none");
-	// 컨텐츠 보이기
-	$(".addressInfo_input_div_" + className).css("display", "block");
-	
-	// 버튼 색상 변경
-	// 모든 색상 동일
-	$(".address_btn").css("backgroundColor", "#555");
-	// 지정 색상 변경
-	$(".address_btn_" + className).css("backgroundColor", "#3c3838");
-	
-	// selectAddress T/F
-	// 모든 selectAddress F만들기
-	$(".addressInfo_input_div").each(function(i, obj){
-		$(obj).find(".selectAddress").val("F");
-	});
-	
-	// 선택한 selectaddress T만들기
-	$(".addressInfo_input_div_" + className).find(".selectAddress").val("T");
-	
-	
-}
-
-// 다음 주소 연동
-function execution_daum_address(){
-	
-	console.log("동작");
-	
-	new daum.Postcode({
-		oncomplete: function(data){
-			
-			var addr = '';		// 주소변수
-			var extraAddr = '';	// 참고항목 변수
-			
-			// 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-			if(data.userSelectedType === 'R'){
-				
-				addr = data.roadAddress;
-			}else{
-				addr = data.jibunAddress;
-			}
-			
-			// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-			if(data.userSeletedType === 'R'){
-				
-				if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-					extraAddr += data.bname;
-				}
-				
-				// 건물명이 있고, 공동주택일 경우 추가
-				if(data.buildingName !== '' && data.apartment === 'Y'){
-					extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-				}
-				
-				// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-				if(extraAddr !== ''){
-					extraAddr = ' (' + extraAddr + ")";
-				}
-				
-				// 추가해야할 코드
-				// 주소변수 문자열과 참고항목 문자열 합치기
-				addr += extraAddr;
-			
-			}else{
-				addr += ' ';
-			}
-			
-			// 제거해야할 코드
-			// 우편번호와 주소 정보를 해당 필드에 넣는다.
-			$(".address1_input").val(data.zonecode);
-			$(".address2_input").val(addr);
-			
-			// 커서를 상세주소를 필드로 이동한다.
-			$(".address3_input").attr("readonly", false);
-			$(".address3_input").focus();
-			
-		}
-	
-	}).open();
-	
-}
-
-// 포인트 입력
-// 0 이상 & 최대 포인트 수 입력
-$(".order_point_input").on("propertychange change keyup paste input", function(){
-	
-	const maxPoint = parseInt("${memberInfo.point}");
-	
-	let inputValue = parseInt($(this).val());
-	
-	if(inputValue < 0){
-		$(this).val(0);
-	}else if(inputValue > maxPoint){
-		$(this).val(maxPoint);
-	}
-	
-	setTotalInfo();
-	
-});
-
-// 포이트 모두사용 취소 버튼
-// Y 모두사용, N 모두 취소
-$(".order_point_input_btn").on("click", function(){
-	
-	const maxPoint = parseInt("${memberInfo.point}");
-	
-	let state = $(this).data("state");
-	
-	if(state == 'N'){
-		console.log("n동작");
+		// 포인트 할당
+		usePoint = $(".order_point_input").val();
 		
-		// 모두사용
-		// 값 변경
-		$(".order_point_input").val(maxPoint);
-		// 글 변경
-		$(".order_point_input_btn_Y").css("display", "inline-block");
-		$(".order_point_input_btn_N").css("display", "none");
-	}else if(state == 'Y'){
-		console.log("y동작");
+		// 총 결제비용 계산
+		finalTotalPrice = (totalPrice + deliveryPrice) - usePoint;	
 		
-		// 취소
-		// 값 변경
-		$(".order_point_input").val(0);
-		
-		// 글 변경
-		$(".order_point_input_btn_Y").css("display", "none");
-		$(".order_point_input_btn_N").css("display", "inline-block");
-	}
-	
-	setTotalInfo();
-	
-});
-
-// 총 주문 정보
-function setTotalInfo(){
-
-	let totalPrice = 0;				// 총 가격
-	let totalCount = 0;				// 총 갯수
-	let totalKind = 0;				// 총 종류
-	let totalPoint = 0;				// 총 마일리지
-	let deliveryPrice = 0;			// 배송비
-	let usePoint = 0;				// 사용 포인트
-	let finalTotalPrice = 0; 		// 최종 가격
-	
-	$(".book_table_price_td").each(function(index, element){
+		// 값 삽입 
 		// 총 가격
-		totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
+		$(".totalPrice_span").text(totalPrice.toLocaleString());
 		// 총 갯수
-		totalCount += parseInt($(element).find(".individual_bookCount_input").val());
+		$(".book_kind_div_count").text(totalCount);
 		// 총 종류
-		totalKind += 1;
+		$(".book_kind_div_kind").text(totalKind);
 		// 총 마일리지
-		totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());
-	});	
-
-	// 배송비 결정 
-	if(totalPrice >= 30000){
-		deliveryPrice = 0;
-	} else if(totalPrice == 0){
-		deliveryPrice = 0;
-	} else {
-		deliveryPrice = 3000;	
+		$(".totalPoint_span").text(totalPoint.toLocaleString());
+		// 배송비
+		$(".delivery_price_span").text(deliveryPrice.toLocaleString());	
+		// 최종 가격(총 가격 + 배송비)
+		$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());		
+		// 할인가(사용 포인트)
+		$(".usePoint_span").text(usePoint.toLocaleString());
 	}
-	
-	// 포인트 할당
-	usePoint = $(".order_point_input").val();
-	
-	// 총 결제비용 계산
-	finalTotalPrice = (totalPrice + deliveryPrice) - usePoint;	
-	
-	// 값 삽입 
-	// 총 가격
-	$(".totalPrice_span").text(totalPrice.toLocaleString());
-	// 총 갯수
-	$(".book_kind_div_count").text(totalCount);
-	// 총 종류
-	$(".book_kind_div_kind").text(totalKind);
-	// 총 마일리지
-	$(".totalPoint_span").text(totalPoint.toLocaleString());
-	// 배송비
-	$(".delivery_price_span").text(deliveryPrice.toLocaleString());	
-	// 최종 가격(총 가격 + 배송비)
-	$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());		
-	// 할인가(사용 포인트)
-	$(".usePoint_span").text(usePoint.toLocaleString());
-}
 
-// 주문 요청 
-$(".order_btn").on("click", function(){;	
-	
-	// 주소 정보 & 받는이
-	$(".addressInfo_input_div").each(function(i, obj){
-		if($(obj).find(".selectAddress").val() === 'T'){
-			$("input[name='addressee']").val($(obj).find(".addressee_input").val());
-			$("input[name='memberAddr1']").val($(obj).find(".address1_input").val());
-			$("input[name='memberAddr2']").val($(obj).find(".address2_input").val());
-			$("input[name='memberAddr3']").val($(obj).find(".address3_input").val());
-		}
-	});	
-	
-	// 사용 포인트 
-	$("input[name='usePoint']").val($(".order_point_input").val());	
-	
-	// 도서정보 
-	let form_contents = ''; 
-	$(".book_table_price_td").each(function(index, element){
-		let bookId = $(element).find(".individual_bookId_input").val();
-		let bookCount = $(element).find(".individual_bookCount_input").val();
-		let bookId_input = "<input name='orders[" + index + "].bookId' type='hidden' value='" + bookId + "'>";
-		form_contents += bookId_input;
-		let bookCount_input = "<input name='orders[" + index + "].bookCount' type='hidden' value='" + bookCount + "'>";
-		form_contents += bookCount_input;
-	});	
-	$(".order_form").append(form_contents);	
-	
-	// 서버 전송 
-	$(".order_form").submit();	
-	
-});
-//gnb-area 로그아웃 버튼작동
-$("#gnb_logout_button").click(function(){
-	
-	// alert("버튼 작동");
-	
-	$.ajax({
+	// 주문 요청 
+	$(".order_btn").on("click", function(){;	
 		
-		type: "POST",
-		url: "/member/logout.do",
-		success: function(data){
-			document.location.reload();
-			location.href = "/main";
-		}
+		// 주소 정보 & 받는이
+		$(".addressInfo_input_div").each(function(i, obj){
+			if($(obj).find(".selectAddress").val() === 'T'){
+				$("input[name='addressee']").val($(obj).find(".addressee_input").val());
+				$("input[name='memberAddr1']").val($(obj).find(".address1_input").val());
+				$("input[name='memberAddr2']").val($(obj).find(".address2_input").val());
+				$("input[name='memberAddr3']").val($(obj).find(".address3_input").val());
+			}
+		});	
 		
-	}); // ajax
+		// 사용 포인트 
+		$("input[name='usePoint']").val($(".order_point_input").val());	
+		
+		// 도서정보 
+		let form_contents = ''; 
+		$(".book_table_price_td").each(function(index, element){
+			let bookId = $(element).find(".individual_bookId_input").val();
+			let bookCount = $(element).find(".individual_bookCount_input").val();
+			let bookId_input = "<input name='orders[" + index + "].bookId' type='hidden' value='" + bookId + "'>";
+			form_contents += bookId_input;
+			let bookCount_input = "<input name='orders[" + index + "].bookCount' type='hidden' value='" + bookCount + "'>";
+			form_contents += bookCount_input;
+		});	
+		$(".order_form").append(form_contents);	
+		
+		// 서버 전송 
+		$(".order_form").submit();	
+	});
 	
-});
-
-
-$(".search_btn").click(function(){
-	if($("input[name=keyword]").val() == ""){
-		alert("검색어를 입력해주세요");		
-		return false;
-	}
-});
-
+	// 버튼 (로그인)
+	$("#login_button").click(function() {
+	
+		// 로그인 메서드 서버 요청
+		$("#login_form").attr("action", "/member/login.do");
+		$("#login_form").submit();
+	});
+	
+	// 버튼 (로그아웃)
+	$("#gnb_logout_button").click(function(){
+		
+		$.ajax({
+			
+			type: "POST",
+			url: "/member/logout.do",
+			success: function(data){
+				document.location.reload();
+				location.href = "/main";
+			}
+		});
+	});
+	
+	$(".search_btn").click(function(){
+		if($("input[name=keyword]").val() == ""){
+			alert("검색어를 입력해주세요");		
+			return false;
+		}
+	});
 
 </script>
-	
 </body>
 </html>

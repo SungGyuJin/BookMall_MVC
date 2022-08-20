@@ -111,9 +111,8 @@ ul {
 	min-height: 700px;
 }
 
-
 /* 관리자 컨텐츠 제목 영역 */
-.admin_content_subject{ 
+.admin_content_subject {
 	font-size: 40px;
 	font-weight: bolder;
 	padding-left: 15px;
@@ -121,7 +120,8 @@ ul {
 	line-height: 80px;
 	border-radius: 12px;
 }
-.admin_content_subject .admin_list_04{
+
+.admin_content_subject .admin_list_04 {
 	color: black;
 }
 

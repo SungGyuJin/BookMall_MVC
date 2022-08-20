@@ -20,54 +20,52 @@ public class CartController {
 
 	@Autowired
 	private CartService cartService;
-	
+
 	@PostMapping("/cart/add")
 	@ResponseBody
 	public String addCartPOST(CartDTO cart, HttpServletRequest request) {
-		
+
 		// 로그인 체크
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
-		
-		if(mvo == null) {
+
+		if (mvo == null) {
 			return "5";
 		}
-		
+
 		// 카트 등록
 		int result = cartService.addCart(cart);
-		
+
 		return result + "";
-		
+
 	}
-	
+
 	@GetMapping("/cart/{memberId}")
 	public String cartPageGET(@PathVariable("memberId") String memberId, Model model) {
-		
+
 		model.addAttribute("cartInfo", cartService.getCartList(memberId));
-		
+
 		return "/cart";
-		
+
 	}
-	
+
 	// 장바구니 수량 수정
 	@PostMapping("/cart/update")
 	public String updateCartPOST(CartDTO cart) {
-		
+
 		cartService.modifyCount(cart);
-		
+
 		return "redirect:/cart/" + cart.getMemberId();
-		
+
 	}
-	
+
 	// 장바구니 삭제
 	@PostMapping("/cart/delete")
 	public String deleteCartPOST(CartDTO cart) {
-		
-		 cartService.deleteCart(cart.getCartId());
-		 
-		 return "redirect:/cart/" + cart.getMemberId();
+
+		cartService.deleteCart(cart.getCartId());
+
+		return "redirect:/cart/" + cart.getMemberId();
 	}
-	
-	
-	
+
 }

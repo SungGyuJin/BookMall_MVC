@@ -13,7 +13,7 @@ public class OrderPageItemDTO {
 	private String bookName;
 	
 	private int bookPrice;
-	
+
 	private double bookDiscount;
 	
 	// 만들어 낼 값

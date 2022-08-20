@@ -1,16 +1,16 @@
 package com.mine.model;
 
 public class CateVO {
-	
+
 	// 카테고리 등급
 	private int tier;
-	
+
 	// 캍테고리 이름
 	private String cateName;
-	
+
 	// 카테고리 넘버
 	private String cateCode;
-	
+
 	// 상위 카테고리
 	private String cateParent;
 
@@ -51,7 +51,5 @@ public class CateVO {
 		return "CateVO [tier=" + tier + ", cateName=" + cateName + ", cateCode=" + cateCode + ", cateParent="
 				+ cateParent + "]";
 	}
-	
-	
-	
+
 }

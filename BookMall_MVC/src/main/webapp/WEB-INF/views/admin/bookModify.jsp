@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="../includes/script_header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file="../includes/script_header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,163 +10,156 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/admin/bookModify.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-
 <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body>
+
+	<%@include file="../includes/admin/header.jsp"%>
+
+	<div class="admin_content_wrap">
+		<div class="admin_content_main">
+			<form action="/admin/bookModify" method="post" id="modifyForm">
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>제목</label>
+					</div>
+					<div class="form_section_content">
+						<input name="bookName" value="${bookInfo.bookName}"> 
+						<span class="ck_warn bookName_warn">제목을 입력해주세요.</span>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>작가</label>
+					</div>
+					<div class="form_section_content">
+						<input id="authorName_input" class="authorId_btn" readonly="readonly" value="${bookInfo.authorName}"> 
+							<input id="authorId_input" name="authorId" type="hidden" value="${bookInfo.authorId}">
+							<span class="ck_warn authorId_warn">작가를 선택해주세요</span>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>출판일</label>
+					</div>
+					<div class="form_section_content">
+						<input name="publeYear" id="testDatepicker" autocomplete="off" readonly="readonly" value="${bookInfo.publeYear}">
+						<span class="ck_warn publeYear_warn">출판일을 선택해주세요.</span>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>출판사</label>
+					</div>
+					<div class="form_section_content">
+						<input name="publisher" value="${bookInfo.publisher}">
+						<span class="ck_warn publisher_warn">출판사를 입력해주세요.</span>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>장르</label>
+					</div>
+					<div class="form_section_content">
+						<div class="cate_wrap">
+							<span>대분류</span> <select class="cate1">
+								<option selected value="none">선택</option>
+							</select>
+						</div>
+						<div class="cate_wrap">
+							<span>중분류</span> <select class="cate2">
+								<option selected value="none">선택</option>
+							</select>
+						</div>
+						<div class="cate_wrap">
+							<span>소분류</span> <select class="cate3" name="cateCode">
+								<option selected value="none">선택</option>
+							</select>
+						</div>
+						<span class="ck_warn cateCode_warn">장르를 선택해주세요.</span>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>가격</label>
+					</div>
+					<div class="form_section_content">
+						<input name="bookPrice" value="${bookInfo.bookPrice}"> 
+						<span class="ck_warn bookPrice_warn">가격을 입력해주세요.</span>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>재고</label>
+					</div>
+					<div class="form_section_content">
+						<input name="bookStock" value="${bookInfo.bookStock}"> 
+						<span class="ck_warn bookStock_warn">재고를 입력해주세요.</span>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>할인율</label>
+					</div>
+					<div class="form_section_content">
+						<input id="discount_interface" maxlength="2" value="10"> 
+						<input name="bookDiscount" type="hidden" value="${bookInfo.bookDiscount}"> 
+						<span class="step_val">할인 가격 : <span class="span_discount"></span></span>
+						<span class="ck_warn bookDiscount_warn">1~99 숫자를 입력해주세요.</span>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>소개</label>
+					</div>
+					<div class="form_section_content bit">
+						<textarea name="bookIntro" id="bookIntro_textarea">${bookInfo.bookIntro}</textarea>
+						<span class="ck_warn bookIntro_warn">소개를 입력해주세요.</span>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>목차</label>
+					</div>
+					<div class="form_section_content bct">
+						<textarea name="bookContents" id="bookContents_textarea">${bookInfo.bookContents}</textarea>
+						<span class="ck_warn bookContents_warn">목차를 입력해주세요.</span>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>도서이미지</label>
+					</div>
+					<div class="form_section_content">
+						<input type="file" id="fileItem" name="uploadFile" style="height: 30px;">
+						<div id="uploadResult"></div>
+					</div>
+				</div>
+				<input type="hidden" name='bookId' value="${bookInfo.bookId}">
+			</form>
+			<div class="btn_section">
+				<button id="modifyBtn" class="btn modify_btn">수 정</button>
+				<button id="cancelBtn" class="btn">취 소</button>
+				<button id="deleteBtn" class="btn delete_btn">삭제</button>
+			</div>
+		</div>
+		<form id="moveForm" action="/admin/bookManage" method="get">
+			<input type="hidden" name="pageNum" value="${cri.pageNum}"> <input
+				type="hidden" name="amount" value="${cri.amount}"> <input
+				type="hidden" name="keyword" value="${cri.keyword}"> <input
+				type="hidden" name='bookId' value="${bookInfo.bookId}">
+		</form>
+	</div>
 	
-				<%@include file="../includes/admin/header.jsp" %>
-				
-                <div class="admin_content_wrap">
-                    <div class="admin_content_main">
-                    	<form action="/admin/bookModify" method="post" id="modifyForm">
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>제목</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input name="bookName" value="${bookInfo.bookName}">
-                    				<span class="ck_warn bookName_warn">제목을 입력해주세요.</span>
-                    			</div>
-                    		</div>
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>작가</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input id="authorName_input" class="authorId_btn" readonly="readonly" value="${bookInfo.authorName}">
-                    				<input id="authorId_input" name="authorId" type="hidden" value="${bookInfo.authorId}">
-                    				<span class="ck_warn authorId_warn">작가를 선택해주세요</span>
-                    			</div>
-                    		</div>            
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>출판일</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input name="publeYear"  id="testDatepicker" autocomplete="off" readonly="readonly" value="${bookInfo.publeYear}">
-                    				<span class="ck_warn publeYear_warn">출판일을 선택해주세요.</span>
-                    			</div>
-                    		</div>            
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>출판사</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input name="publisher" value="${bookInfo.publisher}">
-                    				<span class="ck_warn publisher_warn">출판사를 입력해주세요.</span>
-                    			</div>
-                    		</div>             
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>장르</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<div class="cate_wrap">
-                    					<span>대분류</span>
-                    					<select class="cate1">
-                    						<option selected value="none">선택</option>
-                    					</select>
-                    				</div>
-                    				<div class="cate_wrap">
-                    					<span>중분류</span>
-                    					<select class="cate2">
-                    						<option selected value="none">선택</option>
-                    					</select>
-                    				</div>
-                    				<div class="cate_wrap">
-                    					<span>소분류</span>
-                    					<select class="cate3" name="cateCode">
-                    						<option selected value="none">선택</option>
-                    					</select>
-                    				</div>  
-                    				<span class="ck_warn cateCode_warn">장르를 선택해주세요.</span>                  				                    				
-                    			</div>
-                    		</div>          
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>가격</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input name="bookPrice" value="${bookInfo.bookPrice}">
-                    				<span class="ck_warn bookPrice_warn">가격을 입력해주세요.</span>
-                    			</div>
-                    		</div>               
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>재고</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input name="bookStock" value="${bookInfo.bookStock}">
-                    				<span class="ck_warn bookStock_warn">재고를 입력해주세요.</span>
-                    			</div>
-                    		</div>          
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>할인율</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input id="discount_interface" maxlength="2" value="10">
-                    				<input name="bookDiscount" type="hidden" value="${bookInfo.bookDiscount}">
-                    				<span class="step_val">할인 가격 : <span class="span_discount"></span></span>
-                    				<span class="ck_warn bookDiscount_warn">1~99 숫자를 입력해주세요.</span>
-                    			</div>
-                    		</div>          		
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>소개</label>
-                    			</div>
-                    			<div class="form_section_content bit">
-                    				<textarea name="bookIntro" id="bookIntro_textarea">${bookInfo.bookIntro}</textarea>
-                    				<span class="ck_warn bookIntro_warn">소개를 입력해주세요.</span>
-                    			</div>
-                    		</div>        		
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>목차</label>
-                    			</div>
-                    			<div class="form_section_content bct">
-                    				<textarea name="bookContents" id="bookContents_textarea">${bookInfo.bookContents}</textarea>
-                    				<span class="ck_warn bookContents_warn">목차를 입력해주세요.</span>
-                    			</div>
-                    		</div>
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-	                    			<label>도서이미지</label>
-                    			</div>
-	                    		<div class="form_section_content">
-	                    			<input type="file" id="fileItem" name="uploadFile" style="height: 30px;">
-	                    			<div id="uploadResult">
-	                    			
-                    				</div>
-                    			</div>
-                    		</div>
-                    		<input type="hidden" name='bookId' value="${bookInfo.bookId}">
-                   		</form>
-                   			<div class="btn_section">
-	                    		<button id="modifyBtn" class="btn modify_btn">수 정</button>
-                   				<button id="cancelBtn" class="btn">취 소</button>
-								<button id="deleteBtn" class="btn delete_btn">삭제</button>
-	                    	</div> 
-                    </div>  
-                	<form id="moveForm" action="/admin/bookManage" method="get">
- 						<input type="hidden" name="pageNum" value="${cri.pageNum}">
-						<input type="hidden" name="amount" value="${cri.amount}">
-						<input type="hidden" name="keyword" value="${cri.keyword}">
-						<input type="hidden" name='bookId' value="${bookInfo.bookId}">
-                	</form>                     
-                </div>
+	<%@include file="../includes/admin/footer.jsp"%>
 
-
- 				<%@include file="../includes/admin/footer.jsp" %>
- 				
-<script>
+<script type="text/javascript">
 	
 	$(document).ready(function(){
 		
-		// 달력 위젯 사용
+		/* 캘린더 위젯 */
 		// 날짜 패턴설정
 		const config = {
 				dateFormat: 'yy-mm-dd',
@@ -187,7 +180,7 @@
 			$("#testDatepicker").datepicker(config);
 		});
 		
-		// 작가 선택 버튼
+		// 작가선택
 		$('.authorId_btn').on("click", function(e){
 			
 			e.preventDefault();
@@ -196,10 +189,9 @@
 			let popOption = "width = 650px, height=550px, top=300px, left=300px, scrollbars=yes";
 			
 			window.open(popUrl, "작가 찾기", popOption);
-			
 		});
 		
-		// 카테고리
+		// 카테고리 배열 초기화
 		let cateList = JSON.parse('${cateList}');
 
 		let cate1Array = new Array();
@@ -213,7 +205,6 @@
 		let cateSelect2 = $(".cate2");
 		let cateSelect3 = $(".cate3");
 		
-		/* 카테고리 배열 초기화 메서드 */
 		function makeCateArray(obj,array,cateList, tier){
 			for(let i = 0; i < cateList.length; i++){
 				if(cateList[i].tier === tier){
@@ -232,7 +223,6 @@
 		makeCateArray(cate1Obj,cate1Array,cateList,1);
 		makeCateArray(cate2Obj,cate2Array,cateList,2);
 		makeCateArray(cate3Obj,cate3Array,cateList,3);
-		
 		
 		let targetCate2 = '';
 		let targetCate3 = '${bookInfo.cateCode}';
@@ -286,25 +276,22 @@
 				$(obj).attr("selected", "selected");
 			}
 		});
-		
-		/* 위지윅 적용 */
 		 
-		/* 책 소개 */
+		// 위지윅 (책 소개)
 		ClassicEditor
 			.create(document.querySelector('#bookIntro_textarea'))
 			.catch(error=>{
 				console.error(error);
 			});
 			
-		/* 책 목차 */	
+		// 위지윅 (책 목차)
 		ClassicEditor
 			.create(document.querySelector('#bookContents_textarea'))
 			.catch(error=>{
 				console.error(error);
 		});
 		
-		/* 할인율 Input 설정 */
-		
+		// 할인율 표시
 		$("#discount_interface").on("propertychange change keyup paste input", function(){
 			
 			let userInput = $("#discount_interface");
@@ -319,8 +306,6 @@
 				$(".span_discount").html(discountPrice);		
 				discountInput.val(sendDiscountRate);				
 			}
-
-			
 		});	
 		
 		$("input[name='bookPrice']").on("change", function(){
@@ -336,11 +321,9 @@
 			if(!isNaN(discountRate)){
 				$(".span_discount").html(discountPrice);	
 			}
-			
-			
 		});
 		
-		/* 기존 이미지 출력 */
+		// 기존 이미지 출력
 		let bookId = '<c:out value="${bookInfo.bookId}"/>';
 		let uploadResult = $("#uploadResult");
 		
@@ -374,15 +357,12 @@
 			str += "</div>";
 			
 			uploadResult.html(str);			
-			
-		}); // GetJSON
-		
-	});	//document end
-	
+		});
+	});	// End $(document)
 	
 </script>
-	
 <script>
+
 	// 카테고리
 	let cateList = JSON.parse('${cateList}');
 	
@@ -408,11 +388,9 @@
 				obj.cateParent = cateList[i].cateParent;
 				
 				array.push(obj);				
-				
 			}
 		}
 	}
-	
 	
 	// 배열 초기화
 	makeCateArray(cate1Obj,cate1Array,cateList,1);
@@ -432,11 +410,11 @@
 		cateSelect3.append("<option value='none'>선택</option>");
 		
 		for(let i = 0; i < cate2Array.length; i++){
+			
 			if(selectVal1 === cate2Array[i].cateParent){
 				cateSelect2.append("<option value='"+cate2Array[i].cateCode+"'>" + cate2Array[i].cateName + "</option>");	
 			}
 		}
-		
 	});
 	
 	// 소분류 <option>태그
@@ -456,7 +434,7 @@
 		
 	});		
 	
-	// 취소버튼
+	// 버튼 (취소)
 	$("#cancelBtn").on("click", function(e){
 		
 		e.preventDefault();
@@ -464,7 +442,7 @@
 		
 	});
 	
-	// 삭제버튼
+	// 버튼 (삭제)
 	$("#deleteBtn").on("click", function(e){
 		
 		e.preventDefault();
@@ -478,12 +456,11 @@
 		
 	});
 	
-	// 수정버튼
+	// 버튼 (수정) & 유혀성 검사
 	$("#modifyBtn").on("click", function(e){
 		
 		e.preventDefault();
 		
-		/* 체크 변수 */
 		let bookNameCk = false;
 		let authorIdCk = false;
 		let publeYearCk = false;
@@ -495,7 +472,6 @@
 		let introCk = false;
 		let contentsCk = false;	
 		
-		/* 체크 대상 변수 */
 		let bookName = $("input[name='bookName']").val();
 		let authorId = $("input[name='authorId']").val();
 		let publeYear = $("input[name='publeYear']").val();
@@ -507,7 +483,6 @@
 		let bookIntro = $(".bit p").html();
 		let bookContents = $(".bct p").html();	
 		
-		/* 공란 체크 */
 		if(bookName){
 			$(".bookName_warn").css('display','none');
 			bookNameCk = true;
@@ -588,7 +563,7 @@
 			contentsCk = false;
 		}		
 		
-		/* 최종 확인 */
+		// 최종확인
 		if(bookNameCk && authorIdCk && publeYearCk && publisherCk && cateCodeCk && priceCk && stockCk && discountCk && introCk && contentsCk ){
 
 			$("#modifyForm").submit();
@@ -598,25 +573,22 @@
 		
 	});
 	
-	// 이미지 삭제 버튼
+	// 버튼 (이미지 삭제)
 	$("#uploadResult").on("click", ".imgDeleteBtn", function(e){
 		
 		deleteFile();
-		
 	});
 	
-	
-	// 파일삭제 함수
+	// 파일삭제 
 	function deleteFile(){
 		
 		$("#result_card").remove();
-		
 	}
 	
-	/* 이미지 업로드 */
+	// 이미지 업로드
 	$("input[type='file']").on("change", function(e){
 		
-		/* 이미지 존재시 삭제 */
+		// 이미지 존재시 삭제
 		if($("#result_card").length > 0){
 			deleteFile();
 		}
@@ -650,7 +622,6 @@
 		
 	});
 		
-	/* var, method related with attachFile */
 	let regex = new RegExp("(.*?)\.(jpg|png)$");
 	let maxSize = 2097152; // 2MB	
 	
@@ -665,12 +636,10 @@
 			alert("해당 종류의 파일은 업로드할 수 없습니다.");
 			return false;
 		}
-		
 		return true;		
-		
 	}
 	
-	/* 이미지 출력 */
+	// 이미지 출력
 	function showUploadImage(uploadResultArr){
 		
 		/* 전달받은 데이터 검증 */
@@ -683,8 +652,6 @@
 		let str = "";
 		
 		let fileCallPath = encodeURIComponent(obj.uploadPath.replace(/\\/g, '/') + "/s_" + obj.uuid + "_" + obj.fileName);
-		//replace 적용 하지 않아도 가능
-		//let fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
 		
 		str += "<div id='result_card'>";
 		str += "<img src='/display?fileName=" + fileCallPath +"'>";
@@ -697,16 +664,7 @@
    		uploadResult.append(str);     
         
 	}
-		
-		
-
-
-
-
-
-
-
-
+	
 </script>
 </body>
 </html>

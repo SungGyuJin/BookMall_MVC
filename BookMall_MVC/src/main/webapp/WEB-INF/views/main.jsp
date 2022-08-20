@@ -31,7 +31,7 @@
 							<input type="hidden" name="pageParam" value="main">
 							<input type="button" id="login_button" value="로그인" />
 							<c:if test="${result == 0 }">
-							<span class="login_warn">로그인 실패<span>
+								<span class="login_warn">로그인 실패<span>
 							</c:if>
 						</form>
 					</div>
@@ -200,34 +200,21 @@
 					<div class="clearfix"></div>
 				</div>
 			</div>
-			
-	</div>	<!-- .wrap end -->
-</div>	<!-- .wrapper end -->
-<%-- <%=application.getServerInfo() %><br>
-<%= application.getMajorVersion() %>.<%= application.getMinorVersion() %><br>
-<%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %><br> --%>
+	</div>
+</div>
+
 <script type="text/javascript">
-	// 로그인 버튼 클릭 메소드
-	$("#login_button").click(function() {
-	
-		// alert("로그인 버튼 작용");
-	
-		// 로그인 메서드 서버 요청
-		$("#login_form").attr("action", "/member/login.do");
-		$("#login_form").submit();
-	});
 	
 	$(document).ready(function(){
 		
-		$(".slide_div").slick(
-			{
-				dots : true,
-				autoplay : true,
-				autoplaySpeed : 3000
-			}
-		);
+		$(".slide_div").slick({
+			
+			dots : true,
+			autoplay : true,
+			autoplaySpeed : 3000
+		});
 		
-		/* 이미지 삽입 */
+		// 이미지 삽입
 		$(".image_wrap").each(function(i, obj){
 			
 			const bobj = $(obj);
@@ -243,7 +230,6 @@
 			} else {
 				$(this).find("img").attr('src', '/resources/img/bookNoImage.png');
 			}
-			
 		});
 		
 		$(".ls_div").slick({
@@ -255,10 +241,15 @@
 		
 	});
 	
-	// gnb-area 로그아웃 버튼작동
+	// 버튼 (로그인)
+	$("#login_button").click(function() {
+	
+		$("#login_form").attr("action", "/member/login.do");
+		$("#login_form").submit();
+	});
+	
+	// 버튼 (로그아웃)
 	$("#gnb_logout_button").click(function(){
-		
-		// alert("버튼 작동");
 		
 		$.ajax({
 			
@@ -267,12 +258,11 @@
 			success: function(data){
 				document.location.reload();
 			}
-			
-		}); // ajax
-		
+		});
 	});
 	
 	$(".search_btn").click(function(){
+		
 		if($("input[name=keyword]").val() == ""){
 			alert("검색어를 입력해주세요");		
 			return false;

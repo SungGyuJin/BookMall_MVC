@@ -20,17 +20,17 @@ import lombok.extern.log4j.Log4j;
 
 @Service
 @Log4j
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
 
 	@Autowired
 	private BookMapper bookMapper;
-	
+
 	@Autowired
 	private AttachMapper attachMapper;
-	
+
 	@Autowired
 	private AdminMapper adminMapper;
-	
+
 	// 상품검색
 	@Override
 	public List<BookVO> getbookList(Criteria cri) {
@@ -40,32 +40,31 @@ public class BookServiceImpl implements BookService{
 		String type = cri.getType();
 		String[] typeArr = type.split("");
 		String[] authorArr = bookMapper.getAuthorIdList(cri.getKeyword());
-		
-		
-		if(type.equals("A") || type.equals("AC") || type.equals("AT") || type.equals("ACT")) {
-			if(authorArr.length == 0) {
+
+		if (type.equals("A") || type.equals("AC") || type.equals("AT") || type.equals("ACT")) {
+			if (authorArr.length == 0) {
 				return new ArrayList();
 			}
 		}
-		
-		for(String t : typeArr) {
-			if(t.equals("A")) {
+
+		for (String t : typeArr) {
+			if (t.equals("A")) {
 				cri.setAuthorArr(authorArr);
 			}
 		}
-		
+
 		List<BookVO> list = bookMapper.getbookList(cri);
-		
+
 		list.forEach(book -> {
-			
+
 			int bookId = book.getBookId();
-			
+
 			List<AttachImageVO> imageList = attachMapper.getAttachList(bookId);
-			
+
 			book.setImageList(imageList);
-			
+
 		});
-		
+
 		return list;
 	}
 
@@ -74,7 +73,7 @@ public class BookServiceImpl implements BookService{
 	public int bookGetTotal(Criteria cri) {
 
 		log.info("bookGetTotal()......");
-		
+
 		return bookMapper.bookGetTotal(cri);
 	}
 
@@ -82,7 +81,7 @@ public class BookServiceImpl implements BookService{
 	public List<CateVO> getCateCode1() {
 
 		log.info("getCateCode1()......");
-		
+
 		return bookMapper.getCateCode1();
 	}
 
@@ -90,7 +89,7 @@ public class BookServiceImpl implements BookService{
 	public List<CateVO> getCateCode2() {
 
 		log.info("gotCateCode2()......");
-		
+
 		return bookMapper.getCateCode2();
 	}
 
@@ -98,68 +97,63 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<CateFilterDTO> getCateInfoList(Criteria cri) {
 
-			
-			List<CateFilterDTO> filterInfoList = new ArrayList<CateFilterDTO>();
-			
-			String[] typeArr = cri.getType().split("");
-			String [] authorArr;
-			
-			for(String type : typeArr) {
-				if(type.equals("A")) {
-					authorArr = bookMapper.getAuthorIdList(cri.getKeyword());
-					if(authorArr.length == 0) {
-						
-						return filterInfoList;
-					}
-					cri.setAuthorArr(authorArr);
+		List<CateFilterDTO> filterInfoList = new ArrayList<CateFilterDTO>();
+
+		String[] typeArr = cri.getType().split("");
+		String[] authorArr;
+
+		for (String type : typeArr) {
+			if (type.equals("A")) {
+				authorArr = bookMapper.getAuthorIdList(cri.getKeyword());
+				if (authorArr.length == 0) {
+
+					return filterInfoList;
 				}
+				cri.setAuthorArr(authorArr);
 			}
-			
-			String[] cateList = bookMapper.getCateList(cri);
-			
-			String tempCateCode = cri.getCateCode();
-			
-			for(String cateCode : cateList) {
-				
-				cri.setCateCode(cateCode);
-				CateFilterDTO filterInfo = bookMapper.getCateInfo(cri);
-				filterInfoList.add(filterInfo);
-			}
-			
-			cri.setCateCode(tempCateCode);
-		
-			return filterInfoList;
+		}
+
+		String[] cateList = bookMapper.getCateList(cri);
+
+		String tempCateCode = cri.getCateCode();
+
+		for (String cateCode : cateList) {
+
+			cri.setCateCode(cateCode);
+			CateFilterDTO filterInfo = bookMapper.getCateInfo(cri);
+			filterInfoList.add(filterInfo);
+		}
+
+		cri.setCateCode(tempCateCode);
+
+		return filterInfoList;
 	}
-	
+
 	@Override
 	public BookVO getbookInfo(int bookId) {
-		
+
 		BookVO bookInfo = bookMapper.getbookInfo(bookId);
 		bookInfo.setImageList(adminMapper.getAttachInfo(bookId));
 
-		
 		return bookInfo;
 	}
 
 	@Override
 	public List<SelectDTO> likeSelect() {
-		
+
 		List<SelectDTO> list = bookMapper.likeSelect();
-		
-		list.forEach(dto ->{
-			
+
+		list.forEach(dto -> {
+
 			int bookId = dto.getBookId();
-			
+
 			List<AttachImageVO> imageList = attachMapper.getAttachList(bookId);
-			
+
 			dto.setImageList(imageList);
-			
+
 		});
-		
+
 		return list;
-	}	
-	
-	
-	
+	}
 
 }

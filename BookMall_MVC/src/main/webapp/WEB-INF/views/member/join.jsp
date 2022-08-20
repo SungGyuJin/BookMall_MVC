@@ -107,7 +107,7 @@ a{
 </div>
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
+<script type="text/javascript">
 
 	var code = ""; // 이메일전송 인증번호 저장코드
 	
@@ -127,9 +127,6 @@ a{
 		
 		// 가입버튼
 		$(".join_button").click(function(){
-			
-				//$("#join_form").attr("action", "/member/join");
-				//$("#join_form").submit();
 				
 				// 입력 값 변수
 				var id = $('.id_input').val();			// ID 입력칸
@@ -201,7 +198,6 @@ a{
 				}
 				
 				return false;
-				
 		});
 	});
 	
@@ -231,10 +227,8 @@ a{
 					idckCheck = false;
 				}
 			}
-		
-		}); // .ajax end
-		
-	}); // .id_input end
+		});
+	});
 	
 	// email 인증번호 전송
 	$(".mail_check_button").click(function(){
@@ -260,7 +254,6 @@ a{
 			url: "mailCheck?email=" + email,
 			success: function(data){
 				
-				// console.log("data : " + data);
 				checkBox.attr("disabled",false);
 				boxWrap.attr("id", "mail_check_input_box_true");
 				code = data;
@@ -274,16 +267,15 @@ a{
 		var inputCode = $(".mail_check_input").val(); 		// 입력코드
 		var checkResult = $("#mail_check_input_box_warn");  // 비교 결과
 							  
-		if(inputCode == code){  							// 일치하는 경우
+		if(inputCode == code){  							
 			checkResult.html("인증번호가 일치합니다.");
 			checkResult.attr("class", "correct");
 			mailnumCheck = true;
-		}else{												// 일치하지 않는 경우
+		}else{												
 			checkResult.html("인증번호를 다시 확인해주세요.");
 			checkResult.attr("class", "incorrect");
 			mailnumCheck = false;
 		}
-		
 	});
 	
 	// 다음 주소 연동
@@ -292,8 +284,8 @@ a{
 		new daum.Postcode({
 			
 			oncomplete: function(data){
-				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 				
+				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
 				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기한다.
 				
@@ -323,33 +315,19 @@ a{
 						extraAddr = ' (' + extraAddr + ')';
 					}
 					
-					// document.getElementById("sample6_extraAddress").value = extraAddr;
 					 addr += extraAddr;
 					
 				}else{
-					// document.getElementById("sample6_extraAddress").value = '';
 					 addr += ' ';
 				}
 				
-				// 우편번호와 주소 정보를 해당 필드에 넣기
-				//document.getElementById("sample6_postcode").value = data.zonecode;
-				//document.getElementById("sample6_address").value = addr;
-				
 				$(".address_input_1").val(data.zonecode);
-				//$("[name=memberAddr1]").val(data.zonecode); // 대체가능
 				$(".address_input_2").val(addr);
-				//$("[name=memberAddr2]").val(addr); // 대체가능
-				
-				// 커서를 상세주소 필드로 이동
-				//document.getElementById("sample6_detailAddress").focus();
-				
-				// 상세주소 입력란 disabled 속성 변경 및 커서를 상세주소 필드로 이동한다.
 				
 				$(".address_input_3").attr("readonly", false);
 				$(".address_input_3").focus();
 				
 			}
-			
 		}).open();
 	}
 	
@@ -374,19 +352,13 @@ a{
 		
 	});
 	
-	// 이메일 형식 유효성
+	// 유효성 (이메일 형식)
 	function mailFormCheck(email){
 	    
 		var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 	    
 		return form.test(email);
 	}
-	
-	
-	
-	
-	
-	
 	
 </script>
 </body>

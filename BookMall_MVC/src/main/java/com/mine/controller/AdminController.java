@@ -56,9 +56,6 @@ public class AdminController {
 	@RequestMapping(value = "bookManage", method = RequestMethod.GET)
 	public void bookManageGET(Criteria cri, Model model) throws Exception {
 
-		log.info("도서관리 페이지 접속");
-
-		// 도서 리스트 데이터
 		List list = adminService.bookGetList(cri);
 
 		if (!list.isEmpty()) {
@@ -129,30 +126,30 @@ public class AdminController {
 	public String bookDeletePOST(int bookId, RedirectAttributes rttr) {
 
 		log.info("bookDeletePOST...");
-		
+
 		List<AttachImageVO> fileList = adminService.getAttachInfo(bookId);
-		
-		if(fileList != null) {
-			
+
+		if (fileList != null) {
+
 			List<Path> pathList = new ArrayList();
-			
+
 			fileList.forEach(vo -> {
-				
-				//원본 이미지
+
+				// 원본 이미지
 				Path path = Paths.get("C:\\upload", vo.getUploadPath(), vo.getUuid() + "_" + vo.getFileName());
 				pathList.add(path);
-				
+
 				// 썸네일 이미지
 				path = Paths.get("C:\\upload", vo.getUploadPath(), "s_" + vo.getUploadPath() + "_" + vo.getFileName());
 				pathList.add(path);
-				
+
 			});
-			
-			pathList.forEach(path ->{
-				
+
+			pathList.forEach(path -> {
+
 				path.toFile().delete();
 			});
-			
+
 		}
 
 		int result = adminService.bookDelete(bookId);
@@ -294,27 +291,26 @@ public class AdminController {
 	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {
 
 		log.info("uploadAjaxActionPOST......");
-		
+
 		// 이미지 파일체크
-		for(MultipartFile multipartFile : uploadFile) {
-			
+		for (MultipartFile multipartFile : uploadFile) {
+
 			File checkfile = new File(multipartFile.getOriginalFilename());
 			String type = null;
-			
+
 			try {
 				type = Files.probeContentType(checkfile.toPath());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
-			if(!type.startsWith("image")) {
-				
+
+			if (!type.startsWith("image")) {
+
 				List<AttachImageVO> list = null;
 				return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
-				
+
 			}
-			
-			
+
 		}
 
 		String uploadFolder = "C:\\upload";
@@ -338,16 +334,16 @@ public class AdminController {
 
 		// 이미지 정보 담븐 객체
 		List<AttachImageVO> list = new ArrayList();
-		
+
 		// 향상된 for
 		for (MultipartFile multipartFile : uploadFile) {
-			
+
 			// 이미지 정보객체
 			AttachImageVO vo = new AttachImageVO();
 
 			// 파일이름
 			String uploadFileName = multipartFile.getOriginalFilename();
-			
+
 			vo.setFileName(uploadFileName);
 			vo.setUploadPath(datePath);
 
@@ -364,101 +360,87 @@ public class AdminController {
 			try {
 				System.out.println("이미지 저장성공");
 				multipartFile.transferTo(saveFile);
-				
+
 				/*
-				// 썸네일 생성
-				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
-				
-				BufferedImage bo_image = ImageIO.read(saveFile);
-					
-					// 비율
-					double ratio = 3;
-					
-					// 넓이, 높이
-					int width = (int) (bo_image.getWidth() / ratio);
-					int height = (int) (bo_image.getHeight() / ratio);
-				
-				BufferedImage bt_image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
-				
-				Graphics2D graphic = bt_image.createGraphics();
-				
-				graphic.drawImage(bo_image, 0, 0, width, height, null);
-				
-				ImageIO.write(bt_image,  "jpg", thumbnailFile);
+				 * // 썸네일 생성 File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
+				 * 
+				 * BufferedImage bo_image = ImageIO.read(saveFile);
+				 * 
+				 * // 비율 double ratio = 3;
+				 * 
+				 * // 넓이, 높이 int width = (int) (bo_image.getWidth() / ratio); int height = (int)
+				 * (bo_image.getHeight() / ratio);
+				 * 
+				 * BufferedImage bt_image = new BufferedImage(width, height,
+				 * BufferedImage.TYPE_3BYTE_BGR);
+				 * 
+				 * Graphics2D graphic = bt_image.createGraphics();
+				 * 
+				 * graphic.drawImage(bo_image, 0, 0, width, height, null);
+				 * 
+				 * ImageIO.write(bt_image, "jpg", thumbnailFile);
 				 */
-				
+
 				// 방법
 				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
-				
+
 				BufferedImage bo_image = ImageIO.read(saveFile);
-				
+
 				// 비율
 				double ratio = 3;
-				
+
 				// 넓이, 높이
 				int width = (int) (bo_image.getWidth() / ratio);
 				int height = (int) (bo_image.getHeight() / ratio);
-				
-				Thumbnails.of(saveFile)
-				.size(width, height)
-				.toFile(thumbnailFile);
-				
+
+				Thumbnails.of(saveFile).size(width, height).toFile(thumbnailFile);
+
 			} catch (Exception e) {
-				
+
 				e.printStackTrace();
-				
+
 			}
-			
+
 			list.add(vo);
-			
+
 		} // end for
-		
+
 		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
-		
+
 		return result;
 	}
 
 	@PostMapping("/deleteFile")
-	public ResponseEntity<String> deleteFile(String fileName){
-		
-		 log.info("deleteFile......" + fileName);
-		 
-		 File file = null;
-		 
-		 try {
-			 
-			 // 썸네일파일 삭제
-			 file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
-			 
-			 file.delete();
-			 
-			 // 원본파일 삭제
-			 String originFileName = file.getAbsolutePath().replace("s_", "");
-			 
-			 log.info("originFileName : " + originFileName);
-			 
-			 file = new File(originFileName);
-			 
-			 file.delete();
-			 
-			 
-		 }catch(Exception e) {
-			 e.printStackTrace();
-			 
-			 return new ResponseEntity<String>("fail", HttpStatus.NOT_IMPLEMENTED);
-		 }
-		 
-		 return new ResponseEntity<String>("success", HttpStatus.OK);
-		 
+	public ResponseEntity<String> deleteFile(String fileName) {
+
+		log.info("deleteFile......" + fileName);
+
+		File file = null;
+
+		try {
+
+			// 썸네일파일 삭제
+			file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
+
+			file.delete();
+
+			// 원본파일 삭제
+			String originFileName = file.getAbsolutePath().replace("s_", "");
+
+			log.info("originFileName : " + originFileName);
+
+			file = new File(originFileName);
+
+			file.delete();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return new ResponseEntity<String>("fail", HttpStatus.NOT_IMPLEMENTED);
+		}
+
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

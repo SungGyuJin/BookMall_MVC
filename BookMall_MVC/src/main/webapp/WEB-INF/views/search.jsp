@@ -18,13 +18,13 @@
 				<c:if test="${member == null}">
 					<div class="div_left">
 						<form id="login_form" method="post">
-							<input class="id_input" name="memberId" placeholder="ID" />
-							<input type="password" class="pw_input" name="memberPw" placeholder="PW" />
+							<input class="id_input" name="memberId" placeholder="ID">
+							<input type="password" class="pw_input" name="memberPw" placeholder="PW">
 							<input type="hidden" name="pageName" value="search" readonly="readonly">
 							<input type="hidden" name="pageParam" value="searchParam" readonly="readonly">
-							<input type="button" id="login_button" value="로그인" />
+							<input type="button" id="login_button" value="로그인">
 							<c:if test="${result == 0 }">
-							<span class="login_warn">로그인 실패<span>
+								<span class="login_warn">로그인 실패<span>
 							</c:if>
 						</form>
 					</div>
@@ -248,68 +248,30 @@
 	</div>	<!-- .wrap end -->
 </div>	<!-- .wrapper end -->
 
-<script>
-// 로그인 버튼 클릭 메소드
-$("#login_button").click(function() {
+<script type="text/javascript">
 
-	// alert("로그인 버튼 작용");
-
-	// 로그인 메서드 서버 요청
-	$("#login_form").attr("action", "/member/login.do");
-	$("#login_form").submit();
-});
-	
-$(document).ready(function(){
-	
-	/* // 검색 타입 selected
-	const selectedType = '<c:out value="${pageMaker.cri.type}"/>';
-	if(selectedType != ""){
-		$("select[name='type']").val(selectedType).attr("selected", "selected");
-	} */
-	
-	// 이미지 삽입
-	$(".image_wrap").each(function(i, obj){
+	$(document).ready(function(){
 		
-		const bobj = $(obj);
-		
-		if(bobj.data("bookid")){
+		// 이미지 삽입
+		$(".image_wrap").each(function(i, obj){
 			
-			const uploadPath = bobj.data("path");
-			const uuid = bobj.data("uuid");
-			const fileName = bobj.data("filename");
+			const bobj = $(obj);
 			
-			const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
-			
-			$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
-		}else{
-			$(this).find("img").attr('src', '/resources/img/bookNoImage.png');
-		}
-		
-		
-	});
-	
-	
-	
-});
-	
-	// gnb-area 로그아웃 버튼작동
-	$("#gnb_logout_button").click(function(){
-		
-		// alert("버튼 작동");
-		
-		$.ajax({
-			
-			type: "POST",
-			url: "/member/logout.do",
-			success: function(data){
-				document.location.reload();
+			if(bobj.data("bookid")){
+				
+				const uploadPath = bobj.data("path");
+				const uuid = bobj.data("uuid");
+				const fileName = bobj.data("filename");
+				const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
+				
+				$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
+			}else{
+				$(this).find("img").attr('src', '/resources/img/bookNoImage.png');
 			}
-			
-		}); // ajax
-		
+		});
 	});
 	
-	// 페이지 이동 버튼
+	// 페이지 처리
 	const moveForm = $('#moveForm');
 	
 	$(".pageMaker_btn a").on("click", function(e){
@@ -317,9 +279,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		
 		moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-		
 		moveForm.submit();
-		
 	});
 
 	// 검색필터
@@ -342,7 +302,7 @@ $(document).ready(function(){
 		buttonA.attr("class", "filter_button");
 	});
 	
-	// 필터링 태그 동작
+	// 필터링 태그
 	$(".filter_content a").on("click", function(e){
 		
 		e.preventDefault();
@@ -360,8 +320,28 @@ $(document).ready(function(){
 		$("#filter_form").submit();
 	});
 
+	// 버튼 (로그인)
+	$("#login_button").click(function() {
+
+		$("#login_form").attr("action", "/member/login.do");
+		$("#login_form").submit();
+	});
+		
+	// 버튼 (로그아웃)
+	$("#gnb_logout_button").click(function(){
+			
+		$.ajax({
+			
+			type: "POST",
+			url: "/member/logout.do",
+			success: function(data){
+				document.location.reload();
+			}
+		});
+	});
 	
 	$(".search_btn").click(function(){
+		
 		if($("input[name=keyword]").val() == ""){
 			alert("검색어를 입력해주세요");		
 			return false;

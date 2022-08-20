@@ -183,7 +183,7 @@ caption {
 	height: 110px;
 	line-height: 110px;
 	background-color: #5E6B9E;
-	margin-bottom: 60px;
+	margin-bottom: 20px;
 	border-radius: 12px;
 }
 
@@ -238,10 +238,10 @@ caption {
 
 th {
 	text-align: center;
-	color: #333;
-	border-bottom: 1px solid #e7e7e7;
-	border-top: 1px solid #3084d9;
-	background: #f4f9fd;
+	color: white;
+	border-bottom: 1px solid #5E6B9E;
+	border-top: 1px solid #5E6B9E;
+	background: #5E6B9E;
 	padding: 2px 0;
 }
 
@@ -460,6 +460,7 @@ th {
 	max-width: 80%;
 	height: auto;
 	display: block;
+	margin: 10px 0 0 0;
 }
 
 /* 로그인 성공 영역 */
@@ -678,7 +679,8 @@ th {
 	text-align: right;
 	margin: 13px 0 0 0;
 }
-#gnb_logout_button{
+
+#gnb_logout_button {
 	cursor: pointer;
 }
 

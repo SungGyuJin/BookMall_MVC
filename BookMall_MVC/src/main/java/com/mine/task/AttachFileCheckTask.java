@@ -25,19 +25,19 @@ public class AttachFileCheckTask {
 
 	@Autowired
 	private AdminMapper mapper;
-	
+
 	private String getFolderYesterDay() {
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			
-			Calendar cal = Calendar.getInstance();
-			
-			cal.add(Calendar.DATE, -1);
-			
-			String str = sdf.format(cal.getTime());
-			
-			return str.replace("-", File.separator);
-			
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		Calendar cal = Calendar.getInstance();
+
+		cal.add(Calendar.DATE, -1);
+
+		String str = sdf.format(cal.getTime());
+
+		return str.replace("-", File.separator);
+
 	}
-	
+
 }
