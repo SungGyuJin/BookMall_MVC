@@ -28,20 +28,54 @@
 
 ## 데이터베이스 모델링
 
-<img src="https://user-images.githubusercontent.com/79797179/185130810-bc3ee493-9e89-4103-9e7c-52fd8e601fbc.png">
+<img src="https://user-images.githubusercontent.com/79797179/185130810-bc3ee493-9e89-4103-9e7c-52fd8e601fbc.png" width="90%">
 
 ***
 
 ## 사용방법
 
-### 1. 로그인 및 회원가입 화면 (아래)
+### 1. 로그인 및 회원가입
 
-<img src="https://user-images.githubusercontent.com/79797179/184847870-cf0a3422-74e7-4122-9dd8-dff2d79f4ff9.gif" width="49%" height="616px">&nbsp;<img src="https://user-images.githubusercontent.com/79797179/184847874-4859b201-ace9-4555-bb5c-63993c3f6b80.gif" width="50%">
+* 로그아웃 (비동기 로그아웃)
 
-* ID 중복검사는 Ajax를 적용하였습니다.
+```java
+
+<script>
+// 버튼 (로그아웃)
+$("#gnb_logout_button").click(function(){
+		
+    $.ajax({
+			
+        type: "POST",
+	url: "/member/logout.do",
+	success: function(data){
+	    document.location.reload();
+	}
+    });
+});
+</script>
+
+Contriller 부분
+@RequestMapping(value = "logout.do", method = RequestMethod.POST)
+@ResponseBody
+public void logoutPOST(HttpServletRequest request) throws Exception {
+
+    HttpSession session = request.getSession();
+
+    session.invalidate();
+}
 
 ```
-// ID 중복검사 (Ajax)
+
+<img src="https://user-images.githubusercontent.com/79797179/185788109-49213c14-e4dd-4e47-8159-b7b49095b670.gif" width="90%">
+
+<img src="https://user-images.githubusercontent.com/79797179/184847874-4859b201-ace9-4555-bb5c-63993c3f6b80.gif" width="90%">
+
+* ID 중복검사 (Ajax 적용)
+
+```java
+
+<script>
 $('.id_input').on("propertychange change keyup paste input", function(){
 		
 	var memberId = $('.id_input').val();   	// ID 입력 값
@@ -65,10 +99,9 @@ $('.id_input').on("propertychange change keyup paste input", function(){
 		}
 	});
 });
+</script>
 
-----------------------------------------------------------------------------------
-
-// ID 중복검사 (Controller)
+Controller 부분
 @RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
 @ResponseBody
 public String memberIdChkPOST(String memberId) throws Exception{
@@ -76,65 +109,113 @@ public String memberIdChkPOST(String memberId) throws Exception{
 	int result = memberservice.idCheck(memberId);
 		
 	if(result != 0) {
-			return "fail"; // 중복ID 존재 O
+		return "fail"; // 중복ID 존재 O
 	}else {
 		return "success"; // 중복ID 존재 X
 	}
 }
+
 ```
 
 ## 로그인 인터셉터적용
 * 인터셉터 적용이유는 관리자권한이 없는자도 URL주소만 안다면 관리자페이지로 접근이 가능하여 이를 막기 위함.
 * 회원가입 후 회원테이블의 adminCK 값이 0이면 회원, 1이면 관리자가 되도록 구현. (기본: 0)
 
-<img src="https://user-images.githubusercontent.com/79797179/184893288-2a016eca-39ea-4c8c-9d6e-a5d373f4c6c9.png" width="85%">
+<img src="https://user-images.githubusercontent.com/79797179/185789308-0f43662a-5611-41d6-b4af-163ed24e9dc7.png" width="90%">
 
-<img src="https://user-images.githubusercontent.com/79797179/185150926-2780a451-2fff-4f2c-a15f-8e7d4d3c6006.gif" width="85%">
+<img src="https://user-images.githubusercontent.com/79797179/185789099-2a4b46b3-92c4-4c8c-9b3d-7be17f0ddeff.gif" width="90%">
 
 ***
 
 ### 이메일 인증 부분 (아래)
-<img src="https://user-images.githubusercontent.com/79797179/183579758-6f447f7f-96c0-41b6-b31e-c722eb3c309b.gif" width="50%">&nbsp;<img src="https://user-images.githubusercontent.com/79797179/183579782-51691ffa-d506-4371-ad62-716de0300702.png" width="45%">
+<img src="https://user-images.githubusercontent.com/79797179/183579758-6f447f7f-96c0-41b6-b31e-c722eb3c309b.gif" width="45%" height="330px">&nbsp;<img src="https://user-images.githubusercontent.com/79797179/183579782-51691ffa-d506-4371-ad62-716de0300702.png" width="45%">
 
 ***
 
-### 주소찾기 부분 (아래)
+### 주소 입력부 (Daum 주소 검색 API 적용)
 
-<img src="https://user-images.githubusercontent.com/79797179/185140996-a6e61518-13dd-4a32-9597-1bdb43dcb397.gif">
+```java
 
-***
+<script>
+// Daum 주소 검색 API 적용
+function execution_daum_address(){
+    new daum.Postcode({
+        oncomplete: function(data){
+				
+	    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기한다.
+	     
+	    var addr = ''; 	    // 주소 변수
+	    var extraAddr = ''; // 참고항목 변수
+				
+	    // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	    if(data.userSelectedType === 'R'){
+	        addr = data.roadAddress;
+  	    }else{
+	        addr = data.jibunAddress;
+	    }
+				
+	    // 사용자가 선택한 주소
+	    if(data.userSelectedType === 'R'){
+					
+	        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+		    extraAddr += data.bname;
+	        }
+					
+	        if(data.buildingName !== '' && data.apartment === 'Y'){
+	            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	        }
+					
+	        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	        if(extraAddr !== ''){
+		    extraAddr = ' (' + extraAddr + ')';
+	        }
+					
+	        addr += extraAddr;
+	    } else {
+	
+  	        addr += ' ';
+	    }
+				
+	    $(".address_input_1").val(data.zonecode);
+	    $(".address_input_2").val(addr);
+				
+	    $(".address_input_3").attr("readonly", false);
+	    $(".address_input_3").focus();
+        }
+		
+    }).open();
+}
+</script>
 
-### 사이트 둘러보기 (아래)
-
-<img src="https://user-images.githubusercontent.com/79797179/183590021-44cbe007-aef1-43e4-ab85-28f0b5872313.gif">
-
-***
-
-### 주문하기 (아래)
-
-<img src="https://user-images.githubusercontent.com/79797179/184896828-3936fefd-602d-40ac-885a-08837908f251.gif" width="85%">
-
-***
-
-### 배송비 유무 (아래)
-
-<img src="https://user-images.githubusercontent.com/79797179/183591164-3f284009-b410-4d45-8c22-5e6416de69f6.gif">
-
-***
-
-### 포인트사용 유무 (아래)
-
-<img src="https://user-images.githubusercontent.com/79797179/183594144-38f151cd-8bfe-490f-bfed-324fe49e9f1a.gif">
-
-***
-
-### 도서등록 일부 (아래)
-
-<img src="https://user-images.githubusercontent.com/79797179/183594992-cad6f321-18e0-4181-a4a3-e80a0bb7894b.gif">
-
-<img src="https://user-images.githubusercontent.com/79797179/183600896-17143ce3-cef0-4d43-b0fe-db4ef89bba53.png" width="100%" height="500px">
+```
 
 *** 
+
+## 검색부분
+
+<img src="https://user-images.githubusercontent.com/79797179/185794630-33a39103-d621-4061-9de1-b5438446da88.gif" width="90%">
+
+***
+
+## 카테고리 선택부분
+
+<img src="https://user-images.githubusercontent.com/79797179/185795851-f0d00635-1322-41f4-b7c4-eb15831f9d4b.gif" width="90%">
+
+***
+
+## 장바구니 및 구매하기
+
+<img src="https://user-images.githubusercontent.com/79797179/185796841-c6c379ee-2931-41ca-b81d-c47eb26c7f3f.gif" width="90%">
+
+### + 관리자계정 구매제한
+
+<img src="https://user-images.githubusercontent.com/79797179/185796325-e9b7bd75-d575-4ae0-8806-d165e0ca85f1.gif" width="90%">
+
+***
+
+<img src="" width="90%">
 
 ## <세부 사항>
 
