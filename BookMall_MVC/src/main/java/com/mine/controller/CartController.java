@@ -30,7 +30,7 @@ public class CartController {
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
 
 		if (mvo == null) {
-			return "5";
+			return "3";
 		}
 
 		// 카트 등록

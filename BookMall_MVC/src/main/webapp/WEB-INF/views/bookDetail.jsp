@@ -184,6 +184,7 @@
 	</div>
 
 <script type="text/javascript">
+
 	$(document).ready(function() {
 
 		// 이미지 삽입
@@ -233,12 +234,10 @@
 	let quantity = $(".quantity_input").val();
 
 	$(".plus_btn").on("click", function() {
-
 		$(".quantity_input").val(++quantity);
 	});
 
 	$(".minus_btn").on("click", function() {
-
 		if (quantity > 1) {
 			$(".quantity_input").val(--quantity);
 		}
@@ -275,12 +274,12 @@
 	function cartAlert(result) {
 		
 		if (result == '0') {
-			alert("장바구니에 추가를 하지 못하였습니다.");
+			alert("장바구니 에러.");
 		} else if (result == '1') {
-			alert("장바구니에 추가되었습니다.");
+			alert("장바구니 추가완료.");
 		} else if (result == '2') {
-			alert("장바구니에 이미 추가되어 있습니다.");
-		} else if (result == '5') {
+			alert("장바구니에 이미 추가됨.");
+		} else if (result == '3') {
 			alert("로그인이 필요합니다.");
 		}
 	}

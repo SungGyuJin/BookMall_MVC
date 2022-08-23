@@ -25,8 +25,8 @@
 				<c:if test="${member == null}">
 					<div class="div_left">
 						<form id="login_form" method="post">
-							<input class="id_input" name="memberId" placeholder="ID" />
-							<input type="password" class="pw_input" name="memberPw" placeholder="PW" />
+							<input class="id_input" name="memberId" placeholder="ID" value=""/>
+							<input type="password" class="pw_input" name="memberPw" value="1234" placeholder="PW" />
 							<input type="hidden" name="pageName" value="main">
 							<input type="hidden" name="pageParam" value="main">
 							<input type="button" id="login_button" value="로그인" />

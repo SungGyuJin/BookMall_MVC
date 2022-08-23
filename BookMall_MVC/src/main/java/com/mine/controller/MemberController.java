@@ -47,14 +47,14 @@ public class MemberController {
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPOST(MemberVO member) throws Exception {
 
-		String rawPw = ""; // 인코딩 전 비번
-		String encodePw = ""; // 인코딩 후 비번
+		String rawPw = ""; 		// 인코딩 전 PW
+		String encodePw = ""; 	// 인코딩 후 PW
 
-		rawPw = member.getMemberPw(); // 비번 데이터 얻음
-		encodePw = pwEncoder.encode(rawPw); // 비번 인코딩
-		member.setMemberPw(encodePw); // 인코딩된 비번 member 객체에 다시 저장
+		rawPw = member.getMemberPw(); 		// 인코딩 전 PW
+		encodePw = pwEncoder.encode(rawPw); // PW 인코딩
+		member.setMemberPw(encodePw); 		// 인코딩된 PW member 객체에 저장
 
-		// 회원가입 쿼리 실행
+		// 회원가입완료
 		memberservice.memberJoin(member);
 
 		return "redirect:/main";
@@ -144,13 +144,10 @@ public class MemberController {
 				lvo.setMemberPw(""); // 인코딩된 비번 정보 지움
 				session.setAttribute("member", lvo); // session에 사용자의 정보 저장
 				if (pageParam.equals("main") || pageName.equals("main")) {
-					System.out.println("로그인성공 Main 동작");
 					return "redirect:/main"; // main으로 이동
 				} else if (pageName.equals("bookDetail")) {
-					System.out.println("로그인성공 bookDetail 동작");
 					return "redirect:/" + pageName + "/pageParam=" + pageParam + ""; // bookDetail으로 이동
 				} else if (pageName.equals("search")) {
-					System.out.println("로그인 성공 search 동작");
 					return "redirect:/" + pageName + "?type=T&keyword=";
 				}
 				return "redirect:/main"; // 메인페이지 이동
@@ -159,13 +156,10 @@ public class MemberController {
 
 				rttr.addFlashAttribute("result", 0);
 				if (pageParam.equals("main") || pageName.equals("main")) {
-					System.out.println("ID존재 로그인 실패 main");
 					return "redirect:/main";
 				} else if (pageName.equals("bookDetail")) {
-					System.out.println("ID 존재 로그인 실패 bookDetail");
 					return "redirect:/" + pageName + "/pageParam=" + pageParam + "";
 				} else if (pageName.equals("search")) {
-					System.out.println("ID 존재 로그인 실패 search 동작");
 					return "redirect:/" + pageName + "?type=T&keyword=";
 				}
 
@@ -176,13 +170,10 @@ public class MemberController {
 
 			rttr.addFlashAttribute("result", 0);
 			if (pageParam.equals("main") || pageName.equals("main")) {
-				System.out.println("ID X main");
 				return "redirect:/main";
 			} else if (pageName.equals("bookDetail")) {
-				System.out.println("ID X bookDetail");
 				return "redirect:/" + pageName + "/pageParam=" + pageParam + "";
 			} else if (pageName.equals("search")) {
-				System.out.println("ID X search ");
 				return "redirect:/" + pageName + "?type=T&keyword=";
 			}
 
@@ -212,10 +203,6 @@ public class MemberController {
 	@RequestMapping(value = "logout.do", method = RequestMethod.POST)
 	@ResponseBody
 	public void logoutPOST(HttpServletRequest request) throws Exception {
-
-		log.info("비동기 로그아웃");
-
-		System.out.println("비동기 로그아웃");
 
 		HttpSession session = request.getSession();
 
