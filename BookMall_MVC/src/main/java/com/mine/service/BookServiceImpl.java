@@ -156,4 +156,10 @@ public class BookServiceImpl implements BookService {
 		return list;
 	}
 
+	@Override
+	public BookVO getBookIdName(int bookId) {
+		
+		return bookMapper.getBookIdName(bookId);
+	}
+
 }

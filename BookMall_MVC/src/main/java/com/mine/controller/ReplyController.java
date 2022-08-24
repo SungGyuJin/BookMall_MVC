@@ -20,4 +20,8 @@ public class ReplyController {
 		rService.enrollReply(dto);
 	}
 	
+	@PostMapping("/check")
+	public String replyCheckPOST(ReplyDTO dto) {
+		return rService.checkReply(dto);
+	}
 }

@@ -18,8 +18,8 @@
 				<c:if test="${member == null}">
 					<div class="div_left">
 						<form id="login_form" method="post">
-							<input class="id_input" name="memberId" placeholder="ID"> 
-							<input type="password" class="pw_input" name="memberPw" placeholder="PW"> 
+							<input class="id_input" name="memberId" value="guest1" placeholder="ID"> 
+							<input type="password" class="pw_input" value="1234" name="memberPw" placeholder="PW"> 
 							<input type="hidden" name="pageName" value="bookDetail" readonly="readonly"> 
 							<input type="hidden" name="pageParam" value="${pageParam}" readonly="readonly"> 
 							<input type="button" id="login_button" value="로그인">
@@ -146,7 +146,16 @@
 					<div class="book_content">${bookInfo.bookContents}</div>
 				</div>
 				<div class="line"></div>
-
+				<div class="content_bottom">
+					<div class="reply_subject">
+						<h2>리뷰</h2>
+					</div>
+					<c:if test="${member != null}">
+						<div class="reply_button_wrap">
+							<button>리뷰 쓰기</button>
+						</div>
+					</c:if>
+				</div>
 				<!-- 주문 form -->
 				<form action="/order/${member.memberId}" method="get" class="order_form">
 					<input type="hidden" name="orders[0].bookId" value="${bookInfo.bookId}"> 
@@ -320,6 +329,43 @@
 			alert("검색어를 입력해주세요");
 			return false;
 		}
+	});
+	
+	// 리뷰
+	$(".reply_button_wrap").on("click", function(e){
+		
+		e.preventDefault();
+		
+		const memberId = '${member.memberId}';
+		const bookId = '${bookInfo.bookId}';
+		
+		$.ajax({
+			data : {
+				bookId : bookId,
+				memberId : memberId
+			},
+			url : '/reply/check',
+			type : 'POST',
+			success : function(result){
+				
+				if(result === '1'){
+					alert("이미 등록하신 리뷰가 존재합니다.");
+				}else if(result === '0'){
+					let popUrl = "/reply/" + memberId + "?bookId=" + bookId;
+					console.log(popUrl);
+					let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
+					
+					window.open(popUrl, "리뷰쓰기", popOption);
+				}
+			}
+		});
+		
+		/* let popUrl = "/reply/" + memberId + "?bookId=" + bookId;
+		console.log(popUrl);
+		let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
+		
+		window.open(popUrl, "리뷰쓰기", popOption);
+ */		
 	});
 	
 </script>

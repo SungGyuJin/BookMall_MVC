@@ -153,16 +153,16 @@
 		
 	</select>
 	
+	<select id="getBookIdName" resultType="com.mine.model.BookVO">
+	
+		select bookId, bookName from mine_book where bookId = #{bookId}
+		
+	</select>
+		
 	<!-- 메인페이지 정렬 -->
 	<select id="likeSelect" resultType="com.mine.model.SelectDTO">
 		Select * From mine_book
 	</select>
-	
-	
-	
-	
-	
-	
 	
 	
   </mapper>

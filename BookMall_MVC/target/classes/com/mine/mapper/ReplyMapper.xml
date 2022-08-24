@@ -10,4 +10,11 @@
 		 
 	</insert>
 	
+	<select id="checkReply" resultType="integer">
+	
+		select replyId from mine_reply
+		where memberId = #{memberId} and bookId = #{bookId}
+	
+	</select>
+	
   </mapper>

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Criteria {
 
-	// 편재페이지 번호
+	// 현재페이지 번호
 	private int pageNum;
 
 	// 페이지 표시 개수
@@ -24,7 +24,9 @@ public class Criteria {
 
 	// 카테고리 코드
 	private String cateCode;
-
+	
+	private int bookId;
+	
 	// Criteria 생성자
 	public Criteria(int pageNum, int amount) {
 		this.pageNum = pageNum;
@@ -100,10 +102,20 @@ public class Criteria {
 		this.cateCode = cateCode;
 	}
 
+	public int getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
+
 	@Override
 	public String toString() {
 		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", skip=" + skip + ", type=" + type
-				+ ", keyword=" + keyword + ", authorArr=" + Arrays.toString(authorArr) + ", cateCode=" + cateCode + "]";
+				+ ", keyword=" + keyword + ", authorArr=" + Arrays.toString(authorArr) + ", cateCode=" + cateCode
+				+ ", bookId=" + bookId + "]";
 	}
+
 
 }
