@@ -18,7 +18,7 @@ public interface AdminService {
 	// 상품 리스트
 	public List<BookVO> bookGetList(Criteria cri);
 
-	/// 상품 총 개수
+	// 상품 총 개수
 	public int bookGetTotal(Criteria cri);
 
 	// 상품 조회 페이지

@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mine.mapper.ReplyMapper;
+import com.mine.model.Criteria;
+import com.mine.model.PageDTO;
 import com.mine.model.ReplyDTO;
+import com.mine.model.ReplyPageDTO;
 
 @Service
 public class ReplyServiceImpl implements ReplyService {
@@ -30,6 +33,17 @@ public class ReplyServiceImpl implements ReplyService {
 		} else {
 			return "1";
 		}
+	}
+
+	@Override
+	public ReplyPageDTO replyList(Criteria cri) {
+		
+		ReplyPageDTO rdto = new ReplyPageDTO();
+		
+		rdto.setList(rMapper.getReplyList(cri));
+		rdto.setPageInfo(new PageDTO(cri, rMapper.getReplyTotal(cri.getBookId())));
+		
+		return rdto;
 	}
 
 }

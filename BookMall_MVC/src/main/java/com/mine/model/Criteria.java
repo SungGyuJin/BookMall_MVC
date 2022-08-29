@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class Criteria {
 
-	// 현재페이지 번호
+	// 현재페이지 번호 (사용자가 클릭한 페이지번호)
 	private int pageNum;
 
-	// 페이지 표시 개수
+	// 페이지당 보여줄 게시글 갯수 (일반적으로 10(개))
 	private int amount;
 
 	// 페이지 skip (mysql)
@@ -20,7 +20,7 @@ public class Criteria {
 	private String keyword;
 
 	// 작가 리스트
-	private String[] authorArr;
+	private String[] authorArr; 
 
 	// 카테고리 코드
 	private String cateCode;
