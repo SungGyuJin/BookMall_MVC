@@ -155,6 +155,45 @@
 							<button>리뷰 쓰기</button>
 						</div>
 					</c:if>
+					
+					<div class="reply_not_div">
+					</div>			
+					<div class="reply_content_ul">
+						<li>
+							<div class="comment_wrap">
+									<div class="reply_top">
+											<span class="id_span">Gyu</span>
+											<span class="date_span">2022-09-03</span>
+											<span class="rating_span">평점 : <span class="rating_value_span">5</span>점</span>
+											<a class="update_reply_btn">수정</a><a class="delete_reply_btn">삭제</a>
+									</div>
+									<div class="reply_bottom">
+											<div class="reply_bottom_txt">
+													생각보다 책이 재미있어요!!! 주변 지인들에게 추천해줄 의향이 있습니다!!!
+											</div>
+									</div>
+							</div>
+						</li>
+					</div>				
+					<div class="reply_pageInfo_div">
+						<ul class="pageMaker">
+						<li class="pageMaker_btn prev">
+							<a>이전</a>
+						</li>
+						<li class="pageMaker_btn">
+							<a>1</a>
+						</li>
+						<li class="pageMaker_btn">
+							<a>2</a>
+						</li>
+						<li class="pageMaker_btn active">
+							<a>3</a>
+						</li>													
+						<li class="pageMaker_btn next">
+							<a>다음</a>
+						</li>
+					</ul>
+					</div>						
 				</div>
 				<!-- 주문 form -->
 				<form action="/order/${member.memberId}" method="get" class="order_form">
@@ -228,8 +267,83 @@
 		let point = salePrice * 0.05;
 		point = Math.floor(point);
 		$(".point_span").text(point);
+		
+		// 리뷰 리스트 출력
+		const bookId = '${bookInfo.bookId}';
+		
+		$.getJSON("/reply/list", {bookId : bookId}, function(obj){
+			
+			if(obj.list.length === 0){
+				$(".reply_not_div").html('<span>리뷰없음</sapn>');
+				$(".reply_content_ul").html('');
+				$(".pageMaker").html("");
+			}else{
+				
+				$(".reply_not_div").html("");
+				
+				const list = obj.list;
+				const pf = obj.pageInfo;
+				const userId = "${member.memberId}";
+				
+				// list
+				let reply_list = '';
+				
+				$(list).each(function(i, obj){
+					reply_list += '<li>';
+					reply_list += '<div class="comment_wrap">';
+					reply_list += '<div class="reply_top">';
+					/* 아이디 */
+					reply_list += '<span class="id_span">'+ obj.memberId+'</span>';
+					/* 날짜 */
+					reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
+					/* 평점 */
+					reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
+					if(obj.memberId === userId){
+						reply_list += '<a class="update_reply_btn" href="'+ obj.replyId +'">수정</a><a class="delete_reply_btn" href="'+ obj.replyId +'">삭제</a>';
+					}
+					reply_list += '</div>'; //<div class="reply_top">
+					reply_list += '<div class="reply_bottom">';
+					reply_list += '<div class="reply_bottom_txt">'+ obj.content +'</div>';
+					reply_list += '</div>'; //<div class="reply_bottom">
+					reply_list += '</div>'; //<div class="comment_wrap">
+					reply_list += '</li>';
+				});
+				
+				$(".reply_content_ul").html(reply_list);
+				
+				// 페이지 버튼
+				let reply_pageMaker = '';
+				
+					// 버튼 (이전)
+					if(pf.prev){
+						let prev_num = pf.pageStart -1;
+						reply_pageMaker += '<li class="pageMaker_btn prev">';
+						reply_pageMaker += '<a href="'+ prev_num +'">이전</a>';
+						reply_pageMaker += '</li>';	
+					}
+					
+					// 버튼 (숫자)
+					for(let i = pf.pageStart; i < pf.pageEnd+1; i++){
+						reply_pageMaker += '<li class="pageMaker_btn ';
+						if(pf.cri.pageNum === i){
+							reply_pageMaker += 'active';
+						}
+						reply_pageMaker += '">';
+						reply_pageMaker += '<a href="'+i+'">'+i+'</a>';
+						reply_pageMaker += '</li>';
+					}
+					
+					// 버튼 (다음)
+					if(pf.next){
+						let next_num = pf.pageEnd +1;
+						reply_pageMaker += '<li class="pageMaker_btn next">';
+						reply_pageMaker += '<a href="'+ next_num +'">다음</a>';
+						reply_pageMaker += '</li>';	
+					}		
+			}
+		});
 
-	});
+	}); // end $(document)
 	
 	// 로그인 버튼 클릭 메소드
 	$("#login_button").click(function() {
@@ -293,7 +407,7 @@
 		}
 	}
 
-	// 구매 버튼
+	// 버튼 (구매하기)
 	$(".btn_buy").on("click", function() {
 
 		let bookCount = $(".quantity_input").val();
@@ -359,13 +473,6 @@
 				}
 			}
 		});
-		
-		/* let popUrl = "/reply/" + memberId + "?bookId=" + bookId;
-		console.log(popUrl);
-		let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
-		
-		window.open(popUrl, "리뷰쓰기", popOption);
- */		
 	});
 	
 </script>
