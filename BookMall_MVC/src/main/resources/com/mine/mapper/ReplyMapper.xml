@@ -24,7 +24,7 @@
 		from mine_reply
 		where bookId = #{bookId}
 		order by regDate desc
-		limit #{limitValue}, #{amount}
+		limit #{skip}, #{amount}
 	
 	</select>
 	

@@ -67,10 +67,13 @@
 			type : 'POST',
 			url : '/reply/enroll',
 			success : function(result){
+				
+				// 댓글 초기화
+				$(opener.location).attr("href", "javascript:replyListInit();");
+				
 				window.close();
 			}
 		});
-		
 	});
 
 	// 버튼 (취소)
