@@ -159,39 +159,10 @@
 					<div class="reply_not_div">
 					</div>			
 					<ul class="reply_content_ul">
-						<!-- <li>
-							<div class="comment_wrap">
-									<div class="reply_top">
-											<span class="id_span">Gyu</span>
-											<span class="date_span">2022-09-03</span>
-											<span class="rating_span">평점 : <span class="rating_value_span">5</span>점</span>
-											<a class="update_reply_btn">수정</a><a class="delete_reply_btn">삭제</a>
-									</div>
-									<div class="reply_bottom">
-											<div class="reply_bottom_txt">
-													생각보다 책이 재미있어요!!! 주변 지인들에게 추천해줄 의향이 있습니다!!!
-											</div>
-									</div>
-							</div>
-						</li> -->
+						
 					</ul>				
 					<div class="reply_pageInfo_div">
 						<ul class="pageMaker">
-							<!-- <li class="pageMaker_btn prev">
-								<a>이전</a>
-							</li>
-							<li class="pageMaker_btn">
-								<a>1</a>
-							</li>
-							<li class="pageMaker_btn">
-								<a>2</a>
-							</li>
-							<li class="pageMaker_btn active">
-								<a>3</a>
-							</li>													
-							<li class="pageMaker_btn next">
-								<a>다음</a>
-							</li> -->
 						</ul>
 					</div>						
 				</div>
@@ -386,6 +357,11 @@
 		const memberId = '${member.memberId}';
 		const bookId = '${bookInfo.bookId}';
 		
+		if(memberId == "admin"){
+			alert("관리자계정 이용불가.");
+			return false;
+		}
+		
 		$.ajax({
 			data : {
 				bookId : bookId,
@@ -417,6 +393,11 @@
 		});
 	}
 	
+	// 댓글 수정버튼
+	$(document).on('click', '.update_reply_btn', function(e){
+		
+	});
+	
 	// 리뷰 동적 메서드
 	function makeReplyContent(obj){
 		
@@ -436,6 +417,7 @@
 			let reply_list = '';
 			
 			$(list).each(function(i, obj){
+				
 				reply_list += '<li>';
 				reply_list += '<div class="comment_wrap">';
 				reply_list += '<div class="reply_top">';
@@ -445,9 +427,11 @@
 				reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
 				/* 평점 */
 				reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
+				
 				if(obj.memberId === userId){
 					reply_list += '<a class="update_reply_btn" href="'+ obj.replyId +'">수정</a><a class="delete_reply_btn" href="'+ obj.replyId +'">삭제</a>';
 				}
+				
 				reply_list += '</div>'; //<div class="reply_top">
 				reply_list += '<div class="reply_bottom">';
 				reply_list += '<div class="reply_bottom_txt">'+ obj.content +'</div>';
@@ -487,6 +471,8 @@
 				reply_pageMaker += '<a href="'+ next_num +'">다음</a>';
 				reply_pageMaker += '</li>';	
 			}		
+			
+			$(".pageMaker").html(reply_pageMaker);
 		}
 	}
 	
@@ -496,6 +482,17 @@
 			pageNum : 1,
 			amount : 10
 	}
+	
+	
+	$(document).on('click', '.pageMaker_btn a', function(e){
+		
+		e.preventDefault();
+		
+		let page = $(this).attr("href");
+		cri.pageNum = page;
+		
+		replyListInit();
+	});
 	
 	
 </script>

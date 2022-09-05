@@ -29,9 +29,16 @@ public class ReplyController {
 		return rService.checkReply(dto);
 	}
 	
+	// 댓글 페이징 처리
 	@GetMapping(value="/list", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ReplyPageDTO replyListPOST(Criteria cri) {
 		return rService.replyList(cri);
+	}
+	
+	// 댓글수정
+	@PostMapping("/update")
+	public void replyModifyPOST(ReplyDTO dto) {
+		rService.updateReply(dto);
 	}
 	
 }

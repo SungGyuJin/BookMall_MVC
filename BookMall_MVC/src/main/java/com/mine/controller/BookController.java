@@ -25,7 +25,9 @@ import com.mine.model.AttachImageVO;
 import com.mine.model.BookVO;
 import com.mine.model.Criteria;
 import com.mine.model.PageDTO;
+import com.mine.model.ReplyDTO;
 import com.mine.service.BookService;
+import com.mine.service.ReplyService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -38,6 +40,9 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private ReplyService replyService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String startMain(Model model) {
@@ -157,7 +162,30 @@ public class BookController {
 		model.addAttribute("pageParam", bookId);
 
 		return "/bookDetail";
-
+	}
+	
+	// 리뷰쓰기
+	@GetMapping
+	public String replyEnrollGET(@PathVariable("memberId")String memberId, int bookId, Model model) {
+		
+		BookVO book = bookService.getBookIdName(bookId);
+		model.addAttribute("bookInfo", book);
+		model.addAttribute("memberId", memberId);
+		
+		return "/replyEnroll";
+	}
+	
+	// 리뷰 수정
+	@GetMapping("/replyUpdate")
+	public String replyUpdateGET(ReplyDTO dto, Model model) {
+		
+		BookVO book = bookService.getBookIdName(dto.getBookId());
+		
+		model.addAttribute("bookInfo", book);
+		model.addAttribute("replyInfo", replyService.getUpdateReply(dto.getReplyId()));
+		model.addAttribute("memberId", dto.getMemberId());
+		
+		return "/replyUpdate";
 	}
 	
 

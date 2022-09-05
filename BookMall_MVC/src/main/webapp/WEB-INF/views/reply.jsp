@@ -47,7 +47,7 @@
 	
 <script type="text/javascript">
 
-	// 버튼 (듵록)
+	// 버튼 (등록)
 	$(".enroll_btn").on("click", function(e){
 		
 		const bookId = '${bookInfo.bookId}';

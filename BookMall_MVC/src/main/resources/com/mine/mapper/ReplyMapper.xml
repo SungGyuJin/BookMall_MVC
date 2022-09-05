@@ -34,4 +34,20 @@
 	
 	</select>
 	
+	<!-- 댓글수정 -->
+	<update id="updateReply">
+	
+		update mine_reply set content = #{content}, rating = #{rating}
+		where replyId = #{replyId}
+		
+	</update>
+	
+	<!-- 댓글 수정페이지 -->
+	<select id="getUpdateReply" resultType="com.mine.model.ReplyDTO">
+	
+		select * from mine_reply
+		where replyId = #{replyId}
+	
+	</select>
+	
   </mapper>

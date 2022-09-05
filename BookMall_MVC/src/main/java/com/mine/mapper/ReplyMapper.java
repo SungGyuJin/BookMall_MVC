@@ -19,4 +19,9 @@ public interface ReplyMapper {
 	// 댓글 총 갯수
 	public int getReplyTotal(int bookId);
 	
+	// 댓글 수정
+	public int updateReply(ReplyDTO dto);
+	
+	// 댓글 수정페이지
+	public ReplyDTO getUpdateReply(int replyId);
 }
