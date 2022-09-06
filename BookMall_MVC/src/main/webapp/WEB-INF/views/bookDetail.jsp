@@ -396,6 +396,13 @@
 	// 댓글 수정버튼
 	$(document).on('click', '.update_reply_btn', function(e){
 		
+		e.preventDefault();
+		
+		let replyId = $(this).attr("href");
+		let popUrl = "/replyUpdate?replyId=" + replyId + "&bookId=" + '${bookInfo.bookId}' + "&memberId=" + '${member.memberId}';
+		let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
+		
+		window.open(popUrl, "리뷰 수정", popOption);
 	});
 	
 	// 리뷰 동적 메서드
@@ -422,7 +429,7 @@
 				reply_list += '<div class="comment_wrap">';
 				reply_list += '<div class="reply_top">';
 				/* 아이디 */
-				reply_list += '<span class="id_span">'+ obj.memberId+'</span>';
+				reply_list += '<span class="id_span">'+ obj.memberId +'</span>';
 				/* 날짜 */
 				reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
 				/* 평점 */

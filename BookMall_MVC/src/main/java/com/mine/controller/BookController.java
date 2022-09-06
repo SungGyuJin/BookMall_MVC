@@ -138,17 +138,6 @@ public class BookController {
 		return "search";
 
 	}
-	
-	@GetMapping("/reply/{memberId}")
-	public String replyEnrollWindowGET(@PathVariable("memberId") String memberId, int bookId, Model model) {
-		
-		BookVO book = bookService.getBookIdName(bookId);
-		
-		model.addAttribute("bookInfo", book);
-		model.addAttribute("memberId", memberId);
-		
-		return "/reply";
-	}
 
 	// 도서상세
 	@GetMapping("/bookDetail/pageParam={bookId}")
@@ -165,14 +154,15 @@ public class BookController {
 	}
 	
 	// 리뷰쓰기
-	@GetMapping
-	public String replyEnrollGET(@PathVariable("memberId")String memberId, int bookId, Model model) {
+	@GetMapping("/reply/{memberId}")
+	public String replyEnrollWindowGET(@PathVariable("memberId") String memberId, int bookId, Model model) {
 		
 		BookVO book = bookService.getBookIdName(bookId);
+		
 		model.addAttribute("bookInfo", book);
 		model.addAttribute("memberId", memberId);
 		
-		return "/replyEnroll";
+		return "/reply";
 	}
 	
 	// 리뷰 수정

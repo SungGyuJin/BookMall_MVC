@@ -91,3 +91,14 @@ textarea {
 	resize: none;
 	margin-top: 10px;
 }
+
+.update_btn {
+	display: inline-block;
+	width: 130px;
+	background-color: #7b8ed1;
+	padding-top: 10px;
+	height: 27px;
+	color: #fff;
+	font-size: 14px;
+	line-height: 18px;
+}
