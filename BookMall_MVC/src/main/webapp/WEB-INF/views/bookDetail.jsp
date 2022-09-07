@@ -214,7 +214,7 @@
 			const uploadPath = bobj.data("path");
 			const uuid = bobj.data("uuid");
 			const fileName = bobj.data("filename");
-	
+			
 			const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
 	
 			bobj.find("img").attr("src", "/display?fileName=" + fileCallPath);
@@ -222,7 +222,7 @@
 
 			bobj.find("img").attr("src", "/resources/img/bookNoImage.png");
 		}
-
+		
 		// publeyear
 		const year = "${bookInfo.publeYear}";
 
@@ -405,6 +405,29 @@
 		window.open(popUrl, "리뷰 수정", popOption);
 	});
 	
+	// 댓글 삭제
+	$(document).on('click', ".delete_reply_btn", function(e){
+		
+		e.preventDefault();
+		
+		let replyId = $(this).attr("href");
+		
+		$.ajax({
+			
+			data : {
+					replyId : replyId,
+					bookId : '${bookInfo.bookId}'
+			},
+			url : '/reply/delete',
+			type : 'POST',
+			success : function(result){
+				
+				replyListInit();
+				alert("삭제가 완료되었습니다."	);
+			}
+		});
+	});
+	
 	// 리뷰 동적 메서드
 	function makeReplyContent(obj){
 		
@@ -489,7 +512,6 @@
 			pageNum : 1,
 			amount : 10
 	}
-	
 	
 	$(document).on('click', '.pageMaker_btn a', function(e){
 		

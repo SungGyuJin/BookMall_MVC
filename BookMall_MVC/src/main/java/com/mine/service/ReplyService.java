@@ -20,4 +20,7 @@ public interface ReplyService {
 	
 	// 댓글 수정페이지 
 	public ReplyDTO getUpdateReply(int replyId);
+	
+	// 댓글 삭제
+	public int deleteReply(ReplyDTO dto);
 }

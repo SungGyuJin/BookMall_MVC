@@ -50,4 +50,12 @@
 	
 	</select>
 	
+	<!-- 댓글삭제 -->
+	<delete id="deleteReply">
+	
+		delete from mine_reply
+		where replyId = #{replyId}
+	
+	</delete>
+	
   </mapper>

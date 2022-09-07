@@ -59,4 +59,12 @@ public class ReplyServiceImpl implements ReplyService {
 		return rMapper.getUpdateReply(replyId);
 	}
 
+	@Override
+	public int deleteReply(ReplyDTO dto) {
+
+		int result = rMapper.deleteReply(dto.getReplyId());
+		
+		return result;
+	}
+
 }
