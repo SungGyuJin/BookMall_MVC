@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mine.model.Criteria;
 import com.mine.model.ReplyDTO;
+import com.mine.model.UpdateReplyDTO;
 
 public interface ReplyMapper {
 
@@ -27,4 +28,11 @@ public interface ReplyMapper {
 	
 	// 댓글 삭제
 	public int deleteReply(int replyId);
+	
+	// 평점평균 계산
+	public Double getRatingAverage(int bookId);
+	
+	// 평점평균 반영
+	public int updateRating(UpdateReplyDTO dto);
+	
 }

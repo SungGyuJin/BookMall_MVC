@@ -37,7 +37,9 @@
 	<!-- 댓글수정 -->
 	<update id="updateReply">
 	
-		update mine_reply set content = #{content}, rating = #{rating}
+		update mine_reply set 
+		content = #{content}
+		, rating = #{rating}
 		where replyId = #{replyId}
 		
 	</update>
@@ -57,5 +59,31 @@
 		where replyId = #{replyId}
 	
 	</delete>
+	
+	<select id="getRatingAverage" resultType="double">
+	
+		select avg(rating) from mine_reply where bookId = #{bookId}
+	
+	</select>
+	
+	<update id="updateRating">
+	
+		update mine_book set 
+		ratingAvg = #{ratingAvg} 
+		where bookId = #{bookId}
+	
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
   </mapper>

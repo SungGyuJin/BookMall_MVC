@@ -8,6 +8,7 @@ import com.mine.model.Criteria;
 import com.mine.model.PageDTO;
 import com.mine.model.ReplyDTO;
 import com.mine.model.ReplyPageDTO;
+import com.mine.model.UpdateReplyDTO;
 
 @Service
 public class ReplyServiceImpl implements ReplyService {
@@ -15,10 +16,13 @@ public class ReplyServiceImpl implements ReplyService {
 	@Autowired
 	private ReplyMapper rMapper;
 
+	// 댓글등록
 	@Override
 	public int enrollReply(ReplyDTO dto) {
 
 		int result = rMapper.enrollReply(dto);
+		
+		setRating(dto.getBookId());
 
 		return result;
 	}
@@ -51,6 +55,8 @@ public class ReplyServiceImpl implements ReplyService {
 		
 		int result = rMapper.updateReply(dto);
 		
+		setRating(dto.getBookId());
+		
 		return result;
 	}
 
@@ -64,7 +70,28 @@ public class ReplyServiceImpl implements ReplyService {
 
 		int result = rMapper.deleteReply(dto.getReplyId());
 		
+		setRating(dto.getBookId());
+		
 		return result;
+	}
+	
+	public void setRating(int bookId) {
+		
+		Double ratingAvg = rMapper.getRatingAverage(bookId);
+		
+		if(ratingAvg == null) {
+			ratingAvg = 0.0;
+		}
+		
+		ratingAvg = (double) (Math.round(ratingAvg*10));
+		ratingAvg = ratingAvg / 10;
+		
+		UpdateReplyDTO urd = new UpdateReplyDTO();
+		
+		urd.setBookId(bookId);
+		urd.setRatingAvg(ratingAvg);
+		
+		rMapper.updateRating(urd);
 	}
 
 }
