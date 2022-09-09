@@ -34,6 +34,7 @@ import com.mine.model.AttachImageVO;
 import com.mine.model.AuthorVO;
 import com.mine.model.BookVO;
 import com.mine.model.Criteria;
+import com.mine.model.OrderDTO;
 import com.mine.model.PageDTO;
 import com.mine.service.AdminService;
 import com.mine.service.AuthorService;
@@ -442,5 +443,27 @@ public class AdminController {
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 
 	}
+	
+	// 주문현황 페이지 이동
+	@GetMapping("/orderList")
+	public String orderListGET(Criteria cri, Model model) {
+		
+		List<OrderDTO> list = adminService.getOrderList(cri);
+		
+		if(!list.isEmpty()) {
+			model.addAttribute("list", list);
+			model.addAttribute("pageMaker", new PageDTO(cri, adminService.getOrderTotal(cri)));
+		}else {
+			model.addAttribute("listCheck", "empth");
+		}
+		
+		return "/admin/orderList";
+	}
+	
+	
+	
+	
+	
+	
 
 }

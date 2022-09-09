@@ -34,6 +34,9 @@
 					<div class="admin_div">
 						<a class="admin_list_04" href="/admin/authorManage">작가관리</a>
 					</div>
+					<div class="">
+						<a class="" href="/admin/orderList">주문현황</a>
+					</div> 
 			</div>
 			<!-- contents-area -->
 			<div class="admin_wrap">

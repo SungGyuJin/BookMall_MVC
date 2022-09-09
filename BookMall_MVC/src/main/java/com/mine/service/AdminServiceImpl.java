@@ -11,6 +11,7 @@ import com.mine.model.AttachImageVO;
 import com.mine.model.BookVO;
 import com.mine.model.CateVO;
 import com.mine.model.Criteria;
+import com.mine.model.OrderDTO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -118,6 +119,18 @@ public class AdminServiceImpl implements AdminService {
 
 		return adminMapper.getAttachInfo(bookId);
 
+	}
+
+	@Override
+	public List<OrderDTO> getOrderList(Criteria cri) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	// 주문 총 갯수
+	@Override
+	public int getOrderTotal(Criteria cri) {
+		return adminMapper.getOrderTotal(cri);
 	}
 
 }
