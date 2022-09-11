@@ -454,7 +454,7 @@ public class AdminController {
 			model.addAttribute("list", list);
 			model.addAttribute("pageMaker", new PageDTO(cri, adminService.getOrderTotal(cri)));
 		}else {
-			model.addAttribute("listCheck", "empth");
+			model.addAttribute("listCheck", "empty");
 		}
 		
 		return "/admin/orderList";
